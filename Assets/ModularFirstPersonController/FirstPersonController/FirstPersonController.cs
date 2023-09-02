@@ -59,7 +59,7 @@ public class FirstPersonController : MonoBehaviour
     public bool enableHeadBob = true;
     public Transform joint;
     public float bobSpeed = 10f;
-    public Vector3 bobAmount = new Vector3(.15f, .05f, 0f);
+    public Vector3 bobAmount = new Vector3(.03f, .02f, 0f);
 
     // Internal Variables
     private Vector3 jointOriginalPos;
@@ -76,6 +76,7 @@ public class FirstPersonController : MonoBehaviour
         // Set internal variables
         playerCamera.fieldOfView = fov;
         jointOriginalPos = joint.localPosition;
+        cameraCanMove = false;
     }
 
     void Start()
