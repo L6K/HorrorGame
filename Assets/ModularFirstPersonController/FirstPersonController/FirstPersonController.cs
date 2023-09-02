@@ -76,6 +76,7 @@ public class FirstPersonController : MonoBehaviour
         // Set internal variables
         playerCamera.fieldOfView = fov;
         jointOriginalPos = joint.localPosition;
+        cameraCanMove = false;
     }
 
     void Start()
