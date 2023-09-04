@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDatasList:
   - _itemName: PianosKey
-    _index: 1
+    _index: 0
     _whereUse: 0
     _isUsed: 0
     _itemImage: {fileID: 21300000, guid: aa054abb1ceb3704f8541f6d134e0c6b, type: 3}

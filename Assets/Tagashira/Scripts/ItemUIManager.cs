@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemUIManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class ItemUIManager : MonoBehaviour
     private bool _isCanPrevPage;
     private bool _isCanNextPage;
     private ItemData _nothing;
+    private Text _displayItemName;
+    private bool _isFadeout;
 
     [SerializeField] private Story _storyOfNothing;
     [SerializeField] private int _indexOfNothing;
@@ -26,6 +29,9 @@ public class ItemUIManager : MonoBehaviour
     [SerializeField] private GameObject _prevItemBotton;
     [SerializeField] private GameObject _nextItemBotton;
     [SerializeField] private GameObject[] _itemDisplayers;
+    [SerializeField] private GameObject _itemNameText;
+    [SerializeField] private float _timeOfDisplayItemName;
+    [SerializeField] private float _fadeoutSpeed;
 
     public int _selectItemPanel;
 
@@ -33,6 +39,10 @@ public class ItemUIManager : MonoBehaviour
     {
         // コンポーネントを取得
         _itemDAO = _itemDatabase.GetComponent<ItemDAO>();
+        _displayItemName = _itemNameText.GetComponent<Text>();
+
+        // アイテム名は必要な時だけ表示するので非表示にする
+        _itemNameText.SetActive(false);
 
         // 所持アイテムのリストを取得
         _itemList = _belongings.GetComponent<BelongingList>()._belongings;
@@ -106,6 +116,29 @@ public class ItemUIManager : MonoBehaviour
         {
             _nextItemBotton.SetActive(false);
         }
+
+        Color textColor = _displayItemName.color;
+
+        // アイテム名の表示テキストをフェードアウトさせる
+        if (_isFadeout)
+        {
+            if (_displayItemName.color.a - _fadeoutSpeed <= 0)
+            {
+                textColor.a = 0;
+                _displayItemName.color = textColor;
+
+                _itemNameText.SetActive(false);
+                textColor.a = 255;
+                _displayItemName.color = textColor;
+
+                _isFadeout = false;
+            }
+            else
+            {
+                textColor.a -= _fadeoutSpeed;
+                _displayItemName.color = textColor;
+            }
+        }
     }
 
     /// <summary>
@@ -163,7 +196,13 @@ public class ItemUIManager : MonoBehaviour
     /// </summary>
     public void PrevItemPage()
     {
+        // 表示ページを1つ前に戻る
         _nowDisplayPage--;
+
+        // 選択アイテムをリセット
+        _selectItemPanel = UNSELECTED_ITEM;
+
+        // UIに反映
         UpdateDisplayItemList();
         LoadItemPanel();
     }
@@ -173,8 +212,58 @@ public class ItemUIManager : MonoBehaviour
     /// </summary>
     public void NextItemPage()
     {
+        // 表示ページを次に進める
         _nowDisplayPage++;
+
+        // 選択アイテムをリセット
+        _selectItemPanel = UNSELECTED_ITEM;
+
+        // UIに反映
         UpdateDisplayItemList();
         LoadItemPanel();
     }
+
+    /// <summary>
+    /// UIからアイテムを選択された時の処理を行うメソッド
+    /// </summary>
+    /// <param name="numberOfPanel"></param>
+    public void SelectItem(int numberOfPanel)
+    {
+        // 選択されたのがnothingなら処理しない
+        bool isNothing = _displayItemList[numberOfPanel]._itemName == _nothing._itemName;
+
+        if (isNothing)
+        {
+            return;
+        }
+
+        // 現在選択されているアイテムが再び選択されたら何も選択していない状態に戻す
+        // 別のアイテムが選択された場合は現在選択されているアイテムを変更
+        if (_selectItemPanel == numberOfPanel)
+        {
+            _selectItemPanel = UNSELECTED_ITEM;
+        }
+        else
+        {
+            _selectItemPanel = numberOfPanel;
+
+            // アイテム名表示のテキストを選択されたアイテムに変更
+            _displayItemName.text = _displayItemList[numberOfPanel]._itemName;
+            _itemNameText.SetActive(true);
+
+            // インスペクターで指定された秒数表示し、経過したら非活性に戻す
+            Invoke("FadeoutText", _timeOfDisplayItemName);
+        }
+
+        // UIに反映
+        UpdateDisplayItemList();
+        LoadItemPanel();
+    }
+
+    void FadeoutText()
+    {
+        _isFadeout = true;
+    }
+
+    // 覚書：アイテム選択情報をどこかに渡すメソッドは別で作ってメソッド呼び出しで処理する
 }
