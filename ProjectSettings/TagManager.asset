@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Item
   - ItemCollider
+  - Trigger
   layers:
   - Default
   - TransparentFX
