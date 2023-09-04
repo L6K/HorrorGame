@@ -68,10 +68,23 @@ public class ItemUIManager : MonoBehaviour
     void Update()
     {
         // ページ切り替えボタンの表示非表示切り替え
-        if (_maxDisplayPage == 1)
+        // 前のページがあるか判定
+        if (_nowDisplayPage > 1)
+        {
+            _isCanPrevPage = true;
+        }
+        else
+        {
+            _isCanPrevPage = false;
+        }
+        // 次のページがあるか判定
+        if (_nowDisplayPage < _maxDisplayPage)
+        {
+            _isCanNextPage = true;
+        }
+        else
         {
             _isCanNextPage = false;
-            _isCanPrevPage = false;
         }
 
         // 前のページ(←)
@@ -106,7 +119,7 @@ public class ItemUIManager : MonoBehaviour
         // _itemListの何番目から何番目までのアイテムを表示するか計算
         int firstItem = (_nowDisplayPage - 1) * NUMBER_OF_ITEM_DISPLAY;
         int lastItem = firstItem + NUMBER_OF_ITEM_DISPLAY;
-        
+
         // アイテムが無いマスの数を計算(nothingが入る)
         int numberOfBrank = 0;
 
@@ -118,7 +131,7 @@ public class ItemUIManager : MonoBehaviour
         // _displayItemLIstに表示するアイテムを格納
         for (int i = firstItem; i < lastItem; i++)
         {
-            if (i < NUMBER_OF_ITEM_DISPLAY - numberOfBrank)
+            if (i < _itemList.Count)
             {
                 _displayItemList.Add(_itemList[i]);
             }
@@ -143,5 +156,25 @@ public class ItemUIManager : MonoBehaviour
             bool isSelected = _selectItemPanel == i;
             displayer.ItemDisplay(_displayItemList[i], isSelected);
         }
+    }
+
+    /// <summary>
+    /// アイテムの前のページを表示するメソッド
+    /// </summary>
+    public void PrevItemPage()
+    {
+        _nowDisplayPage--;
+        UpdateDisplayItemList();
+        LoadItemPanel();
+    }
+
+    /// <summary>
+    /// アイテムの次のページを表示するメソッド
+    /// </summary>
+    public void NextItemPage()
+    {
+        _nowDisplayPage++;
+        UpdateDisplayItemList();
+        LoadItemPanel();
     }
 }
