@@ -39,8 +39,6 @@ public class ItemDisplayer : MonoBehaviour
             _background.color = _default;
         }
 
-        Debug.Log(_itemImage);
-
         // スプライトを表示
         _itemImage.sprite = _displayItem._itemImage;
     }
