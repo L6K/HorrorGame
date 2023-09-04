@@ -101,6 +101,20 @@ public class FirstPersonController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (lockCursor == true)
+            {
+                lockCursor = false;
+                Cursor.lockState = CursorLockMode.Confined;
+            }
+            else
+            {
+                lockCursor = true;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
+
         #region Camera
 
         if(Input.GetMouseButtonDown(1))
