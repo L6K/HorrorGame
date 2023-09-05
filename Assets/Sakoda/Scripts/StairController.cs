@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
 
-public class StairController : MonoBehaviour
-{
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Trigger"))
-        {
+//public class StairController : MonoBehaviour
+//{
+//    private void OnTriggerEnter(Collider other)
+//    {
+//        if(other.CompareTag("Trigger"))
+//        {
 
-        }
-    }
-}
+//        }
+//    }
+//}

@@ -8,10 +8,13 @@ public class RaycastManager
     {
         //‰æ–Ê’†S‚©‚çRay‚ğo‚µÕ“Ë”»’è‚ğs‚¤
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        Debug.DrawLine(ray.origin, ray.origin + ray.direction * 10, Color.red);
         //ray‚ª“–‚½‚Á‚½object‚Ìî•ñ‚ğŠi”[‚·‚é
         RaycastHit _hitObject;
+        //ray‚ğ”ò‚Î‚·‹——£
+        float _playerVisibility = 10.0f;
 
-        if (Physics.Raycast(ray, out _hitObject))
+        if (Physics.Raycast(ray, out _hitObject, _playerVisibility))
         {
             return _hitObject;
         }
