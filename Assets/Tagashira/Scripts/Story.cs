@@ -4,6 +4,6 @@ using UnityEngine;
 
 public enum Story
 {
-    anotoher = 0,
+    another = 0,
     musicRoom = 1
 }
