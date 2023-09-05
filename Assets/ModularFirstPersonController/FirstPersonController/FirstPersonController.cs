@@ -101,6 +101,20 @@ public class FirstPersonController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (lockCursor == true)
+            {
+                lockCursor = false;
+                Cursor.lockState = CursorLockMode.Confined;
+            }
+            else
+            {
+                lockCursor = true;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
+
         #region Camera
 
         if(Input.GetMouseButtonDown(1))
@@ -204,109 +218,5 @@ public class FirstPersonController : MonoBehaviour
 
 
 // Custom Editor
-#if UNITY_EDITOR
-[CustomEditor(typeof(FirstPersonController)), InitializeOnLoadAttribute]
-public class FirstPersonControllerEditor : Editor
-{
-    FirstPersonController fpc;
-    SerializedObject SerFPC;
 
-    private void OnEnable()
-    {
-        fpc = (FirstPersonController)target;
-        SerFPC = new SerializedObject(fpc);
-    }
-
-    public override void OnInspectorGUI()
-    {
-        SerFPC.Update();
-
-        EditorGUILayout.Space();
-        GUILayout.Label("Modular First Person Controller", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold, fontSize = 16 });
-        GUILayout.Label("By Jess Case", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Normal, fontSize = 12 });
-        GUILayout.Label("version 1.0.1", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Normal, fontSize = 12 });
-        EditorGUILayout.Space();
-
-        #region Camera Setup
-
-        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-        GUILayout.Label("Camera Setup", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold, fontSize = 13 }, GUILayout.ExpandWidth(true));
-        EditorGUILayout.Space();
-
-        fpc.playerCamera = (Camera)EditorGUILayout.ObjectField(new GUIContent("Camera", "Camera attached to the controller."), fpc.playerCamera, typeof(Camera), true);
-
-        GUI.enabled = fpc.cameraCanMove;
-        fpc.invertCamera = EditorGUILayout.ToggleLeft(new GUIContent("Invert Camera Rotation", "Inverts the up and down movement of the camera."), fpc.invertCamera);
-        fpc.mouseSensitivity = EditorGUILayout.Slider(new GUIContent("Look Sensitivity", "Determines how sensitive the mouse movement is."), fpc.mouseSensitivity, .1f, 10f);
-        fpc.maxLookAngle = EditorGUILayout.Slider(new GUIContent("Max Look Angle", "Determines the max and min angle the player camera is able to look."), fpc.maxLookAngle, 40, 90);
-        GUI.enabled = true;
-
-        fpc.lockCursor = EditorGUILayout.ToggleLeft(new GUIContent("Lock and Hide Cursor", "Turns off the cursor visibility and locks it to the middle of the screen."), fpc.lockCursor);
-
-        fpc.crosshair = EditorGUILayout.ToggleLeft(new GUIContent("Auto Crosshair", "Determines if the basic crosshair will be turned on, and sets is to the center of the screen."), fpc.crosshair);
-
-        // Only displays crosshair options if crosshair is enabled
-        if (fpc.crosshair)
-        {
-            EditorGUI.indentLevel++;
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.PrefixLabel(new GUIContent("Crosshair Image", "Sprite to use as the crosshair."));
-            fpc.crosshairImage = (Sprite)EditorGUILayout.ObjectField(fpc.crosshairImage, typeof(Sprite), false);
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.BeginHorizontal();
-            fpc.crosshairColor = EditorGUILayout.ColorField(new GUIContent("Crosshair Color", "Determines the color of the crosshair."), fpc.crosshairColor);
-            EditorGUILayout.EndHorizontal();
-            EditorGUI.indentLevel--;
-        }
-
-        EditorGUILayout.Space();
-
-        #endregion
-
-        #region Movement Setup
-
-        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-        GUILayout.Label("Movement Setup", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold, fontSize = 13 }, GUILayout.ExpandWidth(true));
-        EditorGUILayout.Space();
-
-        fpc.playerCanMove = EditorGUILayout.ToggleLeft(new GUIContent("Enable Player Movement", "Determines if the player is allowed to move."), fpc.playerCanMove);
-
-        GUI.enabled = fpc.playerCanMove;
-        GUI.enabled = true;
-
-        EditorGUILayout.Space();
-
-
-        #endregion
-
-        #region Head Bob
-
-        EditorGUILayout.Space();
-        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-        GUILayout.Label("Head Bob Setup", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold, fontSize = 13 }, GUILayout.ExpandWidth(true));
-        EditorGUILayout.Space();
-
-        fpc.enableHeadBob = EditorGUILayout.ToggleLeft(new GUIContent("Enable Head Bob", "Determines if the camera will bob while the player is walking."), fpc.enableHeadBob);
-
-
-        GUI.enabled = fpc.enableHeadBob;
-        fpc.joint = (Transform)EditorGUILayout.ObjectField(new GUIContent("Camera Joint", "Joint object position is moved while head bob is active."), fpc.joint, typeof(Transform), true);
-        fpc.bobSpeed = EditorGUILayout.Slider(new GUIContent("Speed", "Determines how often a bob rotation is completed."), fpc.bobSpeed, 1, 20);
-        fpc.bobAmount = EditorGUILayout.Vector3Field(new GUIContent("Bob Amount", "Determines the amount the joint moves in both directions on every axes."), fpc.bobAmount);
-        GUI.enabled = true;
-
-        #endregion
-
-        //Sets any changes from the prefab
-        if (GUI.changed)
-        {
-            EditorUtility.SetDirty(fpc);
-            Undo.RecordObject(fpc, "FPC Change");
-            SerFPC.ApplyModifiedProperties();
-        }
-    }
-
-}
-#endif
 #endregion
