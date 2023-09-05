@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class ItemHighlighter : MonoBehaviour
 {
-    private Ray _ray;
 
-    // Update is called once per frame
-    void Update()
+    RaycastManager raycastManager;
+
+    private void Start()
     {
-        //‰æ–Ê’†S‚©‚çí‚ÉRay‚ğo‚µ‘±‚¯‚é
-        _ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-        Debug.DrawLine(_ray.origin, _ray.origin + _ray.direction * 10, Color.red);
+        raycastManager = new RaycastManager();
     }
 
     /*
@@ -21,27 +19,16 @@ public class ItemHighlighter : MonoBehaviour
      */
     private void OnTriggerStay(Collider other)
     {
-        //ray‚ª“–‚½‚Á‚½object‚Ìî•ñ‚ğŠi”[‚·‚é
-        RaycastHit _hitObject;
-        //player‚Ì‹ŠE‚Ì’·‚³
-        float _playerVisibility = 10.0f;
- 
-        if (other.CompareTag("ItemCollider"))
+        if (other.CompareTag("HighlightCollider"))
         {
-            Outline outline = other.GetComponentInChildren<Outline>();
-            Debug.Log(outline);
-            if (Physics.Raycast(_ray, out _hitObject, _playerVisibility))
-            {
-                if (_hitObject.collider.CompareTag("Item"))
-                {
-                    Debug.Log(_hitObject.collider.gameObject);
-                    outline.enabled = true;
-                }
-                else
-                {
-                    outline.enabled = false;
-                }
-            }
+            RaycastHit _hitObject = raycastManager.GetRaycastHitInfo();
+            string objectTag = _hitObject.collider.tag;
+
+            //switch (objectTag)
+            //{
+            //    //case "Item":
+
+            //}
         }
     }
 
@@ -52,9 +39,22 @@ public class ItemHighlighter : MonoBehaviour
      */
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("ItemCollider"))
-        {
-            other.GetComponentInChildren<Outline>().enabled = false;
-        }
+            other.GetComponentInChildren<Outline>().enabled = false;   
     }
 }
+
+
+//if (other.CompareTag("ItemCollider"))
+//{
+//    Outline outline = other.GetComponentInChildren<Outline>();
+//    RaycastHit _hitObject = raycastManager.GetRaycastHitInfo();
+
+//    if (_hitObject.collider.CompareTag("Item"))
+//    {
+//        outline.enabled = true;
+//    }
+//    else
+//    {
+//        outline.enabled = false;
+//    }
+//}
