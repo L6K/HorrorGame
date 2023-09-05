@@ -122,19 +122,22 @@ public class ItemUIManager : MonoBehaviour
         // アイテム名の表示テキストをフェードアウトさせる
         if (_isFadeout)
         {
-            if (_displayItemName.color.a - _fadeoutSpeed <= 0)
+            if (_displayItemName.color.a - _fadeoutSpeed <= 0)  // フェードアウトの最後のフレーム
             {
+                // 不透明度を0に
                 textColor.a = 0;
                 _displayItemName.color = textColor;
 
+                // 後片付け(テキストを非活性、不透明度Maxに戻す)
                 _itemNameText.SetActive(false);
-                textColor.a = 255;
+                textColor.a = 1.0f;
                 _displayItemName.color = textColor;
 
                 _isFadeout = false;
             }
             else
             {
+                // 不透明度を減らす
                 textColor.a -= _fadeoutSpeed;
                 _displayItemName.color = textColor;
             }
