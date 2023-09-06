@@ -5,8 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Item
-  - ItemCollider
-  - Trigger
+  - Locker
+  - Stair
+  - HighlightCollider
   layers:
   - Default
   - TransparentFX
