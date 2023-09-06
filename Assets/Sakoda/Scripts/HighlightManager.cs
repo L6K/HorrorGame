@@ -7,6 +7,8 @@ public class HighlightManager : MonoBehaviour
 {
 
     RaycastManager raycastManager;
+    private Animator _doorAnimator;
+    private bool _isHidable;
 
     private void Start()
     {
@@ -27,26 +29,43 @@ public class HighlightManager : MonoBehaviour
             string _objectTag = _hitObject.collider.tag;
             Outline _outline = other.GetComponentInChildren<Outline>();
             TextMeshPro _textMeshPro = other.GetComponentInChildren<TextMeshPro>();
+            _doorAnimator = other.GetComponentInChildren<Animator>();
 
             switch (_objectTag)
             {
                 case "Item":
                     _outline.enabled = true;
+
                     break;
 
                 case "Locker":
                     _outline.enabled = true;
                     _textMeshPro.enabled = true;
-                    GetComponent<HideController>().Hiding();
+                    _isHidable = true;
+
+                    break;
+
+                case "Stair":
                     break;
 
                 default:
-                    _outline.enabled = false;
+                    if(_outline != null)
+                    {
+                        _outline.enabled = false;
+                    }
+                    
                     if(_textMeshPro != null)
                     {
                         _textMeshPro.enabled = false;
+                        //_doorAnimator.enabled = false;
                     }
+
                     break;
+            }
+
+            if (_isHidable)
+            {
+                GetComponent<HideController>().IsHiding(_isHidable);
             }
         }
     }
@@ -58,11 +77,15 @@ public class HighlightManager : MonoBehaviour
      */
     private void OnTriggerExit(Collider other)
     {
-        other.GetComponentInChildren<Outline>().enabled = false;
-        TextMeshPro _textMeshPro = other.GetComponentInChildren<TextMeshPro>();
-        if (_textMeshPro)
+        if (!other.CompareTag("Stair"))
         {
-            _textMeshPro.enabled = false;
+            other.GetComponentInChildren<Outline>().enabled = false;
+            TextMeshPro _textMeshPro = other.GetComponentInChildren<TextMeshPro>();
+            if (_textMeshPro)
+            {
+                _textMeshPro.enabled = false;
+            }
         }
     }
 }
+
