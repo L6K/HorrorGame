@@ -1,43 +1,37 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using TMPro;
-//using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
 
-//public class HideController : MonoBehaviour
-//{
-//    RaycastManager raycastManager;
-//    public GameObject player;
+public class HideController : MonoBehaviour
+{
+    public GameObject locker;
+    private Animator animator;
 
-//    private void Start()
-//    {
-//        raycastManager = new RaycastManager();
-//    }
+    private bool _isHiding;
+    private Vector3 _originalPosition;
 
-//    private void OnTriggerStay(Collider other)
-//    {
+    public void Hiding()
+    {
+        _isHiding = transform.position == locker.transform.position;
 
-//        if (other.CompareTag("LockerCollider"))
-//        {
-//            Outline _outline = other.GetComponentInChildren<Outline>();
-//            bool _isTextPop = other.GetComponentInChildren<TextMeshPro>();
+        animator = locker.GetComponentInChildren<Animator>();
+        _originalPosition = transform.position;
 
-//            RaycastHit _hitObject = raycastManager.GetRaycastHitInfo();
-
-//            if (_hitObject.collider.CompareTag("Locker"))
-//            {
-//                _outline.enabled = true;
-//                _hitObject.collider.GetComponentInChildren<TextMeshPro>().enabled = true;
-//            }
-//            else
-//            {
-//                _outline.enabled = false;
-//                _isTextPop = false;
-//            }
-
-//            if (_isTextPop)
-//            {
-//                player.GetComponent<FirstPersonController>().playerCanMove = false;
-//            }
-//        }
-//    }
-//}
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Debug.Log("f");
+            if (_isHiding)
+            {
+                transform.position = _originalPosition;
+            }
+            else
+            {
+                //animator.enabled = true;
+                Vector3 _hidingPosition = locker.transform.position;
+                transform.position = _hidingPosition;
+                transform.rotation = Quaternion.Euler(0, 180f, 0);
+            }
+        }
+    }
+}

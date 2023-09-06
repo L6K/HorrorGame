@@ -37,6 +37,7 @@ public class HighlightManager : MonoBehaviour
                 case "Locker":
                     _outline.enabled = true;
                     _textMeshPro.enabled = true;
+                    GetComponent<HideController>().Hiding();
                     break;
 
                 default:
