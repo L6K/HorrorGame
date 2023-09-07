@@ -27,8 +27,8 @@ public class HighlightManager : MonoBehaviour
         if (_hitObject.collider != null)
         {
             string _objectTag = _hitObject.collider.tag;
-            Outline _outline = other.GetComponentInChildren<Outline>();
-            TextMeshPro _textMeshPro = other.GetComponentInChildren<TextMeshPro>();
+            Outline _outline = _hitObject.collider.GetComponent<Outline>();
+            TextMeshPro _textMeshPro = _hitObject.collider.GetComponentInChildren<TextMeshPro>();
             _doorAnimator = other.GetComponentInChildren<Animator>();
 
             switch (_objectTag)
@@ -39,6 +39,7 @@ public class HighlightManager : MonoBehaviour
                     break;
 
                 case "Locker":
+                    Debug.Log(_outline);
                     _outline.enabled = true;
                     _textMeshPro.enabled = true;
                     _isHidable = true;
@@ -57,6 +58,7 @@ public class HighlightManager : MonoBehaviour
                     if(_textMeshPro != null)
                     {
                         _textMeshPro.enabled = false;
+                        Debug.Log(_textMeshPro.enabled);
                         //_doorAnimator.enabled = false;
                     }
 
@@ -79,10 +81,11 @@ public class HighlightManager : MonoBehaviour
     {
         if (!other.CompareTag("Stair"))
         {
-            other.GetComponentInChildren<Outline>().enabled = false;
+            Outline _outline = other.GetComponentInChildren<Outline>();
             TextMeshPro _textMeshPro = other.GetComponentInChildren<TextMeshPro>();
-            if (_textMeshPro)
+            if (_textMeshPro || _outline)
             {
+                _outline.enabled = false;
                 _textMeshPro.enabled = false;
             }
         }
