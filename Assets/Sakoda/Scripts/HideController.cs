@@ -52,11 +52,11 @@ public class HideController : MonoBehaviour
                 locker.GetComponentInChildren<TextMeshPro>().text = "F:Out";
                 Debug.Log(player.transform.position);
             }
+        }
 
-            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("door"))
-            {
-                animator.enabled = false;
-            }
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("door"))
+        {
+            animator.enabled = false;
         }
 
         return _isHidable;
