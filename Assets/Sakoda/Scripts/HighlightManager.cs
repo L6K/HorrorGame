@@ -58,6 +58,7 @@ public class HighlightManager : MonoBehaviour
                     if(_textMeshPro != null)
                     {
                         _textMeshPro.enabled = false;
+                        Debug.Log(_textMeshPro.enabled);
                         //_doorAnimator.enabled = false;
                     }
 
