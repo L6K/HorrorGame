@@ -114,18 +114,10 @@ public class FirstPersonController : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
+    }
 
-        #region Camera
-
-        if(Input.GetMouseButtonDown(1))
-        {
-            cameraCanMove = true;
-        }
-
-        if(Input.GetMouseButtonUp(1))
-        {
-            cameraCanMove = false;
-        }
+    void FixedUpdate()
+    {
         // Control camera movement
         if (cameraCanMove)
         {
@@ -155,10 +147,18 @@ public class FirstPersonController : MonoBehaviour
         {
             HeadBob();
         }
-    }
+        #region Camera
 
-    void FixedUpdate()
-    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            cameraCanMove = true;
+        }
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            cameraCanMove = false;
+        }
+
         #region Movement
 
         if (playerCanMove)
