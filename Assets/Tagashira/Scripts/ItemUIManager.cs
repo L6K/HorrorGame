@@ -250,6 +250,15 @@ public class ItemUIManager : MonoBehaviour
         {
             _selectItemPanel = numberOfPanel;
 
+            // アイテム名表示用テキストの色を戻す(フェードアウト中に別のアイテムを選択した時用)
+            Color textColor = _displayItemName.color;
+            _isFadeout = false;
+            textColor.a = 1.0f;
+            _displayItemName.color = textColor;
+
+            // Invokeを止める
+            CancelInvoke("FadeoutText");
+
             // アイテム名表示のテキストを選択されたアイテムに変更
             _displayItemName.text = _displayItemList[numberOfPanel]._itemName;
             _itemNameText.SetActive(true);
