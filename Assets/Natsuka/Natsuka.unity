@@ -644,18 +644,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1111413012081046059, guid: 0fb4f45f4be258d4fa6629ba6d678ffe, type: 3}
-      propertyPath: m_Height
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1111413012081046059, guid: 0fb4f45f4be258d4fa6629ba6d678ffe, type: 3}
-      propertyPath: m_Radius
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1111413012081046059, guid: 0fb4f45f4be258d4fa6629ba6d678ffe, type: 3}
-      propertyPath: m_Center.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5607839520298497207, guid: 0fb4f45f4be258d4fa6629ba6d678ffe, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -704,8 +692,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fb4f45f4be258d4fa6629ba6d678ffe, type: 3}
 --- !u!1 &1619985565
 GameObject:
