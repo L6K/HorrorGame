@@ -10,7 +10,7 @@ public class StairController : MonoBehaviour
         {
             FirstPersonController firstPerson = other.GetComponent<FirstPersonController>();
             firstPerson.walkSpeed = 3.0f;
-            firstPerson.bobAmount = new Vector3(.03f, .04f, 0f);
+            firstPerson.bobAmount = new Vector3(.0f, .125f, 0f);
         }
     }
 
@@ -20,7 +20,7 @@ public class StairController : MonoBehaviour
         {
             FirstPersonController firstPerson = other.GetComponent<FirstPersonController>();
             firstPerson.walkSpeed = 5.0f;
-            firstPerson.bobAmount = new Vector3(.03f, .02f, 0f);
+            firstPerson.bobAmount = new Vector3(.0f, .1f, 0f);
         }
     }
 }
