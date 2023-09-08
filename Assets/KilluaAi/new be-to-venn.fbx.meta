@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ff11a7f31ded95d42be06dd38d8c3fd4
+guid: f2126df62626c8d42a21ff44f33b998a
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: "\u30D9\u30FC\u30C8\u30FC\u30D9\u30F3"
-    second: {fileID: 2800000, guid: 41e64dde810838a4bbde8c8c07653457, type: 3}
+      name: be-to-venn
+    second: {fileID: 2800000, guid: 94e544774eca6894a9f0f26cfbc73082, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
