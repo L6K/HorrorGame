@@ -7,6 +7,7 @@ public class RaycastController : MonoBehaviour
 {
 
     RaycastManager raycastManager;
+    public HighlightController HighlightController;
     private Animator _doorAnimator;
     private bool _isHidable;
 
@@ -24,49 +25,55 @@ public class RaycastController : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         RaycastHit _hitObject = raycastManager.GetRaycastHitInfo();
-        if (_hitObject.collider != null && other.CompareTag("Room"))
+        if (_hitObject.collider != null)
         {
-            string _objectTag = _hitObject.collider.tag;
-            Outline _outline = other.GetComponentInChildren<Outline>();
-            TextMeshPro _textMeshPro = other.GetComponentInChildren<TextMeshPro>();
-            _doorAnimator = other.GetComponentInChildren<Animator>();
-
-            switch (_objectTag)
-            {
-                case "Item":
-                    _hitObject.collider.GetComponent<Outline>().enabled = true;
-
-                    break;
-
-                case "Locker":
-                    _hitObject.collider.GetComponent<Outline>().enabled = true;
-                    _hitObject.collider.GetComponentInChildren<TextMeshPro>().enabled = true;
-                    _isHidable = true;
-
-                    break;
-
-                case "Stair":
-                    break;
-
-                default:
-                    if (_outline != null)
-                    {
-                        _outline.enabled = false;
-                    }
-
-                    if (_textMeshPro != null)
-                    {
-                        _textMeshPro.enabled = false;
-                        //_doorAnimator.enabled = false;
-                    }
-
-                    break;
-            }
-
-            if (_isHidable)
-            {
-                GetComponent<HideController>().IsHiding(_isHidable);
-            }
+            Debug.Log(_hitObject.collider);
+            HighlightController.IsHighlighting(_hitObject);
         }
     }
 }
+//RaycastHit _hitObject = raycastManager.GetRaycastHitInfo();
+//if (_hitObject.collider != null && other.CompareTag("Room"))
+//{
+//    string _objectTag = _hitObject.collider.tag;
+//    Outline _outline = other.GetComponentInChildren<Outline>();
+//    TextMeshPro _textMeshPro = other.GetComponentInChildren<TextMeshPro>();
+//    _doorAnimator = other.GetComponentInChildren<Animator>();
+
+//    switch (_objectTag)
+//    {
+//        case "Item":
+//            _hitObject.collider.GetComponent<Outline>().enabled = true;
+
+//            break;
+
+//        case "Locker":
+//            _hitObject.collider.GetComponent<Outline>().enabled = true;
+//            _hitObject.collider.GetComponentInChildren<TextMeshPro>().enabled = true;
+//            _isHidable = true;
+
+//            break;
+
+//        case "Stair":
+//            break;
+
+//        default:
+//            if (_outline != null)
+//            {
+//                _outline.enabled = false;
+//            }
+
+//            if (_textMeshPro != null)
+//            {
+//                _textMeshPro.enabled = false;
+//                //_doorAnimator.enabled = false;
+//            }
+
+//            break;
+//    }
+
+//    if (_isHidable)
+//    {
+//        GetComponent<HideController>().IsHiding(_isHidable);
+//    }
+//}

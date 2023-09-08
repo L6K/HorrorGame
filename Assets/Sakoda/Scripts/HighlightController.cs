@@ -5,20 +5,21 @@ using UnityEngine;
 
 public class HighlightController : MonoBehaviour
 {
-    //public void IsHighlighting(RaycastHit raycastHit)
-    //{
-    //    if (raycastHit.collider.CompareTag("Item"))
-    //    {
-    //        raycastHit.collider.GetComponent<Outline>().enabled = true;
-    //    }
-    //    else if (raycastHit.collider.CompareTag("Locker"))
-    //    {
-    //        raycastHit.collider.GetComponent<Outline>().enabled = true;
-    //        raycastHit.collider.GetComponentInChildren<TextMeshPro>().enabled = ;
-    //    }
-    //    else
-    //    {
+    public void IsHighlighting(RaycastHit objectTag)
+    {
 
-    //    }
-    //}
+        Debug.Log(objectTag);
+        //if(objectTag)
+        //{
+        //    gameObject.GetComponent<Outline>().enabled = true;
+        //    if (gameObject.GetComponentInChildren<TextMeshPro>())
+        //    {
+        //        gameObject.GetComponentInChildren<TextMeshPro>().enabled = true;
+        //    }
+        //}
+        //else
+        //{
+        //    Debug.Log(objectTag);
+        //}
+    }
 }
