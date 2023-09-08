@@ -33,6 +33,8 @@ public class HideController : MonoBehaviour
             //ロッカーとの距離で隠れるか外に出るかの判定を行う
             if (_distance <= _distancePosition)
             {
+                animator.enabled = true;
+
                 //プレイヤーの位置をロッカーから指定した距離分前の位置に移す
                 player.transform.position = locker.transform.position + locker.transform.forward * _distanceToMove;
                 Debug.Log(player.transform.position);
@@ -41,13 +43,19 @@ public class HideController : MonoBehaviour
             }
             else
             {
-                //animator.enabled = true;
+                animator.enabled = true;
+
                 Vector3 _hidingPosition = locker.transform.position;
                 player.transform.position = _hidingPosition;
                 player.transform.rotation = Quaternion.Euler(0, 180f, 0);
                 player.GetComponent<FirstPersonController>().playerCanMove = false;
                 locker.GetComponentInChildren<TextMeshPro>().text = "F:Out";
                 Debug.Log(player.transform.position);
+            }
+
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("door"))
+            {
+                animator.enabled = false;
             }
         }
 

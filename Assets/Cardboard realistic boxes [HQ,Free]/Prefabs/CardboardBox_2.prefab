@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 476146}
   - component: {fileID: 3398612}
   - component: {fileID: 2376606}
+  - component: {fileID: -3824145381398194714}
   m_Layer: 0
   m_Name: CardboardBox_2
   m_TagString: Untagged
@@ -82,3 +83,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-3824145381398194714
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197592}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.26, y: 0.28270826, z: 0.3400062}
+  m_Center: {x: 0, y: 0.001771152, z: -0.000000059604645}
