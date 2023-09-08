@@ -7,8 +7,6 @@ public class PauseManager : MonoBehaviour
     private bool _isPause;
 
     [SerializeField] private GameObject _pauseCanvas;
-    [SerializeField] private GameObject _player;
-    [SerializeField] private GameObject _enemy;
 
     private void Start()
     {
