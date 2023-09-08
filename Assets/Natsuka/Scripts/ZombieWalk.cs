@@ -8,6 +8,11 @@ public class ZombieWalk : MonoBehaviour
 
     void FixedUpdate()
     {
+        ZombieStart();
+    }
+
+    void ZombieStart()
+    {
         // キャラクターの現在の座標を取得
         Vector3 currentPosition = transform.position;
 
@@ -16,5 +21,9 @@ public class ZombieWalk : MonoBehaviour
 
         // 新しい座標を適用
         transform.position = currentPosition;
+    }
+    void ZombieStop()
+    {
+
     }
 }
