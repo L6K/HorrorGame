@@ -8,13 +8,22 @@ public class ZombieWalk : MonoBehaviour
 
     void FixedUpdate()
     {
+        ZombieStart();
+    }
+
+    void ZombieStart()
+    {
         // キャラクターの現在の座標を取得
         Vector3 currentPosition = transform.position;
 
         // X座標を増加させる
-        currentPosition.x += _speed * Time.fixedDeltaTime;
+        currentPosition.z += _speed * Time.fixedDeltaTime;
 
         // 新しい座標を適用
         transform.position = currentPosition;
+    }
+    void ZombieStop()
+    {
+
     }
 }
