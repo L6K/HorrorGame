@@ -7,7 +7,11 @@ public class HighlightController : MonoBehaviour
 {
 
     RaycastManager raycastManager;
+    RaycastHit _hitObject;
     private Animator _doorAnimator;
+    private float _canActingDistancce = 3.0f;
+    float _distanceToItem;
+
     private bool _isHidable;
 
     HashSet<Outline> outlines = new HashSet<Outline>();
@@ -19,14 +23,22 @@ public class HighlightController : MonoBehaviour
         raycastManager = new RaycastManager();
     }
 
+    private void Update()
+    {
+        if(_hitObject.collider != null)
+        {
+            _distanceToItem = Vector3.Distance(transform.position, _hitObject.transform.position);
+        }
+    }
+
     /*
      * <summary>
-     * コライダーにplayerが入ったら、Rayを飛ばす
+     * コライダーにplayerが入ったら、Rayを飛ばし
+     * Rayが当たったアイテムに対して、特定の行動を起こさせる
      * </summary>
      */
     private void OnTriggerStay(Collider other)
     {
-        RaycastHit _hitObject;
         string _objectTag;
 
         if (other.CompareTag("Room"))
@@ -39,6 +51,10 @@ public class HighlightController : MonoBehaviour
             if(_hitObject.collider != null)
             {
                 _objectTag = _hitObject.collider.tag;
+
+                _isHidable = _distanceToItem <= _canActingDistancce;
+
+                Debug.Log(_isHidable);
 
                 switch (_objectTag)
                 {
@@ -59,8 +75,6 @@ public class HighlightController : MonoBehaviour
                         _outline.enabled = true;
                         _textMeshPro.enabled = true;
 
-                        _isHidable = true;
-
                         outlines.Add(_outline);
                         textMeshPros.Add(_textMeshPro);
 
@@ -71,23 +85,22 @@ public class HighlightController : MonoBehaviour
 
                         break;
 
-                    case "Stair":
-                        break;
-
                     default:
-                        foreach (var o in outlines)
-                        {
-                            foreach (var t in textMeshPros)
-                            {
-                                if (o != null && t != null)
-                                {
-                                    o.enabled = false;
-                                    t.enabled = false;
-                                }
-                            }
-                        }
-
                         break;
+                }
+            }
+            else
+            {
+                foreach (var o in outlines)
+                {
+                    foreach (var t in textMeshPros)
+                    {
+                        if (o != null && t != null)
+                        {
+                            o.enabled = false;
+                            t.enabled = false;
+                        }
+                    }
                 }
             }
             

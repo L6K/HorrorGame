@@ -5,10 +5,16 @@ using UnityEngine;
 
 public class HideController : MonoBehaviour
 {
-    private Animator animator;
+    private Animator _doorAnimator;
+    private AnimatorStateInfo _stateInfo;
 
     private bool _isHiding;
-    private float _distanceToMove = 1.5f;
+    private float _distanceToMove = 1f;
+
+    private void Update()
+    {
+        
+    }
 
     /*
      * <summary>
@@ -18,21 +24,22 @@ public class HideController : MonoBehaviour
      */
     public bool IsHiding(bool _isHidable, RaycastHit hitObject)
     {
-        animator = hitObject.collider.GetComponentInChildren<Animator>();
+        _doorAnimator = hitObject.collider.GetComponent<Animator>();
         GameObject _locker = hitObject.transform.parent.gameObject;
-
-        Debug.Log(_locker.transform.position);
+        FirstPersonController playerController = GetComponent<FirstPersonController>();
 
         if (Input.GetKeyDown(KeyCode.F))
         {
             //ロッカーとの距離で隠れるか外に出るかの判定を行う
             if (_isHiding)
             {
+
                 //プレイヤーの位置をロッカーから指定した距離分前の位置に移す
                 transform.position = transform.position + transform.forward * _distanceToMove;
-
-                GetComponent<FirstPersonController>().playerCanMove = true;
                 hitObject.collider.GetComponentInChildren<TextMeshPro>().text = "F:Hide";
+
+                playerController.enableHeadBob = true;
+                playerController.playerCanMove = true;
 
                 _isHiding = false;
                 _isHidable = false;
@@ -43,40 +50,14 @@ public class HideController : MonoBehaviour
                 transform.position = _hidingPosition;
                 transform.rotation = Quaternion.Euler(0, 180f, 0);
 
-                GetComponent<FirstPersonController>().playerCanMove = false;
+                playerController.enableHeadBob = false;
+                playerController.playerCanMove = false;
+
                 hitObject.collider.GetComponentInChildren<TextMeshPro>().text = "F:Out";
 
                 _isHiding = true;
             }
         }
-
-        //if (!animator.GetCurrentAnimatorStateInfo(0).IsName("door"))
-        //{
-        //    animator.enabled = false;
-        //}
-
         return _isHidable;
     }
 }
-
-//animator = locker.GetComponentInChildren<Animator>();
-//_originalPosition = locker.transform.position;
-
-//if (Input.GetKeyDown(KeyCode.F))
-//{
-//    Debug.Log("f");
-//    if (_isHiding)
-//    {
-//        transform.position = _originalPosition;
-//        animator.enabled = true;
-//    }
-//    else
-//    {
-//        animator.enabled = true;
-//        Vector3 _hidingPosition = locker.transform.position;
-//        transform.position = _hidingPosition;
-//        transform.rotation = Quaternion.Euler(0, 180f, 0);
-//    }
-//}
-
-//return false;

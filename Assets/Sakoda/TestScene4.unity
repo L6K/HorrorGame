@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44535404, g: 0.48936242, b: 0.5436172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44535458, g: 0.48936313, b: 0.5436181, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5369,9 +5369,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679160047}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb5ea4747dc2fb54dbba14880d51a176, type: 2}
+  m_Controller: {fileID: 9100000, guid: c387bc85f610a5343af70d56ada81897, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5680,7 +5680,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 971570508}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51cdace7e896107498727ba7135bd83e, type: 3}
+  m_Script: {fileID: 11500000, guid: 8eadcc37375ceed4fb77652c0be1d059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &971570510
@@ -23407,6 +23407,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 89148663453108464, guid: 0ae75f7b8c0eea64b88f288833903fc0, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 486452639596669634, guid: 0ae75f7b8c0eea64b88f288833903fc0, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -23510,6 +23514,10 @@ PrefabInstance:
     - target: {fileID: 1267261951051318250, guid: 0ae75f7b8c0eea64b88f288833903fc0, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306221325558283095, guid: 0ae75f7b8c0eea64b88f288833903fc0, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1779811355578150564, guid: 0ae75f7b8c0eea64b88f288833903fc0, type: 3}
       propertyPath: m_Layer
@@ -23662,6 +23670,10 @@ PrefabInstance:
     - target: {fileID: 3543842664040549671, guid: 0ae75f7b8c0eea64b88f288833903fc0, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584516752993350569, guid: 0ae75f7b8c0eea64b88f288833903fc0, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3611440293477590511, guid: 0ae75f7b8c0eea64b88f288833903fc0, type: 3}
       propertyPath: m_Layer
@@ -24015,9 +24027,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7352838738061795787, guid: 0ae75f7b8c0eea64b88f288833903fc0, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 7510600953556002754, guid: 0ae75f7b8c0eea64b88f288833903fc0, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510600953556002754, guid: 0ae75f7b8c0eea64b88f288833903fc0, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7579325996166844636, guid: 0ae75f7b8c0eea64b88f288833903fc0, type: 3}
       propertyPath: m_Layer
@@ -24122,6 +24142,10 @@ PrefabInstance:
     - target: {fileID: 8658193656604509353, guid: 0ae75f7b8c0eea64b88f288833903fc0, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874090888688063589, guid: 0ae75f7b8c0eea64b88f288833903fc0, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8886391183756799254, guid: 0ae75f7b8c0eea64b88f288833903fc0, type: 3}
       propertyPath: m_Layer
