@@ -12,7 +12,7 @@ public class RaycastManager
         //ray‚ª“–‚½‚Á‚½object‚Ìî•ñ‚ğŠi”[‚·‚é
         RaycastHit _hitObject;
         //ray‚ğ”ò‚Î‚·‹——£
-        float _playerVisibility = 10.0f;
+        float _playerVisibility = 5.0f;
 
         if (Physics.Raycast(ray, out _hitObject, _playerVisibility))
         {
