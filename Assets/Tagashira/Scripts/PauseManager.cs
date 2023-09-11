@@ -12,8 +12,10 @@ public class PauseManager : MonoBehaviour
     {
         _pauseCanvas.SetActive(false);
     }
+
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (!_isPause)
@@ -28,6 +30,14 @@ public class PauseManager : MonoBehaviour
                 _pauseCanvas.SetActive(false);
                 _isPause = false;
             }
+        }
+        */
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Time.timeScale = 0;
+            _pauseCanvas.SetActive(true);
+            _isPause = true;
         }
     }
 }
