@@ -7,13 +7,13 @@ public class HideController : MonoBehaviour
 {
     private Animator _doorAnimator;
     private AnimatorStateInfo _stateInfo;
+    private FirstPersonController playerController;
 
-    private bool _isHiding;
     private float _distanceToMove = 1f;
 
-    private void Update()
+    private void Start()
     {
-        
+        playerController = GetComponent<FirstPersonController>();
     }
 
     /*
@@ -22,42 +22,37 @@ public class HideController : MonoBehaviour
      * 隠れる隠れないの動きを行う
      * </summary>
      */
-    public bool IsHiding(bool _isHidable, RaycastHit hitObject)
+    public void IsHiding(RaycastHit hitObject)
     {
         _doorAnimator = hitObject.collider.GetComponent<Animator>();
         GameObject _locker = hitObject.transform.parent.gameObject;
-        FirstPersonController playerController = GetComponent<FirstPersonController>();
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            //ロッカーとの距離で隠れるか外に出るかの判定を行う
-            if (_isHiding)
-            {
+            Vector3 _hidingPosition = _locker.transform.position;
+            transform.position = _hidingPosition;
+            transform.rotation = Quaternion.Euler(0, 180f, 0);
 
-                //プレイヤーの位置をロッカーから指定した距離分前の位置に移す
-                transform.position = transform.position + transform.forward * _distanceToMove;
-                hitObject.collider.GetComponentInChildren<TextMeshPro>().text = "F:Hide";
+            playerController.enableHeadBob = false;
+            playerController.playerCanMove = false;
 
-                playerController.enableHeadBob = true;
-                playerController.playerCanMove = true;
-
-                _isHiding = false;
-                _isHidable = false;
-            }
-            else
-            {
-                Vector3 _hidingPosition = _locker.transform.position;
-                transform.position = _hidingPosition;
-                transform.rotation = Quaternion.Euler(0, 180f, 0);
-
-                playerController.enableHeadBob = false;
-                playerController.playerCanMove = false;
-
-                hitObject.collider.GetComponentInChildren<TextMeshPro>().text = "F:Out";
-
-                _isHiding = true;
-            }
+            hitObject.collider.GetComponentInChildren<TextMeshPro>().text = "F:Out";
+            gameObject.GetComponent<HighlightController>()._isHiding = true;
         }
-        return _isHidable;
+    }
+
+    public void IsOuting(RaycastHit hitObject)
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            //プレイヤーの位置をロッカーから指定した距離分前の位置に移す
+            transform.position = transform.position + transform.forward * _distanceToMove;
+            hitObject.collider.GetComponentInChildren<TextMeshPro>().text = "F:Hide";
+
+            playerController.enableHeadBob = true;
+            playerController.playerCanMove = true;
+
+            gameObject.GetComponent<HighlightController>()._isHiding = false;
+        }
     }
 }

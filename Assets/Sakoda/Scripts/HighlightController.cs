@@ -8,11 +8,12 @@ public class HighlightController : MonoBehaviour
 
     RaycastManager raycastManager;
     RaycastHit _hitObject;
-    private Animator _doorAnimator;
     private float _canActingDistancce = 3.0f;
-    float _distanceToItem;
+    private float _distanceToItem;
+    private string _objectTag;
 
     private bool _isHidable;
+    public bool _isHiding;
 
     HashSet<Outline> outlines = new HashSet<Outline>();
     HashSet<TextMeshPro> textMeshPros = new HashSet<TextMeshPro>();
@@ -25,9 +26,70 @@ public class HighlightController : MonoBehaviour
 
     private void Update()
     {
-        if(_hitObject.collider != null)
+        outlines.RemoveWhere(o => o == null);
+        textMeshPros.RemoveWhere(o => o == null);
+
+        _hitObject = raycastManager.GetRaycastHitInfo();
+
+        if (_hitObject.collider != null)
         {
+            _objectTag = _hitObject.collider.tag;
             _distanceToItem = Vector3.Distance(transform.position, _hitObject.transform.position);
+
+            _isHidable = _distanceToItem <= _canActingDistancce;
+
+            switch (_objectTag)
+            {
+                case "Item":
+                    Outline _outline = _hitObject.collider.GetComponent<Outline>();
+                    TextMeshPro _textMeshPro = _hitObject.collider.GetComponentInChildren<TextMeshPro>();
+                    _outline.enabled = true;
+                    _textMeshPro.enabled = true;
+
+                    outlines.Add(_outline);
+                    textMeshPros.Add(_textMeshPro);
+
+                    break;
+
+                case "Locker":
+                    _outline = _hitObject.collider.GetComponent<Outline>();
+                    _textMeshPro = _hitObject.collider.GetComponentInChildren<TextMeshPro>();
+                    _outline.enabled = true;
+                    _textMeshPro.enabled = true;
+
+                    outlines.Add(_outline);
+                    textMeshPros.Add(_textMeshPro);
+
+                    if (_isHidable && !_isHiding)
+                    {
+                        GetComponent<HideController>().IsHiding(_hitObject);
+                    }
+                    else if (_isHiding)
+                    {
+                        GetComponent<HideController>().IsOuting(_hitObject);
+                    }
+
+                    Debug.Log(_isHiding);
+
+                    break;
+
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            foreach (var o in outlines)
+            {
+                foreach (var t in textMeshPros)
+                {
+                    if (o != null && t != null)
+                    {
+                        o.enabled = false;
+                        t.enabled = false;
+                    }
+                }
+            }
         }
     }
 
@@ -37,75 +99,78 @@ public class HighlightController : MonoBehaviour
      * Rayが当たったアイテムに対して、特定の行動を起こさせる
      * </summary>
      */
-    private void OnTriggerStay(Collider other)
-    {
-        string _objectTag;
+    //private void OnTriggerStay(Collider other)
+    //{
 
-        if (other.CompareTag("Room"))
-        {
-            outlines.RemoveWhere(o => o == null);
-            textMeshPros.RemoveWhere(o => o == null);
+    //    if (other.CompareTag("Room"))
+    //    {
+    //        //outlines.RemoveWhere(o => o == null);
+    //        //textMeshPros.RemoveWhere(o => o == null);
 
-            _hitObject = raycastManager.GetRaycastHitInfo();
+    //        //_hitObject = raycastManager.GetRaycastHitInfo();
 
-            if(_hitObject.collider != null)
-            {
-                _objectTag = _hitObject.collider.tag;
+    //        //if(_hitObject.collider != null)
+    //        //{
+    //        //    _objectTag = _hitObject.collider.tag;
 
-                _isHidable = _distanceToItem <= _canActingDistancce;
+    //        //    _isHidable = _distanceToItem <= _canActingDistancce;
 
-                Debug.Log(_isHidable);
+    //        //    switch (_objectTag)
+    //        //    {
+    //        //        case "Item":
+    //        //            Outline _outline = _hitObject.collider.GetComponent<Outline>();
+    //        //            TextMeshPro _textMeshPro = _hitObject.collider.GetComponentInChildren<TextMeshPro>();
+    //        //            _outline.enabled = true;
+    //        //            _textMeshPro.enabled = true;
 
-                switch (_objectTag)
-                {
-                    case "Item":
-                        Outline _outline = _hitObject.collider.GetComponent<Outline>();
-                        TextMeshPro _textMeshPro = _hitObject.collider.GetComponentInChildren<TextMeshPro>();
-                        _outline.enabled = true;
-                        _textMeshPro.enabled = true;
+    //        //            outlines.Add(_outline);
+    //        //            textMeshPros.Add(_textMeshPro);
 
-                        outlines.Add(_outline);
-                        textMeshPros.Add(_textMeshPro);
+    //        //            break;
 
-                        break;
+    //        //        case "Locker":
+    //        //            _outline = _hitObject.collider.GetComponent<Outline>();
+    //        //            _textMeshPro = _hitObject.collider.GetComponentInChildren<TextMeshPro>();
+    //        //            _outline.enabled = true;
+    //        //            _textMeshPro.enabled = true;
 
-                    case "Locker":
-                        _outline = _hitObject.collider.GetComponent<Outline>();
-                        _textMeshPro = _hitObject.collider.GetComponentInChildren<TextMeshPro>();
-                        _outline.enabled = true;
-                        _textMeshPro.enabled = true;
+    //        //            outlines.Add(_outline);
+    //        //            textMeshPros.Add(_textMeshPro);
 
-                        outlines.Add(_outline);
-                        textMeshPros.Add(_textMeshPro);
+    //        //            //if (_isHidable && !_isHiding)
+    //        //            //{
+    //        //            //    GetComponent<HideController>().IsHiding(_hitObject);
+    //        //            //}
+    //        //            //else if(_isHiding)
+    //        //            //{
+    //        //            //    GetComponent<HideController>().IsOuting(_hitObject);
+    //        //            //}
 
-                        if (_isHidable)
-                        {
-                            GetComponent<HideController>().IsHiding(_isHidable, _hitObject);
-                        }
+    //        //            Debug.Log(_isHiding);
 
-                        break;
+    //        //            break;
 
-                    default:
-                        break;
-                }
-            }
-            else
-            {
-                foreach (var o in outlines)
-                {
-                    foreach (var t in textMeshPros)
-                    {
-                        if (o != null && t != null)
-                        {
-                            o.enabled = false;
-                            t.enabled = false;
-                        }
-                    }
-                }
-            }
+    //        //        default:
+    //        //            break;
+    //        //    }
+    //        //}
+    //        //else
+    //        //{
+    //        //    foreach (var o in outlines)
+    //        //    {
+    //        //        foreach (var t in textMeshPros)
+    //        //        {
+    //        //            if (o != null && t != null)
+    //        //            {
+    //        //                o.enabled = false;
+    //        //                t.enabled = false;
+    //        //            }
+    //        //        }
+    //        //    }
+    //        //}
             
-        }
-    }
+    //    }
+    //}
 
 }
 
