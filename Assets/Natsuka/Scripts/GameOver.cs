@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
@@ -17,7 +18,8 @@ public class GameOver : MonoBehaviour
         // ドアとの衝突を判定
         if (other.gameObject.tag == "Door")
         {
-            Debug.Log("Game Over");
+            
+            SceneManager.LoadScene("GameOver");
             // ここで何かの処理を行う（ドアを開ける、ゾンビを止める等）
         }
     }
