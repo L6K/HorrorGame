@@ -5,10 +5,15 @@ using UnityEngine;
 public class ZombieWalk : MonoBehaviour
 {
     public float _speed = 1.0f; // 移動速度
+    public bool _canZombieWalk = true;
 
     void FixedUpdate()
     {
-        ZombieStart();
+        if(_canZombieWalk)
+        {
+            ZombieStart();
+        }
+        
     }
 
     void ZombieStart()
@@ -21,9 +26,5 @@ public class ZombieWalk : MonoBehaviour
 
         // 新しい座標を適用
         transform.position = currentPosition;
-    }
-    void ZombieStop()
-    {
-
     }
 }
