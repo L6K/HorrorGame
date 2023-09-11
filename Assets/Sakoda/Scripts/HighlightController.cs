@@ -62,11 +62,11 @@ public class HighlightController : MonoBehaviour
 
                     if (_isHidable && !_isHiding)
                     {
-                        GetComponent<HideController>().IsHiding(_hitObject);
+                        GetComponent<HideController>().IsHide(_hitObject);
                     }
                     else if (_isHiding)
                     {
-                        GetComponent<HideController>().IsOuting(_hitObject);
+                        GetComponent<HideController>().IsOut(_hitObject);
                     }
 
                     Debug.Log(_isHiding);
@@ -92,85 +92,5 @@ public class HighlightController : MonoBehaviour
             }
         }
     }
-
-    /*
-     * <summary>
-     * コライダーにplayerが入ったら、Rayを飛ばし
-     * Rayが当たったアイテムに対して、特定の行動を起こさせる
-     * </summary>
-     */
-    //private void OnTriggerStay(Collider other)
-    //{
-
-    //    if (other.CompareTag("Room"))
-    //    {
-    //        //outlines.RemoveWhere(o => o == null);
-    //        //textMeshPros.RemoveWhere(o => o == null);
-
-    //        //_hitObject = raycastManager.GetRaycastHitInfo();
-
-    //        //if(_hitObject.collider != null)
-    //        //{
-    //        //    _objectTag = _hitObject.collider.tag;
-
-    //        //    _isHidable = _distanceToItem <= _canActingDistancce;
-
-    //        //    switch (_objectTag)
-    //        //    {
-    //        //        case "Item":
-    //        //            Outline _outline = _hitObject.collider.GetComponent<Outline>();
-    //        //            TextMeshPro _textMeshPro = _hitObject.collider.GetComponentInChildren<TextMeshPro>();
-    //        //            _outline.enabled = true;
-    //        //            _textMeshPro.enabled = true;
-
-    //        //            outlines.Add(_outline);
-    //        //            textMeshPros.Add(_textMeshPro);
-
-    //        //            break;
-
-    //        //        case "Locker":
-    //        //            _outline = _hitObject.collider.GetComponent<Outline>();
-    //        //            _textMeshPro = _hitObject.collider.GetComponentInChildren<TextMeshPro>();
-    //        //            _outline.enabled = true;
-    //        //            _textMeshPro.enabled = true;
-
-    //        //            outlines.Add(_outline);
-    //        //            textMeshPros.Add(_textMeshPro);
-
-    //        //            //if (_isHidable && !_isHiding)
-    //        //            //{
-    //        //            //    GetComponent<HideController>().IsHiding(_hitObject);
-    //        //            //}
-    //        //            //else if(_isHiding)
-    //        //            //{
-    //        //            //    GetComponent<HideController>().IsOuting(_hitObject);
-    //        //            //}
-
-    //        //            Debug.Log(_isHiding);
-
-    //        //            break;
-
-    //        //        default:
-    //        //            break;
-    //        //    }
-    //        //}
-    //        //else
-    //        //{
-    //        //    foreach (var o in outlines)
-    //        //    {
-    //        //        foreach (var t in textMeshPros)
-    //        //        {
-    //        //            if (o != null && t != null)
-    //        //            {
-    //        //                o.enabled = false;
-    //        //                t.enabled = false;
-    //        //            }
-    //        //        }
-    //        //    }
-    //        //}
-            
-    //    }
-    //}
-
 }
 

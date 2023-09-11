@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class HideController : MonoBehaviour
 {
-    private Animator _doorAnimator;
-    private AnimatorStateInfo _stateInfo;
+    //private Animator _doorAnimator;
+    //private AnimatorStateInfo _stateInfo;
     private FirstPersonController playerController;
 
     private float _distanceToMove = 1f;
@@ -16,15 +16,9 @@ public class HideController : MonoBehaviour
         playerController = GetComponent<FirstPersonController>();
     }
 
-    /*
-     * <summary>
-     * HighlightManager‚©‚ç‚ÌŒÄ‚Ño‚µ‚ğó‚¯“Á’è‚ÌğŒ‰º‚Å
-     * ‰B‚ê‚é‰B‚ê‚È‚¢‚Ì“®‚«‚ğs‚¤
-     * </summary>
-     */
-    public void IsHiding(RaycastHit hitObject)
+    public void IsHide(RaycastHit hitObject)
     {
-        _doorAnimator = hitObject.collider.GetComponent<Animator>();
+        //_doorAnimator = hitObject.collider.GetComponent<Animator>();
         GameObject _locker = hitObject.transform.parent.gameObject;
 
         if (Input.GetKeyDown(KeyCode.F))
@@ -41,7 +35,7 @@ public class HideController : MonoBehaviour
         }
     }
 
-    public void IsOuting(RaycastHit hitObject)
+    public void IsOut(RaycastHit hitObject)
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
