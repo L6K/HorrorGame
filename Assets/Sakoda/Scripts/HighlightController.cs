@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HighlightController : MonoBehaviour
@@ -8,6 +10,9 @@ public class HighlightController : MonoBehaviour
 
     RaycastManager raycastManager;
     RaycastHit _hitObject;
+    public Animator _doorAnimator;
+    private bool _hasStateEnded;
+
     private float _canActingDistancce = 3.0f;
     private float _distanceToItem;
     private string _objectTag;
@@ -41,6 +46,7 @@ public class HighlightController : MonoBehaviour
             switch (_objectTag)
             {
                 case "Item":
+
                     Outline _outline = _hitObject.collider.GetComponent<Outline>();
                     TextMeshPro _textMeshPro = _hitObject.collider.GetComponentInChildren<TextMeshPro>();
                     _outline.enabled = true;
@@ -48,32 +54,36 @@ public class HighlightController : MonoBehaviour
 
                     outlines.Add(_outline);
                     textMeshPros.Add(_textMeshPro);
-
                     break;
 
                 case "Locker":
+
                     _outline = _hitObject.collider.GetComponent<Outline>();
                     _textMeshPro = _hitObject.collider.GetComponentInChildren<TextMeshPro>();
                     _outline.enabled = true;
                     _textMeshPro.enabled = true;
 
+                    _doorAnimator = _hitObject.collider.GetComponent<Animator>();
+
                     outlines.Add(_outline);
                     textMeshPros.Add(_textMeshPro);
 
-                    if (_isHidable && !_isHiding)
+                    if (Input.GetKeyDown(KeyCode.F))
                     {
-                        GetComponent<HideController>().IsHide(_hitObject);
+                        if (_isHidable && !_isHiding)
+                        {
+                            GetComponent<HideController>().IsHide(_hitObject);
+                        }
+                        else if (_isHiding)
+                        {
+                            GetComponent<HideController>().IsOut(_hitObject);
+                        }
                     }
-                    else if (_isHiding)
-                    {
-                        GetComponent<HideController>().IsOut(_hitObject);
-                    }
-
-                    Debug.Log(_isHiding);
-
                     break;
 
                 default:
+
+                    _doorAnimator.SetBool("Open", false);
                     break;
             }
         }
@@ -92,5 +102,34 @@ public class HighlightController : MonoBehaviour
             }
         }
     }
+
+    //private IEnumerator WaitForAnimationEnd()
+    //{
+    //    AnimatorStateInfo stateInfo = _doorAnimator.GetCurrentAnimatorStateInfo(0);
+
+    //    while (true)
+    //    {
+    //        // アニメーションステートが終了したらループを抜ける
+    //        if(stateInfo.IsName("Open") && stateInfo.normalizedTime >= 1f)
+    //        {
+    //            Debug.Log("finish");
+    //            break;
+    //        }
+
+    //        yield return null;
+    //    }
+
+    //    Debug.Log("Finish");
+
+    //    // アニメーションステートが終了した後の処理
+    //    //if (!_isHiding)
+    //    //{
+    //    //    GetComponent<HideController>().IsHide(_hitObject);
+    //    //}
+    //    //else if (_isHiding)
+    //    //{
+    //    //    GetComponent<HideController>().IsOut(_hitObject);
+    //    //}
+    //}
 }
 
