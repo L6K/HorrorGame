@@ -33,25 +33,7 @@ public class PauseManager : MonoBehaviour
             }
         }
 
-        /*
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (!_isPause)
-            {
-                Time.timeScale = 0;
-                _pauseCanvas.SetActive(true);
-                _isPause = true;
-            }
-            else
-            {
-                Time.timeScale = 1;
-                _pauseCanvas.SetActive(false);
-                _isPause = false;
-            }
-        }
-        */
-
-        // スペースキーを押すとポーズ画面になる(後でESCに変更ののち削除)
+        // コントロールキーを押すとポーズ画面になる(後でESCに変更ののち削除)
         if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl))
         {
             Time.timeScale = 0;
