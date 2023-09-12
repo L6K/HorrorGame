@@ -8,6 +8,8 @@ TagManager:
   - Locker
   - Stair
   - HighlightCollider
+  - Room
+  - Door
   layers:
   - Default
   - TransparentFX

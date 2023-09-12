@@ -12,6 +12,7 @@ public class ItemUIManager : MonoBehaviour
     private ItemDAO _itemDAO;
     private List<ItemData> _itemList;
     private List<ItemData> _displayItemList;
+    private ItemManager _itemManager;
     private int _nowDisplayPage;
     private int _maxDisplayPage;
     private bool _isCanPrevPage;
@@ -25,6 +26,7 @@ public class ItemUIManager : MonoBehaviour
     
     [SerializeField] private GameObject _itemDatabase;
     [SerializeField] private GameObject _belongings;
+    [SerializeField] private GameObject _itemManagerO;
 
     [SerializeField] private GameObject _prevItemBotton;
     [SerializeField] private GameObject _nextItemBotton;
@@ -40,6 +42,7 @@ public class ItemUIManager : MonoBehaviour
         // コンポーネントを取得
         _itemDAO = _itemDatabase.GetComponent<ItemDAO>();
         _displayItemName = _itemNameText.GetComponent<Text>();
+        _itemManager = _itemManagerO.GetComponent<ItemManager>();
 
         // アイテム名は必要な時だけ表示するので非表示にする
         _itemNameText.SetActive(false);
@@ -205,6 +208,9 @@ public class ItemUIManager : MonoBehaviour
         // 選択アイテムをリセット
         _selectItemPanel = UNSELECTED_ITEM;
 
+        // ItemManagerの選択アイテムにNullを格納
+        _itemManager.SetSelectedItem(null);
+
         // UIに反映
         UpdateDisplayItemList();
         LoadItemPanel();
@@ -220,6 +226,9 @@ public class ItemUIManager : MonoBehaviour
 
         // 選択アイテムをリセット
         _selectItemPanel = UNSELECTED_ITEM;
+
+        // ItemManagerの選択アイテムにNullを格納
+        _itemManager.SetSelectedItem(null);
 
         // UIに反映
         UpdateDisplayItemList();
@@ -245,10 +254,27 @@ public class ItemUIManager : MonoBehaviour
         if (_selectItemPanel == numberOfPanel)
         {
             _selectItemPanel = UNSELECTED_ITEM;
+
+            // ItemManagerの選択アイテムにNullを格納
+            _itemManager.SetSelectedItem(null);
+
         }
         else
         {
             _selectItemPanel = numberOfPanel;
+
+            // ItemManagerの選択アイテムに選択されたアイテムのインスタンスを格納
+            ItemData selectedItem = _displayItemList[_selectItemPanel];
+            _itemManager.SetSelectedItem(selectedItem);
+
+            // アイテム名表示用テキストの色を戻す(フェードアウト中に別のアイテムを選択した時用)
+            Color textColor = _displayItemName.color;
+            _isFadeout = false;
+            textColor.a = 1.0f;
+            _displayItemName.color = textColor;
+
+            // Invokeを止める
+            CancelInvoke("FadeoutText");
 
             // アイテム名表示のテキストを選択されたアイテムに変更
             _displayItemName.text = _displayItemList[numberOfPanel]._itemName;
@@ -262,11 +288,33 @@ public class ItemUIManager : MonoBehaviour
         UpdateDisplayItemList();
         LoadItemPanel();
     }
-
+    
+    /// <summary>
+    /// アイテム名のフェードアウトを開始するメソッド
+    /// </summary>
     void FadeoutText()
     {
         _isFadeout = true;
     }
 
-    // 覚書：アイテム選択情報をどこかに渡すメソッドは別で作ってメソッド呼び出しで処理する
+    /// <summary>
+    /// アイテムのページ数を計算するメソッド。
+    /// </summary>
+    public void CulcDisplayPage()
+    {
+        // 最大ページ数を計算(所持アイテム数により変動)
+        _maxDisplayPage = _itemList.Count / NUMBER_OF_ITEM_DISPLAY;
+        bool isDivisible = _itemList.Count % NUMBER_OF_ITEM_DISPLAY == 0;
+        bool isNoItem = _itemList.Count == 0;
+
+        if (!isDivisible || isNoItem)
+        {
+            _maxDisplayPage++;
+        }
+
+        if (_nowDisplayPage > _maxDisplayPage)
+        {
+            _nowDisplayPage--;
+        }
+    }
 }
