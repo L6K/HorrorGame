@@ -17,10 +17,9 @@ public class HighlightController : MonoBehaviour
     private float _distanceToItem;
     private string _objectTag;
 
-    private bool _isHidable;
+    private bool _canAct;
     public bool _isHiding;
 
-    HashSet<Outline> outlines = new HashSet<Outline>();
     HashSet<TextMeshPro> textMeshPros = new HashSet<TextMeshPro>();
 
 
@@ -31,9 +30,7 @@ public class HighlightController : MonoBehaviour
 
     private void Update()
     {
-        outlines.RemoveWhere(o => o == null);
         textMeshPros.RemoveWhere(o => o == null);
-
         _hitObject = raycastManager.GetRaycastHitInfo();
 
         if (_hitObject.collider != null)
@@ -41,36 +38,31 @@ public class HighlightController : MonoBehaviour
             _objectTag = _hitObject.collider.tag;
             _distanceToItem = Vector3.Distance(transform.position, _hitObject.transform.position);
 
-            _isHidable = _distanceToItem <= _canActingDistancce;
+            _canAct = _distanceToItem <= _canActingDistancce;
 
             switch (_objectTag)
             {
                 case "Item":
 
-                    Outline _outline = _hitObject.collider.GetComponent<Outline>();
                     TextMeshPro _textMeshPro = _hitObject.collider.GetComponentInChildren<TextMeshPro>();
-                    _outline.enabled = true;
                     _textMeshPro.enabled = true;
-
-                    outlines.Add(_outline);
                     textMeshPros.Add(_textMeshPro);
+
+                    if (_canAct && !_isHiding)
+                    {
+                        GetComponent<ItemHandle>().InvestigateItem(_hitObject);
+                    }
                     break;
 
                 case "Locker":
 
-                    _outline = _hitObject.collider.GetComponent<Outline>();
                     _textMeshPro = _hitObject.collider.GetComponentInChildren<TextMeshPro>();
-                    _outline.enabled = true;
                     _textMeshPro.enabled = true;
-
-                    _doorAnimator = _hitObject.collider.GetComponent<Animator>();
-
-                    outlines.Add(_outline);
                     textMeshPros.Add(_textMeshPro);
 
                     if (Input.GetKeyDown(KeyCode.F))
                     {
-                        if (_isHidable && !_isHiding)
+                        if (_canAct && !_isHiding)
                         {
                             GetComponent<HideController>().IsHide(_hitObject);
                         }
@@ -89,15 +81,11 @@ public class HighlightController : MonoBehaviour
         }
         else
         {
-            foreach (var o in outlines)
+            foreach (var t in textMeshPros)
             {
-                foreach (var t in textMeshPros)
+                if (t != null)
                 {
-                    if (o != null && t != null)
-                    {
-                        o.enabled = false;
-                        t.enabled = false;
-                    }
+                    t.enabled = false;
                 }
             }
         }
