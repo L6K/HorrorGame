@@ -5,82 +5,48 @@ using UnityEngine;
 
 public class HideController : MonoBehaviour
 {
-    public GameObject locker;
-    public GameObject player;
-    private Animator animator;
+    //private Animator _doorAnimator;
+    //private AnimatorStateInfo _stateInfo;
+    private FirstPersonController playerController;
 
-    private bool _isHiding;
-    private Vector3 _originalPosition;
-    private float _distanceToMove = 1.0f;
-    public float _distancePosition = 0.5f;
+    private float _distanceToMove = 1f;
 
-    /*
-     * <summary>
-     * HighlightManagerからの呼び出しを受け特定の条件下で
-     * 隠れる隠れないの動きを行う
-     * </summary>
-     */
-    public bool IsHiding(bool _isHidable)
+    private void Start()
     {
-        //プレイヤーとロッカーの距離を計算
-        float _distance = Vector3.Distance(player.transform.position, locker.transform.position);
+        playerController = GetComponent<FirstPersonController>();
+    }
 
-        _isHiding = player.transform.position == locker.transform.position;
-        animator = locker.GetComponentInChildren<Animator>();
+    public void IsHide(RaycastHit hitObject)
+    {
+        //_doorAnimator = hitObject.collider.GetComponent<Animator>();
+        GameObject _locker = hitObject.transform.parent.gameObject;
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            //ロッカーとの距離で隠れるか外に出るかの判定を行う
-            if (_distance <= _distancePosition)
-            {
-                animator.enabled = true;
+            Vector3 _hidingPosition = _locker.transform.position;
+            transform.position = _hidingPosition;
+            transform.rotation = Quaternion.Euler(0, 180f, 0);
 
-                //プレイヤーの位置をロッカーから指定した距離分前の位置に移す
-                player.transform.position = locker.transform.position + locker.transform.forward * _distanceToMove;
-                Debug.Log(player.transform.position);
-                player.GetComponent<FirstPersonController>().playerCanMove = true;
-                _isHidable = false;
-            }
-            else
-            {
-                animator.enabled = true;
+            playerController.enableHeadBob = false;
+            playerController.playerCanMove = false;
 
-                Vector3 _hidingPosition = locker.transform.position;
-                player.transform.position = _hidingPosition;
-                player.transform.rotation = Quaternion.Euler(0, 180f, 0);
-                player.GetComponent<FirstPersonController>().playerCanMove = false;
-                locker.GetComponentInChildren<TextMeshPro>().text = "F:Out";
-                Debug.Log(player.transform.position);
-            }
-
-            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("door"))
-            {
-                animator.enabled = false;
-            }
+            hitObject.collider.GetComponentInChildren<TextMeshPro>().text = "F:Out";
+            gameObject.GetComponent<HighlightController>()._isHiding = true;
         }
+    }
 
-        return _isHidable;
+    public void IsOut(RaycastHit hitObject)
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            //プレイヤーの位置をロッカーから指定した距離分前の位置に移す
+            transform.position = transform.position + transform.forward * _distanceToMove;
+            hitObject.collider.GetComponentInChildren<TextMeshPro>().text = "F:Hide";
+
+            playerController.enableHeadBob = true;
+            playerController.playerCanMove = true;
+
+            gameObject.GetComponent<HighlightController>()._isHiding = false;
+        }
     }
 }
-
-//animator = locker.GetComponentInChildren<Animator>();
-//_originalPosition = locker.transform.position;
-
-//if (Input.GetKeyDown(KeyCode.F))
-//{
-//    Debug.Log("f");
-//    if (_isHiding)
-//    {
-//        transform.position = _originalPosition;
-//        animator.enabled = true;
-//    }
-//    else
-//    {
-//        animator.enabled = true;
-//        Vector3 _hidingPosition = locker.transform.position;
-//        transform.position = _hidingPosition;
-//        transform.rotation = Quaternion.Euler(0, 180f, 0);
-//    }
-//}
-
-//return false;
