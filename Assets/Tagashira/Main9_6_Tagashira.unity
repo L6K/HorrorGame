@@ -17803,9 +17803,49 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2830489254789493920, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 5dd49b3eacc540408c98eee0de38e0f1, type: 3}
     - target: {fileID: 2830489254789493922, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489254789493926, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489254789493926, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0.12452634
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489254789493926, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489254789493926, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectDistance.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489255243588953, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 5dd49b3eacc540408c98eee0de38e0f1, type: 3}
+    - target: {fileID: 2830489255243588959, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489255243588959, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0.09262034
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489255243588959, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489255243588959, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectDistance.x
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2830489255775408965, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
       propertyPath: m_Name
@@ -17855,6 +17895,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2830489255872029348, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489255872029348, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0.05638304
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489255872029348, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489255872029348, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectDistance.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489255872029350, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 5dd49b3eacc540408c98eee0de38e0f1, type: 3}
+    - target: {fileID: 2830489255881928225, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 5dd49b3eacc540408c98eee0de38e0f1, type: 3}
+    - target: {fileID: 2830489255881928231, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489255881928231, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0.019000754
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489255881928231, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489255881928231, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectDistance.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489256254576968, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489256254576968, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0.009313964
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489256254576968, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489256254576968, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_EffectDistance.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830489256254576970, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 5dd49b3eacc540408c98eee0de38e0f1, type: 3}
     - target: {fileID: 2830489256434419568, guid: b3cbb748639f1aa44b499c7165461595, type: 3}
       propertyPath: m_IsActive
       value: 0
