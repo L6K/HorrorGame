@@ -39,6 +39,12 @@ public class PauseManager : MonoBehaviour
             Time.timeScale = 0;
             _pauseCanvas.SetActive(true);
             _isPause = true;
+
+            // マウスカーソルを非表示状態にする
+            Cursor.visible = false;
+
+            // マウスカーソルをロックする
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         // ポーズ画面の挙動
@@ -106,6 +112,12 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1;
         _pauseCanvas.SetActive(false);
         _isPause = false;
+
+        // マウスカーソルを表示状態にする
+        Cursor.visible = true;
+
+        // マウスカーソルのロックを解除する
+        Cursor.lockState = CursorLockMode.None;
     }
 
     /// <summary>
@@ -113,6 +125,12 @@ public class PauseManager : MonoBehaviour
     /// </summary>
     void BackToTitle()
     {
+        // マウスカーソルを表示状態にする
+        Cursor.visible = true;
+
+        // マウスカーソルのロックを解除する
+        Cursor.lockState = CursorLockMode.None;
+
         // タイトルシーンに切り替え
         SceneManager.LoadScene("Title");
     }
