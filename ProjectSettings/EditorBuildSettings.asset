@@ -6,12 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Natsuka/Natsuka2.unity
-    guid: 05a33fa599067aa4ebdb62515053e51d
+    path: Assets/Scenes/Title.unity
+    guid: c2980f951cf6c8a4a93c4fc312485b42
   - enabled: 1
-    path: Assets/Natsuka/GameOver.unity
-    guid: 8003a946eb58a364f9970bcc89286532
-  - enabled: 1
-    path: Assets/Natsuka/Title.unity
-    guid: 8775c159f7e1d0b41a553473b0eb0fb0
+    path: Assets/Scenes/Main.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
