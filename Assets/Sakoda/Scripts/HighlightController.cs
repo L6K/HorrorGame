@@ -10,7 +10,7 @@ public class HighlightController : MonoBehaviour
 
     RaycastManager raycastManager;
     RaycastHit _hitObject;
-    public Animator _doorAnimator;
+    private Animator _doorAnimator;
     private bool _hasStateEnded;
 
     private float _canActingDistancce = 3.0f;
@@ -59,12 +59,15 @@ public class HighlightController : MonoBehaviour
                     _textMeshPro = _hitObject.collider.GetComponentInChildren<TextMeshPro>();
                     _textMeshPro.enabled = true;
                     textMeshPros.Add(_textMeshPro);
+                    _doorAnimator = _hitObject.collider.GetComponent<Animator>();
 
                     if (Input.GetKeyDown(KeyCode.F))
                     {
                         if (_canAct && !_isHiding)
                         {
-                            GetComponent<HideController>().IsHide(_hitObject);
+                            _doorAnimator.SetBool("Open", true);
+                            StartCoroutine("WaitForAnimationEnd");
+                            //GetComponent<HideController>().IsHide(_hitObject);
                         }
                         else if (_isHiding)
                         {
@@ -79,52 +82,50 @@ public class HighlightController : MonoBehaviour
                     {
                         if (t != null)
                         {
-                        t.enabled = false;
+                            t.enabled = false;
                         }
                     }
-                    _doorAnimator.SetBool("Open", false);
+
+                    if (_doorAnimator != null)
+                    {
+                        _doorAnimator.SetBool("Open", false);
+                        _doorAnimator.SetBool("Close", false);
+                    }
                     break;
             }
         }
-        //else
-        //{
-        //    foreach (var t in textMeshPros)
-        //    {
-        //        if (t != null)
-        //        {
-        //            t.enabled = false;
-        //        }
-        //    }
-        //}
     }
 
-    //private IEnumerator WaitForAnimationEnd()
-    //{
-    //    AnimatorStateInfo stateInfo = _doorAnimator.GetCurrentAnimatorStateInfo(0);
+    private IEnumerator WaitForAnimationEnd()
+    {
 
-    //    while (true)
-    //    {
-    //        // アニメーションステートが終了したらループを抜ける
-    //        if(stateInfo.IsName("Open") && stateInfo.normalizedTime >= 1f)
-    //        {
-    //            Debug.Log("finish");
-    //            break;
-    //        }
+        AnimatorStateInfo stateInfo = _doorAnimator.GetCurrentAnimatorStateInfo(0);
+        yield return stateInfo.IsName("Open") && stateInfo.normalizedTime >= 1f;
+        Debug.Log("finish");
 
-    //        yield return null;
-    //    }
+        //while (true)
+        //{
+        //    アニメーションステートが終了したらループを抜ける
+        //    if (stateInfo.IsName("Open") && stateInfo.normalizedTime >= 1f)
+        //    {
+        //        Debug.Log("finish");
+        //        break;
+        //    }
 
-    //    Debug.Log("Finish");
+        //    yield return null;
+        //}
 
-    //    // アニメーションステートが終了した後の処理
-    //    //if (!_isHiding)
-    //    //{
-    //    //    GetComponent<HideController>().IsHide(_hitObject);
-    //    //}
-    //    //else if (_isHiding)
-    //    //{
-    //    //    GetComponent<HideController>().IsOut(_hitObject);
-    //    //}
-    //}
+        Debug.Log("Finish");
+
+        // アニメーションステートが終了した後の処理
+        //if (!_isHiding)
+        //{
+        //    GetComponent<HideController>().IsHide(_hitObject);
+        //}
+        //else if (_isHiding)
+        //{
+        //    GetComponent<HideController>().IsOut(_hitObject);
+        //}
+    }
 }
 
