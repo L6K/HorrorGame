@@ -14,25 +14,29 @@ public class TitleController : MonoBehaviour
     int _currentPage;
     int _currentImage;
     string[] _textes = new string[_SYNOPSIS_PAGE];//あらすじのページ
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
         _nextButton.SetActive(false);
-        
-        foreach(Image image in _synopsisImages)
+
+        foreach (Image image in _synopsisImages)//全画像を非表示
         {
             image.enabled = false;
         }
-        
 
-        
-        //要素一つで一ページ分
-        _textes[0] = "テスト\nテステス\nテーステス";
-        _textes[1] = "これはテスト用の文章です。\n実装までに差し替えてね\n頑張ってね";
-        _textes[2] = "あ\nい\nう\nえ\nお";
-        _textes[3] = "1234567890\n0987654321";
+
+
+        //要素一つで一ページ分(一行は最大でも全角26文字)
+        _textes[0] = "テスト\nテステス\nテーステス";//1ページ目
+
+        _textes[1] = "これはテスト用の文章です。\n実装までに差し替えてね\n頑張ってね";//2ページ目
+
+        _textes[2] = "あ\nい\nう\nえ\nお";//3ページ目
+
+        _textes[3] = "1234567890\n0987654321";//4ページ目
+
 
         this._currentPage = 0;
         this._currentImage = 0;
@@ -41,12 +45,12 @@ public class TitleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_synopsisText.text==_textes[_currentPage])
+        if (_synopsisText.text == _textes[_currentPage])//1ページ内のテキストの出力が終わったとき
         {
             _nextButton.SetActive(true);
-            if(_currentPage==(_textes.Length-1))
+            if (_currentPage == (_textes.Length - 1))//そのページが最後の時
             {
-                
+
                 Sprite _endSprite = Resources.Load<Sprite>("EndButton_L");
                 Image _endImage = _nextButton.GetComponent<Image>();
                 _endImage.sprite = _endSprite;
@@ -58,7 +62,7 @@ public class TitleController : MonoBehaviour
             _nextButton.SetActive(false);
         }
     }
-    public　void OnStartButtonClicked()
+    public void OnStartButtonClicked()
     {
         _synopsisImages[_currentImage].enabled = true;
         _startButton.SetActive(false);
@@ -75,12 +79,12 @@ public class TitleController : MonoBehaviour
         {
             _currentImage++;
             _synopsisImages[_currentImage].enabled = true;
-            if(_currentImage!=0)
+            if (_currentImage != 0)
             {
                 _synopsisImages[_currentImage - 1].enabled = false;
             }
         }
-        if (_currentPage<_textes.Length-1)//テキストのページ処理
+        if (_currentPage < _textes.Length - 1)//テキストのページ処理
         {
             _currentPage++;
             _synopsisText.text = "";
@@ -90,11 +94,11 @@ public class TitleController : MonoBehaviour
         {
             _LoadScene();
         }
-        
+
     }
     IEnumerator _TextChange()//テキスト送り用のコルーチン
     {
-       foreach(char x in _textes[_currentPage].ToCharArray())
+        foreach (char x in _textes[_currentPage].ToCharArray())
         {
             _synopsisText.text += x;
             //効果音を入れるならここ
