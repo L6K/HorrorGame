@@ -18,9 +18,9 @@ public class HideController : MonoBehaviour
     {
         GameObject _locker = hitObject.transform.parent.gameObject;
 
-        Vector3 _hidingPosition = _locker.transform.position;
+        Vector3 _hidingPosition = new Vector3(_locker.transform.position.x, transform.position.y, _locker.transform.position.z);
         transform.position = _hidingPosition;
-        transform.rotation = Quaternion.Euler(0, 180f, 0);
+        transform.Rotate(Vector3.up, 180f); //Quaternion.Euler(0, 180f, 0);
 
         playerController.enableHeadBob = false;
         playerController.playerCanMove = false;

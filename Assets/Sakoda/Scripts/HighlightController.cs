@@ -48,10 +48,10 @@ public class HighlightController : MonoBehaviour
                     _textMeshPro.enabled = true;
                     textMeshPros.Add(_textMeshPro);
 
-                    if (_canAct && !_isHiding)
-                    {
-                        GetComponent<ItemHandle>().InvestigateItem(_hitObject);
-                    }
+                    //if (_canAct && !_isHiding)
+                    //{
+                    //    GetComponent<ItemHandle>().InvestigateItem(_hitObject);
+                    //}
                     break;
 
                 case "Locker":
@@ -75,20 +75,27 @@ public class HighlightController : MonoBehaviour
 
                 default:
 
+                    foreach (var t in textMeshPros)
+                    {
+                        if (t != null)
+                        {
+                        t.enabled = false;
+                        }
+                    }
                     _doorAnimator.SetBool("Open", false);
                     break;
             }
         }
-        else
-        {
-            foreach (var t in textMeshPros)
-            {
-                if (t != null)
-                {
-                    t.enabled = false;
-                }
-            }
-        }
+        //else
+        //{
+        //    foreach (var t in textMeshPros)
+        //    {
+        //        if (t != null)
+        //        {
+        //            t.enabled = false;
+        //        }
+        //    }
+        //}
     }
 
     //private IEnumerator WaitForAnimationEnd()
