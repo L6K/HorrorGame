@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// プレイヤーがゾンビに殺される際に画面が暗転する処理
+/// </summary>
 public class FadeToBlack : MonoBehaviour
 {
     public Image blackOverlay;

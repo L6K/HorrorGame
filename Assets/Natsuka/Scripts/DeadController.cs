@@ -7,7 +7,7 @@ using TMPro;
 
 /// <summary>
 /// このクラスではゾンビに見つかり、ゾンビに殺された時の自分の視点を上向きに変更する
-/// 殺されたら画面が暗転しゲームオーバー画面
+/// 殺されたら画面が暗転し、タイトルに戻るボタンがあるゲームオーバー画面が表示される
 /// </summary>
 
 public class DeadController : MonoBehaviour
