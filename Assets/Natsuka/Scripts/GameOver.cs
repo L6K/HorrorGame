@@ -11,7 +11,7 @@ public class GameOver : MonoBehaviour
         // ƒhƒA‚Æ‚ÌÕ“Ë‚ğ”»’è
         if (other.gameObject.tag == "Door")
         {
-            
+            Debug.Log("Õ“Ë");
             SceneManager.LoadScene("GameOver");
         }
     }
