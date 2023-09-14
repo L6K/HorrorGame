@@ -16,7 +16,10 @@ public class HighlightController : MonoBehaviour
     public bool _canAct;
     public bool _isHiding;
 
+    TextMeshPro _textMeshPro;
+    Outline _outline;
     HashSet<TextMeshPro> textMeshPros = new HashSet<TextMeshPro>();
+    HashSet<Outline> outlines = new HashSet<Outline>();
 
 
     private void Start()
@@ -27,6 +30,7 @@ public class HighlightController : MonoBehaviour
     private void Update()
     {
         textMeshPros.RemoveWhere(o => o == null);
+        outlines.RemoveWhere(o => o == null);
         _hitObject = raycastManager.GetRaycastHitInfo();
 
         if (_hitObject.collider != null)
@@ -37,10 +41,21 @@ public class HighlightController : MonoBehaviour
             {
                 case "Item":
 
-                    TextMeshPro _textMeshPro = _hitObject.collider.GetComponentInChildren<TextMeshPro>();
-                    _textMeshPro.enabled = true;
-                    textMeshPros.Add(_textMeshPro);
-                    _canAct = true;
+                    _outline = _hitObject.collider.GetComponentInChildren<Outline>();
+                    _outline.enabled = true;
+                    outlines.Add(_outline);
+                    if (_outline)
+                    {
+                        _canAct = true;
+                    }
+                    
+                    if (Input.GetKeyDown(KeyCode.F))
+                    {
+                        if (_canAct)
+                        {
+                            GetComponent<ItemHandle>().InvestigateItem(_hitObject);
+                        }
+                    }
                     break;
 
                 case "Locker":
@@ -49,7 +64,6 @@ public class HighlightController : MonoBehaviour
                     _textMeshPro.enabled = true;
                     textMeshPros.Add(_textMeshPro);
                     _canAct = true;
-                    //_doorAnimator = _hitObject.collider.GetComponent<Animator>();
 
                     if (Input.GetKeyDown(KeyCode.F))
                     {
@@ -71,6 +85,14 @@ public class HighlightController : MonoBehaviour
                         if (t != null)
                         {
                             t.enabled = false;
+                        }
+                    }
+
+                    foreach (var o in outlines)
+                    {
+                        if (o != null)
+                        {
+                            o.enabled = false;
                         }
                     }
 

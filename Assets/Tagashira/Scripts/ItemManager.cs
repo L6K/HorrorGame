@@ -19,6 +19,7 @@ public class ItemManager : MonoBehaviour
         // コンポーネントを取得
         _itemDAO = _itemDatabase.GetComponent<ItemDAO>();
         _belongingList = _belongings.GetComponent<BelongingList>()._belongings;
+        _itemUIManager = _itemPanel.GetComponent<ItemUIManager>();
     }
 
     /// <summary>
