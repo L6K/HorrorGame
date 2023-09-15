@@ -27,6 +27,10 @@ public class HighlightController : MonoBehaviour
         raycastManager = new RaycastManager();
     }
 
+    /// <summary>
+    /// Updateで常にRayを発し、3ｆ以内にあるオブジェクトが何か判定するためのメソッド
+    /// ItemとLockerが現在判定要素となっている
+    /// </summary>
     private void Update()
     {
         textMeshPros.RemoveWhere(o => o == null);
@@ -75,6 +79,18 @@ public class HighlightController : MonoBehaviour
                         {
                             GetComponent<HideController>().IsOut(_hitObject);
                         }
+                    }
+                    break;
+
+                case "Piano":
+
+                    _outline = _hitObject.collider.GetComponentInChildren<Outline>();
+                    _outline.enabled = true;
+                    outlines.Add(_outline);
+
+                    if (Input.GetKeyDown(KeyCode.F))
+                    {
+                        _hitObject.collider.GetComponent<Piano>().ReceiveAciton();
                     }
                     break;
 

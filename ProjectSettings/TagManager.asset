@@ -10,6 +10,7 @@ TagManager:
   - HighlightCollider
   - Room
   - Door
+  - Piano
   layers:
   - Default
   - TransparentFX
