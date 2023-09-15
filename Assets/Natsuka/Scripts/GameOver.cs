@@ -6,13 +6,23 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameOver : MonoBehaviour
 {
+    public GameObject _player;
+
     private void OnTriggerEnter(Collider other)
-    {
+    { 
         // ƒhƒA‚Æ‚ÌÕ“Ë‚ğ”»’è
         if (other.gameObject.tag == "Door")
         {
-            Debug.Log("Õ“Ë");
-            SceneManager.LoadScene("GameOver");
+            if (_player.GetComponent<HighlightController>()._isHiding)
+            {
+                Debug.Log("good!");
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                Debug.Log("Õ“Ë");
+                SceneManager.LoadScene("GameOver");
+            }
         }
     }
 }

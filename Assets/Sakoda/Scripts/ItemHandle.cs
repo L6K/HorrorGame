@@ -7,6 +7,10 @@ public class ItemHandle : MonoBehaviour
     public GameObject itemManager;
     public bool _isTalking;
 
+    /// <summary>
+    /// game上でアイテムを取得した際の処理メソッド
+    /// </summary>
+    /// <param name="hitObject"></param>
     public void InvestigateItem(RaycastHit hitObject)
     {
         Story whereUse = hitObject.collider.GetComponent<ItemInformation>().whereUse;
