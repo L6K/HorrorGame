@@ -73,11 +73,13 @@ public class HighlightController : MonoBehaviour
                     {
                         if (_canAct && !_isHiding)
                         {
-                            GetComponent<HideController>().IsHide(_hitObject);
+                            _hitObject.collider.GetComponent<Animator>().SetBool("Hide", true);
+                            //GetComponent<HideController>().IsHide(_hitObject);
                         }
                         else if (_isHiding)
                         {
-                            GetComponent<HideController>().IsOut(_hitObject);
+                            _hitObject.collider.GetComponent<Animator>().SetBool("Out", true);
+                            //GetComponent<HideController>().IsOut(_hitObject);
                         }
                     }
                     break;

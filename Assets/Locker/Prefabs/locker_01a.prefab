@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2300002}
   - component: {fileID: 6500000}
   - component: {fileID: 1646986913}
+  - component: {fileID: 2018305638906200561}
   m_Layer: 0
   m_Name: door
   m_TagString: Locker
@@ -106,7 +107,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c387bc85f610a5343af70d56ada81897, type: 2}
   m_CullingMode: 0
@@ -117,6 +118,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2018305638906200561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da6a8e3ac793044287e5ecb058ad548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 1181299558149162371, guid: a1747261e248caa408f6085c0f694f76, type: 3}
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
