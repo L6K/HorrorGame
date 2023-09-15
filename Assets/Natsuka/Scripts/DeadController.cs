@@ -24,6 +24,11 @@ public class DeadController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
+
+        // マウスカーソルをロック
+        Cursor.lockState = CursorLockMode.Locked;
+
         GameObject _enemy = GameObject.Find("Zombie1"); //ゾンビオブジェクトを取得
         if (_enemy != null)
         {
