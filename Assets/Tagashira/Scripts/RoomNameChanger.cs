@@ -9,13 +9,13 @@ public class RoomNameChanger : MonoBehaviour
     [SerializeField] private string _northEastRoom;
     [SerializeField] private string _southWestRoom;
     [SerializeField] private GameObject _roomManagerO;
-    [SerializeField] private bool _isZ;
+    [SerializeField] private bool _isEastWest;
 
     // Start is called before the first frame update
     void Start()
     {
         // コンポーネントを取得
-        _roomManager = _roomManager.GetComponent<RoomManager>();
+        _roomManager = _roomManagerO.GetComponent<RoomManager>();
     }
 
     private void OnTriggerStay(Collider other)
@@ -33,7 +33,7 @@ public class RoomNameChanger : MonoBehaviour
         // 取得したオブジェクトの移動方向を取得し、部屋の名前情報を変更
         if (player != null)
         {
-            if (_isZ)
+            if (_isEastWest)
             {
                 if (playerRB.velocity.z >= 0) // 北方向に動くなら
                 {
