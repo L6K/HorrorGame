@@ -5,14 +5,51 @@ using UnityEngine;
 
 public class HideController : MonoBehaviour
 {
-    private FirstPersonController playerController;
+    FirstPersonController playerController;
+    HighlightController highlightController;
+    //RaycastManager raycastManager;
+    //RaycastHit _hitDoor;
+    //Animator _doorAnimator;
 
     private float _distanceToMove = 1f;
+    private bool hasExitReached;
+    //private bool _isHiding;
 
     private void Start()
     {
         playerController = GetComponent<FirstPersonController>();
+        highlightController = GetComponent<HighlightController>();
     }
+
+    //private void Update()
+    //{
+    //    raycastManager.GetRaycastHitInfo();
+    //    _hitDoor = raycastManager.GetRaycastHitInfo();
+
+    //    if (_hitDoor.collider != null && _hitDoor.collider.CompareTag("Locker"))
+    //    {
+    //        _doorAnimator = _hitDoor.collider.GetComponent<Animator>();
+    //    }
+
+    //    if(highlightController._canAct && Input.GetKeyDown(KeyCode.F))
+    //    {
+    //        _doorAnimator.SetBool("Open", true);
+    //    }
+
+    //    if (_doorAnimator.GetCurrentAnimatorStateInfo(0).IsName("ExitState"))
+    //    {
+    //        hasExitReached = true;
+    //    }
+
+    //    if(hasExitReached && !_isHiding)
+    //    {
+    //        IsHide(_hitDoor);
+    //    }
+    //    else if(hasExitReached && _isHiding)
+    //    {
+    //        IsOut(_hitDoor);
+    //    }
+    //}
 
     public void IsHide(RaycastHit hitObject)
     {
@@ -26,9 +63,9 @@ public class HideController : MonoBehaviour
         playerController.playerCanMove = false;
 
         hitObject.collider.GetComponentInChildren<TextMeshPro>().text = "F:Out";
-        hitObject.collider.GetComponent<Animator>().SetBool("Close", true);
+        //hitObject.collider.GetComponent<Animator>().SetBool("Close", true);
 
-        gameObject.GetComponent<HighlightController>()._isHiding = true;
+        highlightController._isHiding = true;
     }
 
     public void IsOut(RaycastHit hitObject)
@@ -40,8 +77,8 @@ public class HideController : MonoBehaviour
         playerController.enableHeadBob = true;
         playerController.playerCanMove = true;
 
-        hitObject.collider.GetComponent<Animator>().SetBool("Close", true);
+        //hitObject.collider.GetComponent<Animator>().SetBool("Close", true);
 
-        gameObject.GetComponent<HighlightController>()._isHiding = false;
+        highlightController._isHiding = false;
     }
 }
