@@ -106,13 +106,20 @@ public class FirstPersonController : MonoBehaviour
             if (lockCursor == true)
             {
                 lockCursor = false;
-                Cursor.lockState = CursorLockMode.Confined;
             }
             else
             {
                 lockCursor = true;
-                Cursor.lockState = CursorLockMode.Locked;
             }
+        }
+
+        if (lockCursor)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Confined;
         }
     }
 

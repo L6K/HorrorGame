@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
+    private const int UNSELECTED_ITEM = -1;
+
     private ItemDAO _itemDAO;
     private List<ItemData> _belongingList;
     private ItemUIManager _itemUIManager;
@@ -66,6 +68,9 @@ public class ItemManager : MonoBehaviour
     {
         // 所持品リストからアイテムを削除
         _belongingList.Remove(_nowSelectedItem);
+
+        // 選択中のアイテムを無しに変更
+        _itemUIManager._selectItemPanel = UNSELECTED_ITEM;
 
         // UIに反映
         _itemUIManager.CulcDisplayPage();
