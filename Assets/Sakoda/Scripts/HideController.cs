@@ -51,6 +51,11 @@ public class HideController : MonoBehaviour
     //    }
     //}
 
+    /// <summary>
+    /// HighlightControllerからRayが当たったオブジェクトを引数として受け取り
+    /// そのオブジェクトに身を隠すためのメソッド
+    /// </summary>
+    /// <param name="hitObject"></param>
     public void IsHide(RaycastHit hitObject)
     {
         GameObject _locker = hitObject.transform.parent.gameObject;
@@ -68,6 +73,10 @@ public class HideController : MonoBehaviour
         highlightController._isHiding = true;
     }
 
+    /// <summary>
+    /// IsHideの逆の処理として隠れた位置から少し前（1ｆ）に身を表すためのスクリプト
+    /// </summary>
+    /// <param name="hitObject"></param>
     public void IsOut(RaycastHit hitObject)
     {
         //プレイヤーの位置をロッカーから指定した距離分前の位置に移す
