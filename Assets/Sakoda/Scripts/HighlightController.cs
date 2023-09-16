@@ -13,7 +13,8 @@ public class HighlightController : MonoBehaviour
 
     private string _objectTag;
 
-    public bool _canAct;
+    private bool _canAct;
+    private float _actDistance = 3.0f;
     public bool _isHiding;
 
     TextMeshPro _textMeshPro;
@@ -40,6 +41,8 @@ public class HighlightController : MonoBehaviour
         if (_hitObject.collider != null)
         {
             _objectTag = _hitObject.collider.tag;
+            float _distance = Vector3.Distance(transform.position, _hitObject.transform.position);
+            _canAct = _distance <= _actDistance;
 
             switch (_objectTag)
             {
@@ -73,11 +76,13 @@ public class HighlightController : MonoBehaviour
                     {
                         if (_canAct && !_isHiding)
                         {
+                            _hitObject.collider.GetComponent<HideController>().SetRaycastHit(_hitObject);
                             _hitObject.collider.GetComponent<Animator>().SetBool("Hide", true);
                             //GetComponent<HideController>().IsHide(_hitObject);
                         }
                         else if (_isHiding)
                         {
+                            _hitObject.collider.GetComponent<HideController>().SetRaycastHit(_hitObject);
                             _hitObject.collider.GetComponent<Animator>().SetBool("Out", true);
                             //GetComponent<HideController>().IsOut(_hitObject);
                         }

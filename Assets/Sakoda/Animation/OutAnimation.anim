@@ -216,9 +216,9 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.5
-    functionName: IsOut()
+    functionName: IsOut
     data: 
-    objectReferenceParameter: {fileID: 100002, guid: b7b9112f4651c5341af4f4f45a166e03, type: 3}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
