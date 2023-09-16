@@ -5093,6 +5093,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7111700605443484301, guid: 4f1446d3f0ef34c4c973b3951edb896e, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 971570508}
     - target: {fileID: 7114300484348146366, guid: 4f1446d3f0ef34c4c973b3951edb896e, type: 3}
       propertyPath: m_Layer
       value: 0
