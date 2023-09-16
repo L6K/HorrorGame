@@ -9,16 +9,20 @@ public class RoomNameChanger : MonoBehaviour
     [SerializeField] private string _northEastRoom;
     [SerializeField] private string _southWestRoom;
     [SerializeField] private GameObject _roomManagerO;
-    [SerializeField] private bool _isZ;
+    [SerializeField] private bool _isEastWest;
 
     // Start is called before the first frame update
     void Start()
     {
         // コンポーネントを取得
-        _roomManager = _roomManager.GetComponent<RoomManager>();
+        _roomManager = _roomManagerO.GetComponent<RoomManager>();
     }
 
-    private void OnTriggerStay(Collider other)
+    /// <summary>
+    /// 部屋名を変更する
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerExit(Collider other)
     {
         GameObject player = null;
         Rigidbody playerRB = null;
@@ -33,25 +37,29 @@ public class RoomNameChanger : MonoBehaviour
         // 取得したオブジェクトの移動方向を取得し、部屋の名前情報を変更
         if (player != null)
         {
-            if (_isZ)
+            if (!_isEastWest)
             {
                 if (playerRB.velocity.z >= 0) // 北方向に動くなら
                 {
+                    // Debug.Log("playerRB.velocity：" + playerRB.velocity + " north");
                     _roomManager.SetRoomName(_northEastRoom);
                 }
                 else    // 南方向に動くなら
                 {
+                    // Debug.Log("playerRB.velocity：" + playerRB.velocity + " south");
                     _roomManager.SetRoomName(_southWestRoom);
                 }
             }
             else
             {
-                if (playerRB.velocity.y >= 0) // 東方向に動くなら
+                if (playerRB.velocity.x >= 0) // 東方向に動くなら
                 {
+                    // Debug.Log("playerRB.velocity：" + playerRB.velocity + " east");
                     _roomManager.SetRoomName(_northEastRoom);
                 }
                 else    // 西方向に動くなら
                 {
+                    // Debug.Log("playerRB.velocity：" + playerRB.velocity + " west");
                     _roomManager.SetRoomName(_southWestRoom);
                 }
             }
