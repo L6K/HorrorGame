@@ -742,7 +742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemManager: {fileID: 1508008514}
-  _isTalking: 0
+  _isKeyGet: 0
 --- !u!1001 &1009293614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4157,6 +4157,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5538466804450628873, guid: 4f1446d3f0ef34c4c973b3951edb896e, type: 3}
+      propertyPath: m_Name
+      value: PianoKeySize
+      objectReference: {fileID: 0}
     - target: {fileID: 5540536707657454601, guid: 4f1446d3f0ef34c4c973b3951edb896e, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -4748,6 +4752,10 @@ PrefabInstance:
     - target: {fileID: 6614461717533348681, guid: 4f1446d3f0ef34c4c973b3951edb896e, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618053345928041121, guid: 4f1446d3f0ef34c4c973b3951edb896e, type: 3}
+      propertyPath: m_Name
+      value: pianoKey
       objectReference: {fileID: 0}
     - target: {fileID: 6618053345928041121, guid: 4f1446d3f0ef34c4c973b3951edb896e, type: 3}
       propertyPath: m_TagString
@@ -6346,6 +6354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nowSelectedItem: {fileID: 1508008515}
   _pianoDoor: {fileID: 1216797018}
+  _isPianoOpen: 0
 --- !u!65 &1216797021
 BoxCollider:
   m_ObjectHideFlags: 0
