@@ -19,10 +19,10 @@ public class StepNumChanger : MonoBehaviour
     }
 
     /// <summary>
-    /// ŠK”‚ğ
+    /// ŠK”‚ğ•ÏX‚·‚é
     /// </summary>
     /// <param name="other"></param>
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         GameObject player = null;
         Rigidbody playerRB = null;
@@ -50,7 +50,7 @@ public class StepNumChanger : MonoBehaviour
             }
             else
             {
-                if (playerRB.velocity.y >= 0) // “Œ•ûŒü‚É“®‚­‚È‚ç
+                if (playerRB.velocity.x >= 0) // “Œ•ûŒü‚É“®‚­‚È‚ç
                 {
                     _roomManager.SetNumOfFloor(_northEastFloor);
                 }

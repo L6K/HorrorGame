@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _roomManagerO: {fileID: 1300448011}
-  _northEastFloor: 3F
+  _northEastFloor: 1F
   _southWestFloor: 2F
   _isEastWest: 1
 --- !u!65 &799336946
@@ -6989,8 +6989,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c65a5b7d424695f4fb114df67f38ef2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _northEastRoom: "\u97F3\u697D\u6E96\u5099\u5BA4"
-  _southWestRoom: "\u97F3\u697D\u5BA4"
+  _northEastRoom: "\u97F3\u697D\u5BA4"
+  _southWestRoom: "\u97F3\u697D\u6E96\u5099\u5BA4"
   _roomManagerO: {fileID: 1300448011}
   _isEastWest: 1
 --- !u!65 &121829361519624711
@@ -7032,8 +7032,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121829361519624760}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.78, y: 4.22, z: -1.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -14.78, y: 4.16, z: -1.5}
+  m_LocalScale: {x: 0.5238244, y: 1.4683, z: 1}
   m_Children: []
   m_Father: {fileID: 121829360911634193}
   m_RootOrder: 1
@@ -7093,8 +7093,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121829361786296466}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25.93, y: 4.22, z: -8.93}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -25.993, y: 4.1, z: -8.808}
+  m_LocalScale: {x: 0.9015517, y: 1.549, z: 0.28104}
   m_Children: []
   m_Father: {fileID: 121829360911634193}
   m_RootOrder: 0
@@ -18423,7 +18423,7 @@ GameObject:
   - component: {fileID: 938392053003581827}
   - component: {fileID: 8999627754721624494}
   m_Layer: 0
-  m_Name: 1To2Floor
+  m_Name: SW1F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18484,7 +18484,7 @@ GameObject:
   - component: {fileID: 5168823453311699773}
   - component: {fileID: 5168823453311699772}
   m_Layer: 0
-  m_Name: 2To1Floor
+  m_Name: SW2F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19319,8 +19319,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2729800899058581658}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.887, y: 1.457, z: -26.28}
-  m_LocalScale: {x: 3.751697, y: 2.8404, z: 2.0933406}
+  m_LocalPosition: {x: -24.005, y: 1.29, z: -26.28}
+  m_LocalScale: {x: 2.7929134, y: 2.466291, z: 2.0933406}
   m_Children: []
   m_Father: {fileID: 1464716280}
   m_RootOrder: 0
@@ -19337,7 +19337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c65a5b7d424695f4fb114df67f38ef2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _northEastRoom: "\u968E\u6BB5"
-  _southWestRoom: "\u5ECA\u4E0B"
+  _northEastRoom: "\u5ECA\u4E0B"
+  _southWestRoom: "\u968E\u6BB5"
   _roomManagerO: {fileID: 1300448011}
   _isEastWest: 1

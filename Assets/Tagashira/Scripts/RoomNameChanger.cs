@@ -18,7 +18,11 @@ public class RoomNameChanger : MonoBehaviour
         _roomManager = _roomManagerO.GetComponent<RoomManager>();
     }
 
-    private void OnTriggerStay(Collider other)
+    /// <summary>
+    /// 部屋名を変更する
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerExit(Collider other)
     {
         GameObject player = null;
         Rigidbody playerRB = null;
@@ -37,21 +41,25 @@ public class RoomNameChanger : MonoBehaviour
             {
                 if (playerRB.velocity.z >= 0) // 北方向に動くなら
                 {
+                    Debug.Log("playerRB.velocity：" + playerRB.velocity + " north");
                     _roomManager.SetRoomName(_northEastRoom);
                 }
                 else    // 南方向に動くなら
                 {
+                    Debug.Log("playerRB.velocity：" + playerRB.velocity + " south");
                     _roomManager.SetRoomName(_southWestRoom);
                 }
             }
             else
             {
-                if (playerRB.velocity.y >= 0) // 東方向に動くなら
+                if (playerRB.velocity.x >= 0) // 東方向に動くなら
                 {
+                    Debug.Log("playerRB.velocity：" + playerRB.velocity + " east");
                     _roomManager.SetRoomName(_northEastRoom);
                 }
                 else    // 西方向に動くなら
                 {
+                    Debug.Log("playerRB.velocity：" + playerRB.velocity + " west");
                     _roomManager.SetRoomName(_southWestRoom);
                 }
             }
