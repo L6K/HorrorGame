@@ -33,7 +33,7 @@ public class HideController : MonoBehaviour
         playerController.enableHeadBob = false;
         playerController.playerCanMove = false;
 
-        GetComponentInChildren<TextMeshPro>().text = "F:Out";
+        GetComponentInChildren<TextMeshPro>().text = "";
         GetComponent<Animator>().SetBool("Hide", false);
 
         highlightController._isHiding = true;
@@ -47,7 +47,6 @@ public class HideController : MonoBehaviour
     {
         //プレイヤーの位置をロッカーから指定した距離分前の位置に移す
         _player.transform.position = _player.transform.position + _player.transform.forward * _distanceToMove;
-        //hitObject.collider.
         GetComponentInChildren<TextMeshPro>().text = "F:Hide";
 
         playerController.enableHeadBob = true;

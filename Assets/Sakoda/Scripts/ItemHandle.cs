@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemHandle : MonoBehaviour
 {
     public GameObject itemManager;
-    public bool _isTalking;
+    public bool _isKeyGet;
 
     /// <summary>
     /// game上でアイテムを取得した際の処理メソッド
@@ -19,6 +19,6 @@ public class ItemHandle : MonoBehaviour
 
         itemManager.GetComponent<ItemManager>().ObtainItem(whereUse, index);
 
-        _isTalking = true;
+        _isKeyGet = true;
     }
 }
