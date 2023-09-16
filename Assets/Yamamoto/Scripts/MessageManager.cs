@@ -12,9 +12,9 @@ public class MessageManager : MonoBehaviour
     public GameObject _enemyMove;
     public FirstPersonController _firstPersonController;
     int _textPage;//メッセージのページ数
-    int _currentPage;//現在のページ
+    int _currentPage=0;//現在のページ
     int _messageIndex;//メッセージ管理用引数
-    [SerializeField] string[] _messages;//メッセージのページ
+    List<string> _messages;//メッセージのページ
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +22,11 @@ public class MessageManager : MonoBehaviour
         _nextButton.SetActive(false);
         _nameLabel.enabled = false;
         _messageText.enabled = false;
-        _currentPage = 0;
+        _messages = new List<string>();
 
         _messageIndex = 0;
         _MessageStorage(_messageIndex);
-        StartCoroutine(_TextChange());
+       
 
     }
 
@@ -41,7 +41,7 @@ public class MessageManager : MonoBehaviour
             // マウスカーソルのロックを解除する
             Cursor.lockState = CursorLockMode.None;
             _nextButton.SetActive(true);
-            if (_currentPage == (_messages.Length - 1))//そのページが最後の時
+            if (_currentPage == (_messages.Count - 1))//そのページが最後の時
             {
 
                 Sprite _endSprite = Resources.Load<Sprite>("EndButton_L");
@@ -55,38 +55,51 @@ public class MessageManager : MonoBehaviour
             
             _nextButton.SetActive(false);
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _messageIndex = 1;
+            _MessageStorage(_messageIndex);
+        }
     }
    
     public void OnNextButtonClicked()
     {
 
-        if (_currentPage < _messages.Length - 1)//テキストのページ処理
+        if (_currentPage < _messages.Count - 1)//テキストが残っているとき
         {
             _currentPage++;
             _messageText.text = "";
+            Debug.Log(_currentPage+1+"/"+_messages.Count);
             StartCoroutine(_TextChange());
         }
-        else
+        else//テキストが終わったとき
         {
+            
             _nextButton.SetActive(false);
             _nameLabel.text = "";
             _messageText.text = "";
             _mainUI.SetActive(true);
             _firstPersonController.playerCanMove = true;
             _enemyMove.SetActive(true);
-           
+            _firstPersonController.isCameraMove = true;
+            Debug.Log(_currentPage +1+ "/" + _messages.Count);
+            Sprite _endSprite = Resources.Load<Sprite>("NextButton_L");
+            Image _endImage = _nextButton.GetComponent<Image>();
+            _endImage.sprite = _endSprite;
         }
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
     IEnumerator _TextChange()//テキスト送り用のコルーチン
     {
-        foreach (char x in _messages[_currentPage].ToCharArray())
+        foreach (char x in _messages[_currentPage].ToCharArray())//
         {
             _messageText.text += x;
             //効果音を入れるならここ
             yield return new WaitForSeconds(0.1f);
+           
         }
+       
     }
     IEnumerator _WaitAMinute()
     {
@@ -99,16 +112,24 @@ public class MessageManager : MonoBehaviour
         _mainUI.SetActive(false);
         _firstPersonController.playerCanMove = false;
         _enemyMove.SetActive(false);
-       
+        _firstPersonController.isCameraMove = false;
         switch (index)//管理引数に対応したメッセージを格納
         {
             case 0://スタート時のメッセージ
                 _textPage = 1;
-                // _messages = new string[_textPage];
                 _nameLabel.text = "幽霊";
-                // _messages[0] = "ピアノが弾きたい...";
+                _messages.Add("ピアノが弾きたい...");
+                Debug.Log("Page:"+_messages.Count);
+                break;
+            case 1:
+                _textPage = 2;
+                _currentPage++;
+                _nameLabel.text = "自分";
+                _messages.Add("(疲れたなぁ...)");
+                _messages.Add("(お腹もすいたし...)");
+                Debug.Log("Page:" + _messages.Count);
                 break;
         }
-        _currentPage = 0;//ページの初期化
+        StartCoroutine(_TextChange());
     }
 }
