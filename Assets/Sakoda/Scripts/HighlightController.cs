@@ -10,17 +10,17 @@ public class HighlightController : MonoBehaviour
 
     RaycastManager raycastManager;
     RaycastHit _hitObject;
-    public Animator _doorAnimator;
-    private bool _hasStateEnded;
 
-    private float _canActingDistancce = 3.0f;
-    private float _distanceToItem;
     private string _objectTag;
 
     private bool _canAct;
+    private float _actDistance = 1.5f;
     public bool _isHiding;
 
+    TextMeshPro _textMeshPro;
+    Outline _outline;
     HashSet<TextMeshPro> textMeshPros = new HashSet<TextMeshPro>();
+    HashSet<Outline> outlines = new HashSet<Outline>();
 
 
     private void Start()
@@ -28,30 +28,41 @@ public class HighlightController : MonoBehaviour
         raycastManager = new RaycastManager();
     }
 
+    /// <summary>
+    /// Updateで常にRayを発し、3ｆ以内にあるオブジェクトが何か判定するためのメソッド
+    /// ItemとLockerが現在判定要素となっている
+    /// </summary>
     private void Update()
     {
         textMeshPros.RemoveWhere(o => o == null);
+        outlines.RemoveWhere(o => o == null);
         _hitObject = raycastManager.GetRaycastHitInfo();
 
         if (_hitObject.collider != null)
         {
             _objectTag = _hitObject.collider.tag;
-            _distanceToItem = Vector3.Distance(transform.position, _hitObject.transform.position);
-
-            _canAct = _distanceToItem <= _canActingDistancce;
+            float _distance = Vector3.Distance(transform.position, _hitObject.transform.position);
+            _canAct = _distance <= _actDistance;
 
             switch (_objectTag)
             {
                 case "Item":
 
-                    TextMeshPro _textMeshPro = _hitObject.collider.GetComponentInChildren<TextMeshPro>();
-                    _textMeshPro.enabled = true;
-                    textMeshPros.Add(_textMeshPro);
-
-                    //if (_canAct && !_isHiding)
-                    //{
-                    //    GetComponent<ItemHandle>().InvestigateItem(_hitObject);
-                    //}
+                    _outline = _hitObject.collider.GetComponentInChildren<Outline>();
+                    _outline.enabled = true;
+                    outlines.Add(_outline);
+                    if (_outline)
+                    {
+                        _canAct = true;
+                    }
+                    
+                    if (Input.GetKeyDown(KeyCode.F))
+                    {
+                        if (_canAct)
+                        {
+                            GetComponent<ItemHandle>().InvestigateItem(_hitObject);
+                        }
+                    }
                     break;
 
                 case "Locker":
@@ -59,17 +70,34 @@ public class HighlightController : MonoBehaviour
                     _textMeshPro = _hitObject.collider.GetComponentInChildren<TextMeshPro>();
                     _textMeshPro.enabled = true;
                     textMeshPros.Add(_textMeshPro);
+                    _canAct = true;
 
                     if (Input.GetKeyDown(KeyCode.F))
                     {
                         if (_canAct && !_isHiding)
                         {
-                            GetComponent<HideController>().IsHide(_hitObject);
+                            _hitObject.collider.GetComponent<HideController>().SetRaycastHit(_hitObject);
+                            _hitObject.collider.GetComponent<Animator>().SetBool("Hide", true);
+                            //GetComponent<HideController>().IsHide(_hitObject);
                         }
                         else if (_isHiding)
                         {
-                            GetComponent<HideController>().IsOut(_hitObject);
+                            _hitObject.collider.GetComponent<HideController>().SetRaycastHit(_hitObject);
+                            _hitObject.collider.GetComponent<Animator>().SetBool("Out", true);
+                            //GetComponent<HideController>().IsOut(_hitObject);
                         }
+                    }
+                    break;
+
+                case "Piano":
+
+                    _outline = _hitObject.collider.GetComponentInChildren<Outline>();
+                    _outline.enabled = true;
+                    outlines.Add(_outline);
+
+                    if (Input.GetKeyDown(KeyCode.F))
+                    {
+                        _hitObject.collider.GetComponent<Piano>().ReceiveAciton();
                     }
                     break;
 
@@ -79,52 +107,22 @@ public class HighlightController : MonoBehaviour
                     {
                         if (t != null)
                         {
-                        t.enabled = false;
+                            t.enabled = false;
                         }
                     }
-                    _doorAnimator.SetBool("Open", false);
+
+                    foreach (var o in outlines)
+                    {
+                        if (o != null)
+                        {
+                            o.enabled = false;
+                        }
+                    }
+
+                    _canAct = false;
                     break;
             }
         }
-        //else
-        //{
-        //    foreach (var t in textMeshPros)
-        //    {
-        //        if (t != null)
-        //        {
-        //            t.enabled = false;
-        //        }
-        //    }
-        //}
     }
-
-    //private IEnumerator WaitForAnimationEnd()
-    //{
-    //    AnimatorStateInfo stateInfo = _doorAnimator.GetCurrentAnimatorStateInfo(0);
-
-    //    while (true)
-    //    {
-    //        // アニメーションステートが終了したらループを抜ける
-    //        if(stateInfo.IsName("Open") && stateInfo.normalizedTime >= 1f)
-    //        {
-    //            Debug.Log("finish");
-    //            break;
-    //        }
-
-    //        yield return null;
-    //    }
-
-    //    Debug.Log("Finish");
-
-    //    // アニメーションステートが終了した後の処理
-    //    //if (!_isHiding)
-    //    //{
-    //    //    GetComponent<HideController>().IsHide(_hitObject);
-    //    //}
-    //    //else if (_isHiding)
-    //    //{
-    //    //    GetComponent<HideController>().IsOut(_hitObject);
-    //    //}
-    //}
 }
 
