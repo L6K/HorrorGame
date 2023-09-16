@@ -37,7 +37,7 @@ public class StepNumChanger : MonoBehaviour
         // 取得したオブジェクトの移動方向を取得し、階数を変更
         if (player != null)
         {
-            if (_isEastWest)
+            if (!_isEastWest)
             {
                 if (playerRB.velocity.z >= 0) // 北方向に動くなら
                 {

@@ -37,16 +37,16 @@ public class RoomNameChanger : MonoBehaviour
         // 取得したオブジェクトの移動方向を取得し、部屋の名前情報を変更
         if (player != null)
         {
-            if (_isEastWest)
+            if (!_isEastWest)
             {
                 if (playerRB.velocity.z >= 0) // 北方向に動くなら
                 {
-                    Debug.Log("playerRB.velocity：" + playerRB.velocity + " north");
+                    // Debug.Log("playerRB.velocity：" + playerRB.velocity + " north");
                     _roomManager.SetRoomName(_northEastRoom);
                 }
                 else    // 南方向に動くなら
                 {
-                    Debug.Log("playerRB.velocity：" + playerRB.velocity + " south");
+                    // Debug.Log("playerRB.velocity：" + playerRB.velocity + " south");
                     _roomManager.SetRoomName(_southWestRoom);
                 }
             }
@@ -54,12 +54,12 @@ public class RoomNameChanger : MonoBehaviour
             {
                 if (playerRB.velocity.x >= 0) // 東方向に動くなら
                 {
-                    Debug.Log("playerRB.velocity：" + playerRB.velocity + " east");
+                    // Debug.Log("playerRB.velocity：" + playerRB.velocity + " east");
                     _roomManager.SetRoomName(_northEastRoom);
                 }
                 else    // 西方向に動くなら
                 {
-                    Debug.Log("playerRB.velocity：" + playerRB.velocity + " west");
+                    // Debug.Log("playerRB.velocity：" + playerRB.velocity + " west");
                     _roomManager.SetRoomName(_southWestRoom);
                 }
             }
