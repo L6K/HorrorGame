@@ -14,6 +14,7 @@ public class MessageManager : MonoBehaviour
     public GameObject _triggerKey;
     public GameObject _triggerClear;
     public GameObject _triggerOpen;
+    public GameObject _clearZ;
     public bool _isEvent;
     public bool _isKeyGet;
     public bool _clear;
@@ -30,7 +31,7 @@ public class MessageManager : MonoBehaviour
         _messageText.enabled = false;
         _messages = new List<string>();
         _isEvent = false;
-
+        
         _messageIndex = 0;
         _MessageStorage(_messageIndex);
        
@@ -68,6 +69,13 @@ public class MessageManager : MonoBehaviour
             _EventManager();
             _isEvent = false;
         }
+        ;
+        if (_clearZ.GetComponent<GameOver>()._clear) //ロッカーでゾンビから逃げれたとき
+        {
+            _isEvent = true;
+            _clearZ.GetComponent<GameOver>()._clear = false;
+        }
+        
         
     }
    
