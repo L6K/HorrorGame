@@ -10,6 +10,7 @@ public class HighlightController : MonoBehaviour
 
     RaycastManager raycastManager;
     RaycastHit _hitObject;
+    ItemHandle _itemHandle;
 
     private string _objectTag;
 
@@ -26,6 +27,7 @@ public class HighlightController : MonoBehaviour
     private void Start()
     {
         raycastManager = new RaycastManager();
+        _itemHandle = GetComponent<ItemHandle>();
     }
 
     /// <summary>
@@ -91,14 +93,18 @@ public class HighlightController : MonoBehaviour
 
                 case "Piano":
 
-                    _outline = _hitObject.collider.GetComponentInChildren<Outline>();
-                    _outline.enabled = true;
-                    outlines.Add(_outline);
-
-                    if (Input.GetKeyDown(KeyCode.F))
+                    if (_itemHandle._isKeyGet)
                     {
-                        _hitObject.collider.GetComponent<Piano>().ReceiveAciton();
+                        _outline = _hitObject.collider.GetComponentInChildren<Outline>();
+                        _outline.enabled = true;
+                        outlines.Add(_outline);
+
+                        if (Input.GetKeyDown(KeyCode.F))
+                        {
+                            _hitObject.collider.GetComponent<Piano>().ReceiveAciton();
+                        }
                     }
+
                     break;
 
                 default:
