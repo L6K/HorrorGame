@@ -19,7 +19,7 @@ public class ItemHandle : MonoBehaviour
 
         itemManager.GetComponent<ItemManager>().ObtainItem(whereUse, index);
 
-        if(hitObject.collider.name == "PianoKey")
+        if(hitObject.collider.name == "pianoKey")
         {
             _isKeyGet = true;
         }
