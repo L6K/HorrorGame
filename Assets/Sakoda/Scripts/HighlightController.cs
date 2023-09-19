@@ -8,7 +8,7 @@ using UnityEngine;
 public class HighlightController : MonoBehaviour
 {
 
-    RaycastManager raycastManager;
+    RaycastManager _raycastManager;
     RaycastHit _hitObject;
     ItemHandle _itemHandle;
 
@@ -26,7 +26,7 @@ public class HighlightController : MonoBehaviour
 
     private void Start()
     {
-        raycastManager = new RaycastManager();
+        _raycastManager = new RaycastManager();
         _itemHandle = GetComponent<ItemHandle>();
     }
 
@@ -38,7 +38,7 @@ public class HighlightController : MonoBehaviour
     {
         textMeshPros.RemoveWhere(o => o == null);
         outlines.RemoveWhere(o => o == null);
-        _hitObject = raycastManager.GetRaycastHitInfo();
+        _hitObject = _raycastManager.GetRaycastHitInfo();
 
         if (_hitObject.collider != null)
         {
