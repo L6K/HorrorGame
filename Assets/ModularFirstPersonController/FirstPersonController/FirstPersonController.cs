@@ -104,6 +104,17 @@ public class FirstPersonController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            if (Cursor.lockState == CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.Confined;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
+        /*if (Input.GetKeyDown(KeyCode.Tab))
+        {
             if (lockCursor == true)
             {
                 lockCursor = false;
@@ -112,16 +123,16 @@ public class FirstPersonController : MonoBehaviour
             {
                 lockCursor = true;
             }
-        }
+        }*/
 
-        if (lockCursor)
+        /*if (lockCursor)
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
         else
         {
             Cursor.lockState = CursorLockMode.Confined;
-        }
+        }*/
     }
 
     void FixedUpdate()

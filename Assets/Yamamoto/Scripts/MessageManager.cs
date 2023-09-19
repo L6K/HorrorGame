@@ -14,6 +14,7 @@ public class MessageManager : MonoBehaviour
     public GameObject _triggerKey;
     public GameObject _triggerClear;
     public GameObject _triggerOpen;
+    public bool _isEvent;
     public bool _isKeyGet;
     public bool _clear;
     public bool _isPianoOpen;
@@ -28,6 +29,7 @@ public class MessageManager : MonoBehaviour
         _nameLabel.enabled = false;
         _messageText.enabled = false;
         _messages = new List<string>();
+        _isEvent = false;
 
         _messageIndex = 0;
         _MessageStorage(_messageIndex);
@@ -61,8 +63,12 @@ public class MessageManager : MonoBehaviour
             
             _nextButton.SetActive(false);
         }
+        if(_isEvent)
+        {
+            _EventManager();
+            _isEvent = false;
+        }
         
-        _EventManager();
     }
    
     public void OnNextButtonClicked()
@@ -116,16 +122,19 @@ public class MessageManager : MonoBehaviour
         {
             _messageIndex = 1;
             _MessageStorage(_messageIndex);
+            _isKeyGet = false;
         }
-        if (_clear)
+        else if (_clear)
         {
             _messageIndex = 2;
             _MessageStorage(_messageIndex);
+            _clear = false;
         }
-        if (_isPianoOpen)
+        else if (_isPianoOpen)
         {
             _messageIndex = 3;
             _MessageStorage(_messageIndex);
+            _isPianoOpen=false;
         }
     }
     void _MessageStorage(int index)//メッセージ管理用の関数
@@ -136,21 +145,22 @@ public class MessageManager : MonoBehaviour
         _firstPersonController.playerCanMove = false;
         _enemyMove.SetActive(false);
         _firstPersonController.isCameraMove = false;
+        _firstPersonController.enableHeadBob = false;
         switch (index)//管理引数に対応したメッセージを格納
         {
             case 0://スタート時のメッセージ
                 
                 _nameLabel.text = "???";
                 _messages.Add("あなたこの学校の教師？");
-                _messages.Add("ピアノを弾きたいんだけど、鍵が見つからないの...");
-                _messages.Add("あなた教師なら鍵の場所わかるよね？お願い、探して！！");
+                _messages.Add("ピアノを弾きたいんだけど、\n鍵が見つからないの...");
+                _messages.Add("あなた教師なら鍵の場所わかるよね？\nお願い、探して！！");
                 
                 break;
             case 1://ピアノのカギ取得時のメッセージ
                 
                 _currentPage++;
                 _nameLabel.text = "???";
-                _messages.Add("まずい、良くないものが来るわ。どこかに隠れないと...");
+                _messages.Add("まずい、良くないものが来るわ。\nどこかに隠れないと...");
                 
                
                 break;
@@ -158,7 +168,7 @@ public class MessageManager : MonoBehaviour
 
                 _currentPage++;
                 _nameLabel.text = "???";
-                _messages.Add("…行ったみたいね。あれはこの場所をうろついているの。気を付けて");
+                _messages.Add("…行ったみたいね。\nあれはこの場所をうろついているの。気を付けて");
 
 
                 break;

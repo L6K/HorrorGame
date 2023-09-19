@@ -18,6 +18,7 @@ public class KeyTrigger : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        _messageManager._isEvent = true;
         _messageManager._isKeyGet = true;
     }
 }

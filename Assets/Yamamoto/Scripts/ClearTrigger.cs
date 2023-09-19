@@ -18,6 +18,7 @@ public class ClearTrigger : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        _messageManager._isEvent = true;
         _messageManager._clear = true;
     }
 }
