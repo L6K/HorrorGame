@@ -6463,6 +6463,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 629731576}
     - target: {fileID: 3303640477467895822, guid: 45b7afaed270bc944a032e3f108d3b95, type: 3}
+      propertyPath: _triggerKey
+      value: 
+      objectReference: {fileID: 1965703155}
+    - target: {fileID: 3303640477467895822, guid: 45b7afaed270bc944a032e3f108d3b95, type: 3}
+      propertyPath: _triggerOpen
+      value: 
+      objectReference: {fileID: 1624350198}
+    - target: {fileID: 3303640477467895822, guid: 45b7afaed270bc944a032e3f108d3b95, type: 3}
+      propertyPath: _triggerClear
+      value: 
+      objectReference: {fileID: 1107291919}
+    - target: {fileID: 3303640477467895822, guid: 45b7afaed270bc944a032e3f108d3b95, type: 3}
       propertyPath: _firstPersonController
       value: 
       objectReference: {fileID: 971570511}

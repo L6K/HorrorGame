@@ -40,6 +40,7 @@ public class MessageManager : MonoBehaviour
     {
         if (_messageText.text == _messages[_currentPage])//1ページ内のテキストの出力が終わったとき
         {
+            
             // マウスカーソルを表示状態にする
             Cursor.visible = true;
 
@@ -66,9 +67,10 @@ public class MessageManager : MonoBehaviour
    
     public void OnNextButtonClicked()
     {
-
+        Debug.Log("A");
         if (_currentPage < _messages.Count - 1)//テキストが残っているとき
         {
+            Debug.Log("X");
             _currentPage++;
             _messageText.text = "";
             Debug.Log(_currentPage+1+"/"+_messages.Count);
@@ -76,7 +78,7 @@ public class MessageManager : MonoBehaviour
         }
         else//テキストが終わったとき
         {
-            
+            Debug.Log("Y");
             _nextButton.SetActive(false);
             _nameLabel.text = "";
             _messageText.text = "";
@@ -91,6 +93,7 @@ public class MessageManager : MonoBehaviour
         }
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        Debug.Log("Z");
     }
     IEnumerator _TextChange()//テキスト送り用のコルーチン
     {
@@ -139,7 +142,7 @@ public class MessageManager : MonoBehaviour
                 
                 _nameLabel.text = "???";
                 _messages.Add("あなたこの学校の教師？");
-                _messages.Add("ピアノを弾きたいんだけど、鍵が見つからないの。。。");
+                _messages.Add("ピアノを弾きたいんだけど、鍵が見つからないの...");
                 _messages.Add("あなた教師なら鍵の場所わかるよね？お願い、探して！！");
                 
                 break;
@@ -147,7 +150,7 @@ public class MessageManager : MonoBehaviour
                 
                 _currentPage++;
                 _nameLabel.text = "???";
-                _messages.Add("まずい、良くないものが来るわ。どこかに隠れないと…");
+                _messages.Add("まずい、良くないものが来るわ。どこかに隠れないと...");
                 
                
                 break;
