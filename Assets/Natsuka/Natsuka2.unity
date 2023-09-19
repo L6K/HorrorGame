@@ -6367,6 +6367,11 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!1 &1935417641 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+  m_PrefabInstance: {fileID: 597570463}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2012582399 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4066687057182025705, guid: 3050eddb8f41563428d7b6b3b8bdb022, type: 3}
@@ -17674,6 +17679,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3621188541038099091, guid: 0fb4f45f4be258d4fa6629ba6d678ffe, type: 3}
+      propertyPath: _clear
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621188541038099091, guid: 0fb4f45f4be258d4fa6629ba6d678ffe, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1935417641}
     - target: {fileID: 5316884496067472523, guid: 0fb4f45f4be258d4fa6629ba6d678ffe, type: 3}
       propertyPath: m_Name
       value: Zombie1
