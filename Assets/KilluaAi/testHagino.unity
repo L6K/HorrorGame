@@ -2662,13 +2662,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: kesu
       objectReference: {fileID: 0}
+    - target: {fileID: 791947638650883532, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_Name
+      value: syokuin_shisudao
+      objectReference: {fileID: 0}
     - target: {fileID: 1104775397775066466, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.427
+      value: 17.212
       objectReference: {fileID: 0}
     - target: {fileID: 1104775397775066466, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.309
+      value: 1.97
       objectReference: {fileID: 0}
     - target: {fileID: 1147159168714452559, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
       propertyPath: m_Name
@@ -2677,6 +2681,10 @@ PrefabInstance:
     - target: {fileID: 1193118347935517533, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
       propertyPath: m_LocalPosition.z
       value: 36.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 1259885825775251283, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_Name
+      value: Class 2B
       objectReference: {fileID: 0}
     - target: {fileID: 1762884149326594224, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2721,6 +2729,10 @@ PrefabInstance:
     - target: {fileID: 1922526959470291064, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960934995789938628, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_Name
+      value: Tamokuteki Room
       objectReference: {fileID: 0}
     - target: {fileID: 2250813103953033702, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2910,9 +2922,49 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chair_piano6
       objectReference: {fileID: 0}
+    - target: {fileID: 3317210832583088543, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_Name
+      value: Book Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 3579537629195471842, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3579537629195471842, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.51
+      objectReference: {fileID: 0}
     - target: {fileID: 3597817503116885591, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603611046118610362, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.298355
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603611046118610362, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 36.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603611046118610362, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.2366338
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603611046118610362, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.047492888
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603611046118610362, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6842677
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603611046118610362, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.68813276
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603611046118610362, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 77.133
       objectReference: {fileID: 0}
     - target: {fileID: 3742099346087445335, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2933,6 +2985,10 @@ PrefabInstance:
     - target: {fileID: 3807458183085712723, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
       propertyPath: m_Name
       value: kesu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3864567081809888684, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_Name
+      value: Science Room
       objectReference: {fileID: 0}
     - target: {fileID: 4081751288683157997, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
       propertyPath: m_Name
@@ -2989,6 +3045,10 @@ PrefabInstance:
     - target: {fileID: 5053706642964378182, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5280791649542189615, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_Name
+      value: Class 1A
       objectReference: {fileID: 0}
     - target: {fileID: 5372361060007774667, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3110,13 +3170,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 7123113884774725675, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_Name
+      value: Art Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123113884840584701, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_Name
+      value: Dining Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123113885070668275, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_Name
+      value: Class 1B
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123113885278805995, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_Name
+      value: KingRoom
+      objectReference: {fileID: 0}
     - target: {fileID: 7148806031051261008, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.517
+      value: 17.416
       objectReference: {fileID: 0}
     - target: {fileID: 7148806031051261008, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.308
+      value: 1.97
       objectReference: {fileID: 0}
     - target: {fileID: 7258001008211633931, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
       propertyPath: m_Name
@@ -3210,9 +3286,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chairs_up5
       objectReference: {fileID: 0}
+    - target: {fileID: 8527207004454727616, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_Name
+      value: Class 2A
+      objectReference: {fileID: 0}
     - target: {fileID: 8531243732054352102, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
       propertyPath: m_Name
       value: Chairs_up3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8597937851442822698, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8853173798658769148, guid: b3c2b1bbf0a9a0d48a84f482e68b9287, type: 3}
       propertyPath: m_LocalPosition.x
