@@ -28,6 +28,7 @@ public class FirstPersonController : MonoBehaviour
     public bool cameraCanMove = false;
     public float mouseSensitivity = 2f;
     public float maxLookAngle = 50f;
+    public bool isCameraMove=true;
 
     // Crosshair
     public bool lockCursor = true;
@@ -103,44 +104,67 @@ public class FirstPersonController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (lockCursor == true)
+            if (Cursor.lockState == CursorLockMode.Locked)
             {
-                lockCursor = false;
                 Cursor.lockState = CursorLockMode.Confined;
             }
             else
             {
-                lockCursor = true;
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
+        /*if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (lockCursor == true)
+            {
+                lockCursor = false;
+            }
+            else
+            {
+                lockCursor = true;
+            }
+        }*/
+
+        /*if (lockCursor)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+        }*/
     }
 
     void FixedUpdate()
     {
-        // Control camera movement
-        if (cameraCanMove)
+        if (isCameraMove)
         {
 
 
-
-            yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
-
-            if (!invertCamera)
+            // Control camera movement
+            if (cameraCanMove)
             {
-                pitch -= mouseSensitivity * Input.GetAxis("Mouse Y");
-            }
-            else
-            {
-                // Inverted Y
-                pitch += mouseSensitivity * Input.GetAxis("Mouse Y");
-            }
 
-            // Clamp pitch between lookAngle
-            pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
 
-            transform.localEulerAngles = new Vector3(0, yaw, 0);
-            playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
+
+                yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
+
+                if (!invertCamera)
+                {
+                    pitch -= mouseSensitivity * Input.GetAxis("Mouse Y");
+                }
+                else
+                {
+                    // Inverted Y
+                    pitch += mouseSensitivity * Input.GetAxis("Mouse Y");
+                }
+
+                // Clamp pitch between lookAngle
+                pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
+
+                transform.localEulerAngles = new Vector3(0, yaw, 0);
+                playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
+            }
         }
 
         if (enableHeadBob)
@@ -148,6 +172,7 @@ public class FirstPersonController : MonoBehaviour
             HeadBob();
         }
         #region Camera
+
 
         if (Input.GetMouseButtonDown(1))
         {
