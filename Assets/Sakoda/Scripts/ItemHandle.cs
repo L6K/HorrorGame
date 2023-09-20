@@ -6,6 +6,7 @@ public class ItemHandle : MonoBehaviour
 {
     public GameObject itemManager;
     public bool _isKeyGet;
+    public bool _isPaintingGet;
 
     /// <summary>
     /// game上でアイテムを取得した際の処理メソッド
@@ -22,6 +23,11 @@ public class ItemHandle : MonoBehaviour
         if(hitObject.collider.name == "pianoKey")
         {
             _isKeyGet = true;
+        }
+
+        if(hitObject.collider.name == "Painting")
+        {
+            _isPaintingGet = true;
         }
     }
 }

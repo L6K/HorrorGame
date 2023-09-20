@@ -10,7 +10,7 @@ public class TitleController : MonoBehaviour
     public Image[] _synopsisImages;//静止画の表示用
     public GameObject _startButton;
     public GameObject _nextButton;
-    const int _SYNOPSIS_PAGE = 4;//あらすじのページ数
+    const int _SYNOPSIS_PAGE = 3;//あらすじのページ数
     int _currentPage;
     int _currentImage;
     string[] _textes = new string[_SYNOPSIS_PAGE];//あらすじのページ
