@@ -7,6 +7,7 @@ public class ItemHandle : MonoBehaviour
     public GameObject itemManager;
     public bool _isKeyGet;
     public bool _isPaintingGet;
+    public GameObject _zombie;
 
     /// <summary>
     /// game上でアイテムを取得した際の処理メソッド
@@ -23,6 +24,7 @@ public class ItemHandle : MonoBehaviour
         if(hitObject.collider.name == "pianoKey")
         {
             _isKeyGet = true;
+            _zombie.SetActive(true);
         }
 
         if(hitObject.collider.name == "Painting")
