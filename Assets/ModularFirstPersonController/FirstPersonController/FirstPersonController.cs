@@ -106,33 +106,17 @@ public class FirstPersonController : MonoBehaviour
         {
             if (Cursor.lockState == CursorLockMode.Locked)
             {
-                Cursor.lockState = CursorLockMode.Confined;
+                Debug.Log("kaijo");
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
             }
             else
             {
+                Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
-        /*if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            if (lockCursor == true)
-            {
-                lockCursor = false;
-            }
-            else
-            {
-                lockCursor = true;
-            }
-        }*/
-
-        /*if (lockCursor)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Confined;
-        }*/
+      
     }
 
     void FixedUpdate()
