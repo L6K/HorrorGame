@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.37311527, g: 0.3807378, b: 0.3587335, a: 1}
+  m_IndirectSpecularColor: {r: 0.37221506, g: 0.37948787, b: 0.35690573, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -798,6 +798,7 @@ GameObject:
   m_Component:
   - component: {fileID: 805482071}
   - component: {fileID: 805482072}
+  - component: {fileID: 805482073}
   m_Layer: 0
   m_Name: Dead
   m_TagString: Untagged
@@ -835,6 +836,20 @@ MonoBehaviour:
   _fadeSpeed: 0.5
   _gameOver: {fileID: 374924637}
   _backToTitle: {fileID: 345175346}
+--- !u!114 &805482073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805482070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf486c00f51d164cb853cba1f0edbfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 4459864849424961073}
+  zombie: {fileID: 2533748752269481655}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
