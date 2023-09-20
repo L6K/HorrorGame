@@ -5,5 +5,6 @@ using UnityEngine;
 public enum Story
 {
     another = 0,
-    musicRoom = 1
+    musicRoom = 1,
+    artRoom = 2
 }
