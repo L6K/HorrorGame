@@ -122,7 +122,6 @@ public class MessageManager : MonoBehaviour
             _messageText.text = "";
             _mainUI.SetActive(true);
             _firstPersonController.playerCanMove = true;
-            _enemyMove.SetActive(true);
             _firstPersonController.isCameraMove = true;
             Debug.Log(_currentPage +1+ "/" + _messages.Count);
             Sprite _endSprite = Resources.Load<Sprite>("NextButton_L");
