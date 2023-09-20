@@ -20,6 +20,7 @@ public class DeadController : MonoBehaviour
     public float _fadeSpeed = 0.5f;
     public TextMeshProUGUI _gameOver;
     public Button _backToTitle;
+    public Button _backToGame;
 
     // Start is called before the first frame update
     void Start()
@@ -79,6 +80,7 @@ public class DeadController : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 _gameOver.gameObject.SetActive(true);
                 _backToTitle.gameObject.SetActive(true);
+                _backToGame.gameObject.SetActive(true);
             }
 
 
