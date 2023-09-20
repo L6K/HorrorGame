@@ -19,9 +19,14 @@ public class MessageManager : MonoBehaviour
     public bool _isKeyGet;
     public bool _clear;
     public bool _isPianoOpen;
+    ItemHandle _itemHandle;
+    public GameObject _grandPiano;
+    private Piano _piano;
     int _currentPage=0;//現在のページ
     int _messageIndex;//メッセージ管理用引数
     List<string> _messages;//メッセージのページ
+    List<bool> _isEvents;//イベント用の判定
+    int _totalEvent = 4;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,12 +35,17 @@ public class MessageManager : MonoBehaviour
         _nameLabel.enabled = false;
         _messageText.enabled = false;
         _messages = new List<string>();
+        _isEvents = new List<bool>();
+        for(int i=0;i<_totalEvent;i++)
+        {
+            _isEvents.Add(false);
+        }
         _isEvent = false;
         
         _messageIndex = 0;
         _MessageStorage(_messageIndex);
-       
-
+        _itemHandle = _firstPersonController.GetComponent<ItemHandle>();
+        _piano = _grandPiano.GetComponent<Piano>();
     }
 
     // Update is called once per frame
@@ -69,13 +79,25 @@ public class MessageManager : MonoBehaviour
             _EventManager();
             _isEvent = false;
         }
-        ;
-        if (_clearZ.GetComponent<GameOver>()._clear) //ロッカーでゾンビから逃げれたとき
+        if(_itemHandle._isKeyGet&&!(_isEvents[1]))
+        {
+            _isEvent = true;
+            _isKeyGet = true;
+            _isEvents[1] = true;
+        }
+
+        if (_clearZ.GetComponent<GameOver>()._clear&&!(_isEvents[2])) //ロッカーでゾンビから逃げれたとき
         {
             _isEvent = true;
             _clearZ.GetComponent<GameOver>()._clear = false;
+            _isEvents[2] = true;
         }
-        
+        if(_piano._isPianoOpen && !(_isEvents[3]))
+        {
+            _isEvent = true;
+            _isPianoOpen = true;
+            _isEvents[3] = true;
+        }
         
     }
    
@@ -126,6 +148,7 @@ public class MessageManager : MonoBehaviour
     }
     void _EventManager()
     {
+
         if(_isKeyGet)
         {
             _messageIndex = 1;

@@ -358,6 +358,10 @@ PrefabInstance:
       value: MessageManager
       objectReference: {fileID: 0}
     - target: {fileID: 3303640477467895822, guid: 45b7afaed270bc944a032e3f108d3b95, type: 3}
+      propertyPath: _clearZ
+      value: 
+      objectReference: {fileID: 629731576}
+    - target: {fileID: 3303640477467895822, guid: 45b7afaed270bc944a032e3f108d3b95, type: 3}
       propertyPath: _mainUI
       value: 
       objectReference: {fileID: 1009293617}
@@ -365,6 +369,10 @@ PrefabInstance:
       propertyPath: _enemyMove
       value: 
       objectReference: {fileID: 629731576}
+    - target: {fileID: 3303640477467895822, guid: 45b7afaed270bc944a032e3f108d3b95, type: 3}
+      propertyPath: _grandPiano
+      value: 
+      objectReference: {fileID: 1216797016}
     - target: {fileID: 3303640477467895822, guid: 45b7afaed270bc944a032e3f108d3b95, type: 3}
       propertyPath: _triggerKey
       value: 
