@@ -210,6 +210,7 @@ public class MessageManager : MonoBehaviour
                 _nameLabel.text = "???";
                 _messages.Add("やったわ！これであの時の曲が弾けるわ！");
                 _messages.Add("ねぇ次は美術室に行きたいんだけど、ついてきてくれない？");
+                PlayerPrefs.SetString("_isMusicClear", "Clear");
 
                 break;
         }

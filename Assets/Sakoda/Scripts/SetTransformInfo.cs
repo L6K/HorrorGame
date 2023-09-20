@@ -6,11 +6,13 @@ public class SetTransformInfo : MonoBehaviour
 {
     public GameObject player;
     public GameObject zombie;
-    public bool _isMusicClear;
+    public string _isMusicClear;
 
     private void Awake()
     {
-        if (_isMusicClear)
+        _isMusicClear = PlayerPrefs.GetString("_isMusicClear");
+
+        if (_isMusicClear.Equals("Clear"))
         {
             zombie.transform.position = new Vector3(PlayerPrefs.GetFloat("zombiePositionX"), PlayerPrefs.GetFloat("zombiePositionY"), PlayerPrefs.GetFloat("zombiePositionZ"));
             player.transform.position = zombie.transform.position + zombie.transform.forward * 1.5f;

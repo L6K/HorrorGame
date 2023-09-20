@@ -37,6 +37,7 @@ public class ChangeT : MonoBehaviour
             _zombie.GetComponentInChildren<ChasingPlayer>().enabled = true;
             _zombie.GetComponent<ZombiePatrol>().enabled = true;
             _zombie.GetComponent<ZombieWalk>().enabled = false;
+            _zombie.GetComponent<GameOver>().enabled = false;
         }
     }
 }

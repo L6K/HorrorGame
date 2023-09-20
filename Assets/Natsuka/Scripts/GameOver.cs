@@ -9,6 +9,15 @@ public class GameOver : MonoBehaviour
     public int _clear = 0;
     public GameObject _player;
 
+    private void Start()
+    {
+        
+    }
+
+    private void Update()
+    {
+        
+    }
     private void OnTriggerEnter(Collider other)
     {
         // ƒhƒA‚Æ‚ÌÕ“Ë‚ğ”»’è
