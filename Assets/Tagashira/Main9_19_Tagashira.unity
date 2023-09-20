@@ -359,13 +359,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3621188541038099091, guid: 0fb4f45f4be258d4fa6629ba6d678ffe, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 971570508}
     - target: {fileID: 5316884496067472523, guid: 0fb4f45f4be258d4fa6629ba6d678ffe, type: 3}
       propertyPath: m_Name
       value: Zombie1
       objectReference: {fileID: 0}
     - target: {fileID: 5316884496067472523, guid: 0fb4f45f4be258d4fa6629ba6d678ffe, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9192418171522703000, guid: 0fb4f45f4be258d4fa6629ba6d678ffe, type: 3}
       propertyPath: m_RootOrder
@@ -6399,6 +6403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nowSelectedItem: {fileID: 1508008515}
   _pianoDoor: {fileID: 1216797018}
+  _isPianoOpen: 0
 --- !u!65 &1216797021
 BoxCollider:
   m_ObjectHideFlags: 0

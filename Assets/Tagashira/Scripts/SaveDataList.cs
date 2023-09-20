@@ -23,6 +23,9 @@ public class SaveDataList : MonoBehaviour
             // 自身をインスタンスとする
             instance = this;
             _loadStory = Story.another;
+
+            // 現在存在するストーリーの数だけ配列を準備
+            _saveData = new SaveData[(int)_lastStory];
         }
         else
         {
@@ -35,9 +38,6 @@ public class SaveDataList : MonoBehaviour
     {
         // シーンを跨いでもこのオブジェクトが消去されないようにする
         DontDestroyOnLoad(this);
-
-        // 現在存在するストーリーの数だけ配列を準備
-        _saveData = new SaveData[(int)_lastStory];
 
         // Mainシーンであることを判定
         bool isMainScene = SceneManager.GetActiveScene().name == _mainSceneName;

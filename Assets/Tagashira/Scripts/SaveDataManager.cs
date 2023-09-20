@@ -60,10 +60,23 @@ public class SaveDataManager : MonoBehaviour
     }
 
     /// <summary>
-    /// セーブデータを書き込むメソッド
+    /// セーブデータを書き込むメソッド(怪異解決時に呼び出し)
     /// </summary>
-    public void WriteSaveData()
+    public void WriteSaveData(Story clearStory)
     {
-        
+        int writeNum = (int)clearStory - 1;
+        SaveData writeData = _saveDataList[writeNum];
+
+        // プレイヤーの位置を保存
+        writeData._playerPosition = _player.transform;
+
+        // ゾンビの位置を保存
+        writeData._zonbiePosition = _zombie.transform;
+
+        // 所持品リストを保存
+        writeData._belongings = _belongingList;
+
+        // 最終セーブ地点を保存
+        _saveDataListO.GetComponent<SaveDataList>()._loadStory = clearStory;
     }
 }
