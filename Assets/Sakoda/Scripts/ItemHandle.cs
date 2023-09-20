@@ -25,6 +25,8 @@ public class ItemHandle : MonoBehaviour
         {
             _isKeyGet = true;
             _zombie.SetActive(true);
+            _zombie.GetComponentInChildren<ChasingPlayer>().enabled = false;
+            _zombie.GetComponent<ZombiePatrol>().enabled = false;
         }
 
         if(hitObject.collider.name == "Painting")
