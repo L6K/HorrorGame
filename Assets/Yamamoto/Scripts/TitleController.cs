@@ -10,15 +10,25 @@ public class TitleController : MonoBehaviour
     public Image[] _synopsisImages;//静止画の表示用
     public GameObject _startButton;
     public GameObject _nextButton;
-    const int _SYNOPSIS_PAGE = 4;//あらすじのページ数
+    const int _SYNOPSIS_PAGE = 3;//あらすじのページ数
     int _currentPage;
     int _currentImage;
     string[] _textes = new string[_SYNOPSIS_PAGE];//あらすじのページ
 
+    // セーブデータ用フィールド
+    [SerializeField] private GameObject _saveDataListO;
+    private SaveDataList _saveDataList;
 
     // Start is called before the first frame update
     void Start()
     {
+        // セーブデータを保存しているオブジェクトを取得
+        _saveDataListO = GameObject.FindWithTag("SaveDataList");
+        if (_saveDataListO != null)
+        {
+            _saveDataList = _saveDataListO.GetComponent<SaveDataList>();
+        }
+
         _nextButton.SetActive(false);
 
         foreach (Image image in _synopsisImages)//全画像を非表示
@@ -81,6 +91,17 @@ public class TitleController : MonoBehaviour
         _startButton.SetActive(false);
         StartCoroutine(_TextChange());
 
+        // セーブデータを空にする
+        if (_saveDataList != null)
+        {
+            for (int i = 0; i < _saveDataList._saveData.Length; i++)
+            {
+                _saveDataList._saveData[i] = null;
+            }
+        }
+
+        // 読み込みデータを初期化
+        _saveDataList._loadStory = Story.another;
     }
     void _LoadScene()
     {

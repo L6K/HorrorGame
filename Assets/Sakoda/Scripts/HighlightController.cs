@@ -8,14 +8,14 @@ using UnityEngine;
 public class HighlightController : MonoBehaviour
 {
 
-    RaycastManager raycastManager;
+    RaycastManager _raycastManager;
     RaycastHit _hitObject;
     ItemHandle _itemHandle;
 
     private string _objectTag;
 
-    private bool _canAct;
-    private float _actDistance = 1.5f;
+    public bool _canAct;
+    private float _actDistance = 3f;
     public bool _isHiding;
 
     TextMeshPro _textMeshPro;
@@ -26,7 +26,7 @@ public class HighlightController : MonoBehaviour
 
     private void Start()
     {
-        raycastManager = new RaycastManager();
+        _raycastManager = new RaycastManager();
         _itemHandle = GetComponent<ItemHandle>();
     }
 
@@ -38,7 +38,7 @@ public class HighlightController : MonoBehaviour
     {
         textMeshPros.RemoveWhere(o => o == null);
         outlines.RemoveWhere(o => o == null);
-        _hitObject = raycastManager.GetRaycastHitInfo();
+        _hitObject = _raycastManager.GetRaycastHitInfo();
 
         if (_hitObject.collider != null)
         {
@@ -53,10 +53,6 @@ public class HighlightController : MonoBehaviour
                     _outline = _hitObject.collider.GetComponentInChildren<Outline>();
                     _outline.enabled = true;
                     outlines.Add(_outline);
-                    if (_outline)
-                    {
-                        _canAct = true;
-                    }
                     
                     if (Input.GetKeyDown(KeyCode.F))
                     {
@@ -72,7 +68,6 @@ public class HighlightController : MonoBehaviour
                     _textMeshPro = _hitObject.collider.GetComponentInChildren<TextMeshPro>();
                     _textMeshPro.enabled = true;
                     textMeshPros.Add(_textMeshPro);
-                    _canAct = true;
 
                     if (Input.GetKeyDown(KeyCode.F))
                     {
@@ -101,7 +96,10 @@ public class HighlightController : MonoBehaviour
 
                         if (Input.GetKeyDown(KeyCode.F))
                         {
-                            _hitObject.collider.GetComponent<Piano>().ReceiveAciton();
+                            if (_canAct)
+                            {
+                                _hitObject.collider.GetComponent<Piano>().ReceiveAciton();
+                            }
                         }
                     }
 

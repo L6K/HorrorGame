@@ -390,6 +390,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie1
       objectReference: {fileID: 0}
+    - target: {fileID: 5316884496067472523, guid: 0fb4f45f4be258d4fa6629ba6d678ffe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9192418171522703000, guid: 0fb4f45f4be258d4fa6629ba6d678ffe, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -434,7 +438,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3621188541038099091, guid: 0fb4f45f4be258d4fa6629ba6d678ffe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0fb4f45f4be258d4fa6629ba6d678ffe, type: 3}
 --- !u!1 &705507993
 GameObject:
@@ -6342,64 +6347,6 @@ MonoBehaviour:
     _whereUse: 0
     _isUsed: 0
     _itemImage: {fileID: 0}
---- !u!1 &1537731610
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1537731613}
-  - component: {fileID: 1537731612}
-  - component: {fileID: 1537731611}
-  m_Layer: 0
-  m_Name: InfinitedStair
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1537731611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1537731610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd3d585022a48ac4f87475b009a5c3fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fpc: {fileID: 971570508}
---- !u!65 &1537731612
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1537731610}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.5, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1537731613
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1537731610}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.25, y: 2.92, z: -25.205}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1617589682
 GameObject:
   m_ObjectHideFlags: 0
@@ -6668,64 +6615,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1984589191
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1984589193}
-  - component: {fileID: 1984589192}
-  - component: {fileID: 1984589194}
-  m_Layer: 0
-  m_Name: InfinitedStair2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1984589192
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984589191}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.5, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1984589193
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984589191}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.322, y: 6.6, z: -25.205}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1984589194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984589191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 504f47803b8371b4aa6a44dfcdf97d41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fpc: {fileID: 971570508}
 --- !u!4 &2012582399 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4066687057182025705, guid: 3050eddb8f41563428d7b6b3b8bdb022, type: 3}
@@ -18115,6 +18004,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cd3c8b8f7008004197a15e9759ae48d, type: 3}
+--- !u!1001 &3012753891767885363
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3012753891537875892, guid: b71a989a53090c84ba2e6a10e5271fba, type: 3}
+      propertyPath: m_Name
+      value: InfinitedStair2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012753891537875897, guid: b71a989a53090c84ba2e6a10e5271fba, type: 3}
+      propertyPath: fpc
+      value: 
+      objectReference: {fileID: 971570508}
+    - target: {fileID: 3012753891537875898, guid: b71a989a53090c84ba2e6a10e5271fba, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012753891537875898, guid: b71a989a53090c84ba2e6a10e5271fba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -22.322
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012753891537875898, guid: b71a989a53090c84ba2e6a10e5271fba, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012753891537875898, guid: b71a989a53090c84ba2e6a10e5271fba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -25.205
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012753891537875898, guid: b71a989a53090c84ba2e6a10e5271fba, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012753891537875898, guid: b71a989a53090c84ba2e6a10e5271fba, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012753891537875898, guid: b71a989a53090c84ba2e6a10e5271fba, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012753891537875898, guid: b71a989a53090c84ba2e6a10e5271fba, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012753891537875898, guid: b71a989a53090c84ba2e6a10e5271fba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012753891537875898, guid: b71a989a53090c84ba2e6a10e5271fba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012753891537875898, guid: b71a989a53090c84ba2e6a10e5271fba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b71a989a53090c84ba2e6a10e5271fba, type: 3}
 --- !u!1001 &7352838737787783239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18940,3 +18890,64 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ae75f7b8c0eea64b88f288833903fc0, type: 3}
+--- !u!1001 &9117792508784771604
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 9117792510271450633, guid: 5db19c2c77f9c614290173ec9c65fe86, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117792510271450633, guid: 5db19c2c77f9c614290173ec9c65fe86, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117792510271450633, guid: 5db19c2c77f9c614290173ec9c65fe86, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117792510271450633, guid: 5db19c2c77f9c614290173ec9c65fe86, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -25.205
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117792510271450633, guid: 5db19c2c77f9c614290173ec9c65fe86, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117792510271450633, guid: 5db19c2c77f9c614290173ec9c65fe86, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117792510271450633, guid: 5db19c2c77f9c614290173ec9c65fe86, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117792510271450633, guid: 5db19c2c77f9c614290173ec9c65fe86, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117792510271450633, guid: 5db19c2c77f9c614290173ec9c65fe86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117792510271450633, guid: 5db19c2c77f9c614290173ec9c65fe86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117792510271450633, guid: 5db19c2c77f9c614290173ec9c65fe86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117792510271450638, guid: 5db19c2c77f9c614290173ec9c65fe86, type: 3}
+      propertyPath: m_Name
+      value: InfinitedStair
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117792510271450639, guid: 5db19c2c77f9c614290173ec9c65fe86, type: 3}
+      propertyPath: fpc
+      value: 
+      objectReference: {fileID: 971570508}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5db19c2c77f9c614290173ec9c65fe86, type: 3}
