@@ -35,6 +35,8 @@ public class ChangeT : MonoBehaviour
             _handPaint.SetActive(true);
             _zombie.SetActive(true);
             _zombie.GetComponentInChildren<ChasingPlayer>().enabled = true;
+            Vector3 newPosition = new Vector3(6, 3, -9);
+            _zombie.GetComponent<ZombiePatrol>().transform.position = newPosition;
             _zombie.GetComponent<ZombiePatrol>().enabled = true;
             _zombie.GetComponent<ZombieWalk>().enabled = false;
             _zombie.GetComponent<GameOver>().enabled = false;

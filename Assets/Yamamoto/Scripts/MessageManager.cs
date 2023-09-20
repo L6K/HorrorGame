@@ -9,12 +9,10 @@ public class MessageManager : MonoBehaviour
     public Text _nameLabel;//話者の名前表示用
     public GameObject _nextButton;
     public GameObject _mainUI;
-    public GameObject _enemyMove;
     public FirstPersonController _firstPersonController;
     public GameObject _triggerKey;
-    public GameObject _triggerClear;
     public GameObject _triggerOpen;
-    public GameObject _clearZ;
+    public GameObject _zombie;
     public bool _isEvent;
     public bool _isKeyGet;
     public bool _clear;
@@ -86,11 +84,11 @@ public class MessageManager : MonoBehaviour
             _isEvents[1] = true;
         }
 
-        if (_clearZ.GetComponent<GameOver>()._clear == 1 && !(_isEvents[2])) //ロッカーでゾンビから逃げれたとき
+        if (_zombie.GetComponent<GameOver>()._clear == 1 && !(_isEvents[2])) //ロッカーでゾンビから逃げれたとき
         {
-            Debug.Log(_clearZ.GetComponent<GameOver>()._clear);
+            Debug.Log(_zombie.GetComponent<GameOver>()._clear);
             _clear = true;
-            _clearZ.GetComponent<GameOver>()._clear = 2;
+            _zombie.GetComponent<GameOver>()._clear = 2;
             _EventManager();
             _isEvents[2] = true;
         }
@@ -155,6 +153,7 @@ public class MessageManager : MonoBehaviour
             _messageIndex = 1;
             _MessageStorage(_messageIndex);
             _isKeyGet = false;
+            _zombie.SetActive(true);
         }
         else if (_clear)
         {
@@ -175,7 +174,7 @@ public class MessageManager : MonoBehaviour
         _messageText.enabled = true;
         _mainUI.SetActive(false);
         _firstPersonController.playerCanMove = false;
-        _enemyMove.SetActive(false);
+        _zombie.SetActive(false);
         _firstPersonController.isCameraMove = false;
         _firstPersonController.enableHeadBob = false;
         switch (index)//管理引数に対応したメッセージを格納
