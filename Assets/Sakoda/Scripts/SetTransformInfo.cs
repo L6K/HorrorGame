@@ -10,6 +10,6 @@ public class SetTransformInfo : MonoBehaviour
     private void Awake()
     {
         zombie.transform.position = new Vector3(PlayerPrefs.GetFloat("zombiePositionX"), PlayerPrefs.GetFloat("zombiePositionY"), PlayerPrefs.GetFloat("zombiePositionZ"));
-        player.transform.position = zombie.transform.position + zombie.transform.forward * 1f;
+        player.transform.position = zombie.transform.position + zombie.transform.forward * 1.5f;
     }
 }

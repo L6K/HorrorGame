@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ChasingPlayer : MonoBehaviour
 {
 
-    float maxRayDistance = 7f; // Rayの最大距離
+    float maxRayDistance = 5f; // Rayの最大距離
     float fieldOfViewAngle = 45f; // 視界の角度（度数法）
     LayerMask hitLayer; // Rayがヒットを検出する対象のレイヤーマスク
 
