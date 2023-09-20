@@ -663,11 +663,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fb4f45f4be258d4fa6629ba6d678ffe, type: 3}
---- !u!1 &629731576 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5316884496067472523, guid: 0fb4f45f4be258d4fa6629ba6d678ffe, type: 3}
-  m_PrefabInstance: {fileID: 629731575}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,7 +802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 1, g: 0, b: 0, a: 1}
-  outlineWidth: 4
+  outlineWidth: 6
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -1050,7 +1045,7 @@ MonoBehaviour:
   itemManager: {fileID: 1508008514}
   _isKeyGet: 0
   _isPaintingGet: 0
-  _zombie: {fileID: 629731576}
+  _zombie: {fileID: 161757782}
 --- !u!1001 &1009293614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49082,6 +49077,10 @@ PrefabInstance:
     - target: {fileID: 9004126890921202423, guid: e0b34eb5b016a4c4c947ea3ec6d93202, type: 3}
       propertyPath: m_Name
       value: HandPaint
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004126890921202423, guid: e0b34eb5b016a4c4c947ea3ec6d93202, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0b34eb5b016a4c4c947ea3ec6d93202, type: 3}
