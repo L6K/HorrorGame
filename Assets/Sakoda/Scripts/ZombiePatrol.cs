@@ -21,7 +21,7 @@ public class ZombiePatrol : MonoBehaviour
         // navMeshAgent変数にNavMeshAgentコンポーネントを入れる
         navMeshAgent = GetComponent<NavMeshAgent>();
         // 最初の目的地を入れる
-        navMeshAgent.SetDestination(waypoints[2].position);
+        navMeshAgent.SetDestination(waypoints[0].position);
     }
 
     // Update is called once per frame
