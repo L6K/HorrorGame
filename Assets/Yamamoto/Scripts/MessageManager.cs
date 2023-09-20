@@ -86,10 +86,12 @@ public class MessageManager : MonoBehaviour
             _isEvents[1] = true;
         }
 
-        if (_clearZ.GetComponent<GameOver>()._clear&&!(_isEvents[2])) //ロッカーでゾンビから逃げれたとき
+        if (_clearZ.GetComponent<GameOver>()._clear == 1 && !(_isEvents[2])) //ロッカーでゾンビから逃げれたとき
         {
-            _isEvent = true;
-            _clearZ.GetComponent<GameOver>()._clear = false;
+            Debug.Log(_clearZ.GetComponent<GameOver>()._clear);
+            _clear = true;
+            _clearZ.GetComponent<GameOver>()._clear = 2;
+            _EventManager();
             _isEvents[2] = true;
         }
         if(_piano._isPianoOpen && !(_isEvents[3]))

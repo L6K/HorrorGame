@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameOver : MonoBehaviour
 {
-    public bool _clear = false;
+    public int _clear = 0;
     public GameObject _player;
 
     private void OnTriggerEnter(Collider other)
-    { 
+    {
         // ドアとの衝突を判定
         if (other.gameObject.tag == "Door")
         {
@@ -18,7 +18,7 @@ public class GameOver : MonoBehaviour
             {
                 Debug.Log("good!");
                 gameObject.SetActive(false);
-                _clear = true;
+                _clear += 1;
             }
             else //ゲームオーバー時
             {
