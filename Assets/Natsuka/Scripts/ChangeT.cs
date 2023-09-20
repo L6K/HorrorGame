@@ -6,6 +6,8 @@ public class ChangeT : MonoBehaviour
 {
 
     public GameObject fpc;
+    public GameObject _handPaint;
+    public GameObject _zombie;
     private int _flag = 0;
     // Start is called before the first frame update
     void Start()
@@ -30,7 +32,11 @@ public class ChangeT : MonoBehaviour
         if (_flag == 3)
         {
             //–³ŒÀƒ‹[ƒvO‰ñ–ÚˆÈ~‚Ìˆ—
-            Debug.Log("third loop");
+            _handPaint.SetActive(true);
+            _zombie.SetActive(true);
+            _zombie.GetComponentInChildren<ChasingPlayer>().enabled = true;
+            _zombie.GetComponent<ZombiePatrol>().enabled = true;
+            _zombie.GetComponent<ZombieWalk>().enabled = false;
         }
     }
 }

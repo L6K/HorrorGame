@@ -53,10 +53,6 @@ public class HighlightController : MonoBehaviour
                     _outline = _hitObject.collider.GetComponentInChildren<Outline>();
                     _outline.enabled = true;
                     outlines.Add(_outline);
-                    if (_outline)
-                    {
-                        _canAct = true;
-                    }
                     
                     if (Input.GetKeyDown(KeyCode.F))
                     {
@@ -72,7 +68,6 @@ public class HighlightController : MonoBehaviour
                     _textMeshPro = _hitObject.collider.GetComponentInChildren<TextMeshPro>();
                     _textMeshPro.enabled = true;
                     textMeshPros.Add(_textMeshPro);
-                    _canAct = true;
 
                     if (Input.GetKeyDown(KeyCode.F))
                     {
@@ -101,7 +96,10 @@ public class HighlightController : MonoBehaviour
 
                         if (Input.GetKeyDown(KeyCode.F))
                         {
-                            _hitObject.collider.GetComponent<Piano>().ReceiveAciton();
+                            if (_canAct)
+                            {
+                                _hitObject.collider.GetComponent<Piano>().ReceiveAciton();
+                            }
                         }
                     }
 

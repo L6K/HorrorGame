@@ -16,7 +16,7 @@ public class GameOver : MonoBehaviour
         {
             if (_player.GetComponent<HighlightController>()._isHiding) //ƒƒbƒJ[‚É‰B‚ê‚Ä‚¢‚é‚Æ‚«
             {
-                Debug.Log("good!");
+                
                 gameObject.SetActive(false);
                 _clear = true;
             }
