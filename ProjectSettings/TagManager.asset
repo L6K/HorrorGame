@@ -11,6 +11,8 @@ TagManager:
   - Room
   - Door
   - Piano
+  - SaveDataManager
+  - SaveDataList
   layers:
   - Default
   - TransparentFX
