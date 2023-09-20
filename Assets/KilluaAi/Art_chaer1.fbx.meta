@@ -3,7 +3,17 @@ guid: 0c773accd6c225d43bfc8bf623675e59
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: WoodChair_Baked_baseColor
+    second: {fileID: 2800000, guid: cc884cf9a936c5d4185a74a58dde76bc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: WoodChair_Baked_normal
+    second: {fileID: 2800000, guid: ff73279683d2dcc4e8e78321dbee1e56, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
