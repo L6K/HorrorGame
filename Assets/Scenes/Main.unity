@@ -725,18 +725,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5316884496067472523, guid: 0fb4f45f4be258d4fa6629ba6d678ffe, type: 3}
   m_PrefabInstance: {fileID: 629731575}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &629731578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 629731577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a7ee9e4c84e8c84a851f5c8356c4056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &629731579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7742,6 +7730,7 @@ GameObject:
   - component: {fileID: 1688754825}
   - component: {fileID: 1688754827}
   - component: {fileID: 1688754826}
+  - component: {fileID: 1688754828}
   m_Layer: 0
   m_Name: ZombieCamera
   m_TagString: Untagged
@@ -7814,6 +7803,18 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1688754828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688754824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a7ee9e4c84e8c84a851f5c8356c4056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1812329803
 PrefabInstance:
   m_ObjectHideFlags: 0
