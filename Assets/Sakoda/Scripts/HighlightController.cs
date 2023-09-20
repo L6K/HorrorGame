@@ -15,7 +15,7 @@ public class HighlightController : MonoBehaviour
     private string _objectTag;
 
     public bool _canAct;
-    private float _actDistance = 1.5f;
+    private float _actDistance = 2f;
     public bool _isHiding;
 
     TextMeshPro _textMeshPro;
