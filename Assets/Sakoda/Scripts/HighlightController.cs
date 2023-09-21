@@ -15,7 +15,7 @@ public class HighlightController : MonoBehaviour
     private string _objectTag;
 
     public bool _canAct;
-    private float _actDistance = 3f;
+    private float _actDistance = 1.5f;
     public bool _isHiding;
 
     TextMeshPro _textMeshPro;
@@ -88,6 +88,8 @@ public class HighlightController : MonoBehaviour
 
                 case "Piano":
 
+                    _canAct = _distance <= 3f;
+
                     if (_itemHandle._isKeyGet)
                     {
                         _outline = _hitObject.collider.GetComponentInChildren<Outline>();
@@ -123,7 +125,6 @@ public class HighlightController : MonoBehaviour
                         }
                     }
 
-                    _canAct = false;
                     break;
             }
         }
