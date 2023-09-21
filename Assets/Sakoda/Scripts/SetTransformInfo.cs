@@ -15,7 +15,8 @@ public class SetTransformInfo : MonoBehaviour
             _zombie.transform.position = new Vector3(PlayerPrefs.GetFloat("zombiePositionX"), PlayerPrefs.GetFloat("zombiePositionY"), PlayerPrefs.GetFloat("zombiePositionZ"));
             _zombie.transform.rotation = Quaternion.Euler(0, -90, 0);
             _player.transform.position = _zombie.transform.position + _zombie.transform.forward * 1f;
-            _player.transform.rotation = Quaternion.LookRotation(-_zombie.transform.forward, _player.transform.up);
+            _player.transform.LookAt(_zombie.transform);
+            _player.transform.Rotate(-30, 0, 0);
         }
     }
 }
