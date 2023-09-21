@@ -14,6 +14,7 @@ public class MessageManager : MonoBehaviour
     int _currentPage = 0;//現在のページ
     List<string> _messages;//メッセージのページ
     private bool _first = true;
+    private int _index;
 
     // セーブデータ用フィールド
     [SerializeField] private GameObject _saveDataManagerO;
@@ -65,6 +66,18 @@ public class MessageManager : MonoBehaviour
             _currentPage++;
             _messageText.text = "";
             StartCoroutine(_TextChange());
+        } 
+        else if (_index == 2)
+        {
+            _nextButton.SetActive(false);
+            _nameLabel.text = "";
+            _messageText.text = "";
+            _mainUI.SetActive(true);
+            fpc.GetComponent<FirstPersonController>().isCameraMove = true;
+            Debug.Log(_currentPage + 1 + "/" + _messages.Count);
+            Sprite _endSprite = Resources.Load<Sprite>("NextButton_L");
+            Image _endImage = _nextButton.GetComponent<Image>();
+            _endImage.sprite = _endSprite;
         }
         else//テキストが終わったとき
         {
@@ -100,6 +113,8 @@ public class MessageManager : MonoBehaviour
     }
     public void MessageManage(int index)//メッセージ管理用の関数
     {
+        _index = index;
+
         _nameLabel.enabled = true;
         _messageText.enabled = true;
         _mainUI.SetActive(false);
