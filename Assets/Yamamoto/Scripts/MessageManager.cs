@@ -14,8 +14,8 @@ public class MessageManager : MonoBehaviour
     int _currentPage = 0;//現在のページ
     int _messageIndex;//メッセージ管理用引数
     List<string> _messages;//メッセージのページ
-    int _totalEvent = 4;
     private bool _first = true;
+
     // Start is called before the first frame update
     void Start()
     {
