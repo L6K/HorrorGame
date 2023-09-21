@@ -826,6 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eadcc37375ceed4fb77652c0be1d059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canAct: 0
   _isHiding: 0
 --- !u!114 &971570510
 MonoBehaviour:
@@ -841,6 +842,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemManager: {fileID: 1508008514}
   _isKeyGet: 0
+  _isPaintingGet: 0
+  _zombie: {fileID: 0}
 --- !u!114 &971570511 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}

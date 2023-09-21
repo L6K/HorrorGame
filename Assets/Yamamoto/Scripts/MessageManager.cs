@@ -66,6 +66,7 @@ public class MessageManager : MonoBehaviour
                 _endImage.sprite = _endSprite;
 
             }
+
         }
         else
         {
@@ -121,6 +122,7 @@ public class MessageManager : MonoBehaviour
             _mainUI.SetActive(true);
             _firstPersonController.playerCanMove = true;
             _firstPersonController.isCameraMove = true;
+            _firstPersonController.enableHeadBob = true;
             Debug.Log(_currentPage +1+ "/" + _messages.Count);
             Sprite _endSprite = Resources.Load<Sprite>("NextButton_L");
             Image _endImage = _nextButton.GetComponent<Image>();
