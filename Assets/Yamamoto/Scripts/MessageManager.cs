@@ -16,6 +16,10 @@ public class MessageManager : MonoBehaviour
     List<string> _messages;//メッセージのページ
     private bool _first = true;
 
+    // セーブデータ用フィールド
+    [SerializeField] private GameObject _saveDataManagerO;
+    private SaveDataManager _saveDataManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +27,9 @@ public class MessageManager : MonoBehaviour
         _nameLabel.enabled = false;
         _messageText.enabled = false;
         _messages = new List<string>();
+
+        // セーブデータ用コンポーネントを取得
+        _saveDataManager = _saveDataManagerO.GetComponent<SaveDataManager>();
     }
 
     // Update is called once per frame
@@ -32,7 +39,7 @@ public class MessageManager : MonoBehaviour
         {
             if (_messageText.text == _messages[_currentPage])//1ページ内のテキストの出力が終わったとき
             {
-                Debug.Log("test");
+                // Debug.Log("test");
 
                 // マウスカーソルを表示状態にする
                 Cursor.visible = true;
@@ -56,7 +63,7 @@ public class MessageManager : MonoBehaviour
             }
         }
         
-        Debug.Log("log");
+        // Debug.Log("log");
     }
 
     public void OnNextButtonClicked() //次へボタン押下時
@@ -134,7 +141,7 @@ public class MessageManager : MonoBehaviour
                 _messages.Add("やったわ！これであの時の曲が弾けるわ！");
                 _messages.Add("ねぇ次は美術室に行きたいんだけど、ついてきてくれない？");
                 PlayerPrefs.SetString("_isMusicClear", "Clear");
-
+                _saveDataManager.WriteSaveData(Story.musicRoom, true);
                 break;
         }
         StartCoroutine(_TextChange());

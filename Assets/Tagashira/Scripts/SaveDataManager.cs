@@ -36,6 +36,9 @@ public class SaveDataManager : MonoBehaviour
 
         // 読み込むデータがあるか判定して、あればセーブデータを読み込む
         bool isNeedLoad = _clearStory != Story.another;
+
+        Debug.Log("clearStory：" + _clearStory);
+
         if (isNeedLoad)
         {
             LoadSaveData();
