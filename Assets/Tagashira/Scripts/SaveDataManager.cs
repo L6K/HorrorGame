@@ -24,7 +24,7 @@ public class SaveDataManager : MonoBehaviour
         // ItemUIManagerを取得
         _itemUIManager = _itemPanel.GetComponent<ItemUIManager>();
 
-        // セーブデータを保存しているオブジェクトを取得(デバッグ用)
+        // セーブデータを保存しているオブジェクトを取得
         _saveDataListO = GameObject.FindWithTag("SaveDataList");
         _saveDataList = _saveDataListO.GetComponent<SaveDataList>()._saveData;
         _clearStory = _saveDataListO.GetComponent<SaveDataList>()._loadStory;
