@@ -9,6 +9,7 @@ public class ChasingPlayer : MonoBehaviour
     float _maxRayDistance = 5f; // Rayの最大距離
     float _fieldOfViewAngle = 45f; // 視界の角度（度数法）
     public LayerMask _hitPlayer; // Rayがヒットを検出する対象のレイヤーマスク
+    public GameObject _floorGameOver;
 
     void Update()
     {
@@ -31,9 +32,9 @@ public class ChasingPlayer : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Player"))
                 {
-                    PlayerPrefs.SetFloat("zombiePositionX", transform.parent.position.x);
+                    PlayerPrefs.SetFloat("zombiePositionX", _floorGameOver.transform.position.x);
                     PlayerPrefs.SetFloat("zombiePositionY", transform.parent.position.y);
-                    PlayerPrefs.SetFloat("zombiePositionZ", transform.parent.position.z);
+                    PlayerPrefs.SetFloat("zombiePositionZ", _floorGameOver.transform.position.z);
 
                     SceneManager.LoadScene("GameOver");
                 }

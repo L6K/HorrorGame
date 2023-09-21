@@ -8,11 +8,13 @@ public class SaveDataManager : MonoBehaviour
     private ItemUIManager _itemUIManager;
     private SaveData[] _saveDataList;
     private Story _clearStory;
+    private MessageManager _messageManager;
 
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _zombie;
     [SerializeField] private GameObject _belongings;
     [SerializeField] private GameObject _itemPanel;
+    [SerializeField] private GameObject _messageManagerO;
 
     [SerializeField] private GameObject _saveDataListO;
 
@@ -24,16 +26,27 @@ public class SaveDataManager : MonoBehaviour
         // ItemUIManagerを取得
         _itemUIManager = _itemPanel.GetComponent<ItemUIManager>();
 
-        // セーブデータを保存しているオブジェクトを取得(デバッグ用)
+        // セーブデータを保存しているオブジェクトを取得
         _saveDataListO = GameObject.FindWithTag("SaveDataList");
         _saveDataList = _saveDataListO.GetComponent<SaveDataList>()._saveData;
         _clearStory = _saveDataListO.GetComponent<SaveDataList>()._loadStory;
 
+        // メッセージマネージャーを取得
+        _messageManager = _messageManagerO.GetComponent<MessageManager>();
+
         // 読み込むデータがあるか判定して、あればセーブデータを読み込む
         bool isNeedLoad = _clearStory != Story.another;
+
+        Debug.Log("clearStory：" + _clearStory);
+
         if (isNeedLoad)
         {
             LoadSaveData();
+        }
+        else
+        {
+            // 読み込むデータがなければ初回メッセージ送りを起動する
+            _messageManager.MessageManage(0);
         }
     }
 

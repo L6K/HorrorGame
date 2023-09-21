@@ -8,6 +8,9 @@ public class Piano : MonoBehaviour, ReceiveItem
     public ItemManager _nowSelectedItem;
     public GameObject _pianoDoor;
     public bool _isPianoOpen;
+    public GameObject _messageManager;
+    public GameObject _infinityLoop;
+    private bool _triggerMessage = true;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,14 @@ public class Piano : MonoBehaviour, ReceiveItem
             _pianoDoor.GetComponent<Animator>().SetTrigger("pianoOpen");
             Debug.Log("Good!");
             _isPianoOpen = true;
+            if(_triggerMessage)
+            {
+                _triggerMessage = false;
+                _messageManager.GetComponent<MessageManager>().MessageManage(3);
+                _infinityLoop.SetActive(true);
+            }
+            
+
         }
     }
 

@@ -9,6 +9,8 @@ public class BelongingList : MonoBehaviour
     [SerializeField] private GameObject _itemDatabase;
     [SerializeField] private Story[] _whereUse;
     [SerializeField] private int[] _index;
+    [SerializeField] private GameObject _danball;
+    [SerializeField] private GameObject _buses;
 
     public List<ItemData> _belongings;
 
@@ -19,6 +21,9 @@ public class BelongingList : MonoBehaviour
         _itemDAO = _itemDatabase.GetComponent<ItemDAO>();
 
         _belongings = new List<ItemData>();
+
+        _danball.SetActive(false);
+        _buses.SetActive(true);
 
         // 初期アイテムをリストに格納
         for (int i = 0; i < _whereUse.Length; i++)
