@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.37311527, g: 0.3807378, b: 0.3587335, a: 1}
+  m_IndirectSpecularColor: {r: 0.37221506, g: 0.37948787, b: 0.35690573, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -929,8 +929,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cf486c00f51d164cb853cba1f0edbfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4459864849424961073}
-  zombie: {fileID: 2533748752269481655}
+  _player: {fileID: 4459864849424961073}
+  _zombie: {fileID: 2533748752269481655}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

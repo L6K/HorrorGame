@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class SetTransformInfo : MonoBehaviour
 {
-    public GameObject player;
-    public GameObject zombie;
-    public string _isMusicClear;
+    public GameObject _player;
+    public GameObject _zombie;
 
     private void Awake()
     {
-        //if (_isMusicClear.Equals("Clear"))
-        //{
-        //    zombie.transform.position = new Vector3(PlayerPrefs.GetFloat("zombiePositionX"), PlayerPrefs.GetFloat("zombiePositionY"), PlayerPrefs.GetFloat("zombiePositionZ"));
-        //    player.transform.position = zombie.transform.position + zombie.transform.forward * 1.5f;
-        //}
+        _zombie.transform.position = new Vector3(PlayerPrefs.GetFloat("zombiePositionX"), PlayerPrefs.GetFloat("zombiePositionY"), PlayerPrefs.GetFloat("zombiePositionZ"));
+        _zombie.transform.rotation = Quaternion.Euler(0, -90, 0);
+        _player.transform.position = _zombie.transform.position + _zombie.transform.forward * 1f;
+        _player.transform.rotation = Quaternion.LookRotation(-_zombie.transform.forward, _player.transform.up);
     }
 }
