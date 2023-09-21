@@ -5,14 +5,16 @@ using UnityEngine;
 public class ItemHandle : MonoBehaviour
 {
     public GameObject itemManager;
-    public bool _isKeyGet;
-    public bool _isPaintingGet;
     public GameObject _zombie;
     public GameObject _stair3fObject;
     public GameObject _stair2fObject;
     public GameObject _stairAnother3fObject;
     public GameObject _stairAnother2fObject;
     public GameObject _messageManager;
+
+    public bool _isKeyGet;
+    public bool _isPaintingGet;
+    
 
     /// <summary>
     /// game上でアイテムを取得した際の処理メソッド

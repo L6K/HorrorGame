@@ -126,22 +126,42 @@ public class MessageManager : MonoBehaviour
                 _messages.Add("あなた教師なら鍵の場所わかるよね？\nお願い、探して！！");
 
                 break;
+
             case 1://ピアノのカギ取得時のメッセージ
                 _nameLabel.text = "???";
                 _messages.Add("まずい、良くないものが来るわ。\nどこかに隠れないと...");
 
                 break;
+
             case 2://ゾンビを回避した時のメッセージ
                 _nameLabel.text = "???";
                 _messages.Add("…行ったみたいね。\nあれはこの場所をうろついているの。気を付けて");
 
                 break;
+
             case 3://ピアノが開いた時のメッセージ
                 _nameLabel.text = "???";
                 _messages.Add("やったわ！これであの時の曲が弾けるわ！");
-                _messages.Add("ねぇ次は美術室に行きたいんだけど、ついてきてくれない？");
+                _messages.Add("ねぇ次は1階にある美術室に行きたいんだけど、ついてきてくれない？");
                 PlayerPrefs.SetString("_isMusicClear", "Clear");
                 _saveDataManager.WriteSaveData(Story.musicRoom, true);
+
+                break;
+
+            case 4://無限ループ発覚時のメッセージ
+                _nameLabel.text = "???";
+                _messages.Add("…ねえ、これ同じ場所を回っていない？");
+                _messages.Add("美術室に行きたいのに…。どうして？");
+                _messages.Add("ごめんなさい、なんだか忘れているものがある気がするの。\nそれが無いと行ってはいけない、のかしら");
+                _messages.Add("私2年生の頃に絵画で最優秀賞を取ったんだけど、それが必要なのかしら。");
+
+                break;
+
+            case 5://ゾンビ徘徊ポイントの手前に到着時のメッセージ
+                _nameLabel.text = "???";
+                _messages.Add("気を付けて。またさっきの良くないものがいるわ");
+                _messages.Add("ぐるぐる回っているのかしら。見つからないように隠れて行きましょう");
+
                 break;
         }
         StartCoroutine(_TextChange());
