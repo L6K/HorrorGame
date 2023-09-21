@@ -173,6 +173,18 @@ public class MessageManager : MonoBehaviour
                 _messages.Add("ぐるぐる回っているのかしら。見つからないように隠れて行きましょう");
 
                 break;
+
+            case 6://絵画取得時
+                _nameLabel.text = "???";
+                _messages.Add("これよこれ。私が描いた絵画なの。上手いでしょ？");
+                _messages.Add("でもまだ修正したい箇所があるの...");
+                _messages.Add("美術室で修正しましょ");
+                break;
+
+            case 7://クリア時
+                _nameLabel.text = "理音";
+                _messages.Add("センキュー!お疲れぃばいばいー");
+                break;
         }
         StartCoroutine(_TextChange());
     }
