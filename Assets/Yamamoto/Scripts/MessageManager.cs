@@ -19,7 +19,6 @@ public class MessageManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // StartCoroutine(_WaitAMinute());
         _nextButton.SetActive(false);
         _nameLabel.enabled = false;
         _messageText.enabled = false;
@@ -29,29 +28,35 @@ public class MessageManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_messageText.text == _messages[_currentPage])//1ページ内のテキストの出力が終わったとき
+        if(_messages.Count!=0)
         {
-
-            // マウスカーソルを表示状態にする
-            Cursor.visible = true;
-
-            // マウスカーソルのロックを解除する
-            Cursor.lockState = CursorLockMode.None;
-            _nextButton.SetActive(true);
-            if (_currentPage == (_messages.Count - 1))//そのページが最後の時
+            if (_messageText.text == _messages[_currentPage])//1ページ内のテキストの出力が終わったとき
             {
+                Debug.Log("test");
 
-                Sprite _endSprite = Resources.Load<Sprite>("EndButton_L");
-                Image _endImage = _nextButton.GetComponent<Image>();
-                _endImage.sprite = _endSprite;
+                // マウスカーソルを表示状態にする
+                Cursor.visible = true;
+
+                // マウスカーソルのロックを解除する
+                Cursor.lockState = CursorLockMode.None;
+                _nextButton.SetActive(true);
+                if (_currentPage == (_messages.Count - 1))//そのページが最後の時
+                {
+
+                    Sprite _endSprite = Resources.Load<Sprite>("EndButton_L");
+                    Image _endImage = _nextButton.GetComponent<Image>();
+                    _endImage.sprite = _endSprite;
+
+                }
 
             }
-
+            else
+            {
+                _nextButton.SetActive(false);
+            }
         }
-        else
-        {
-            _nextButton.SetActive(false);
-        }
+        
+        Debug.Log("log");
     }
 
     public void OnNextButtonClicked() //次へボタン押下時
