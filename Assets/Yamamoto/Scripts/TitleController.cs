@@ -9,6 +9,7 @@ public class TitleController : MonoBehaviour
     public Text _synopsisText;//あらすじのテキスト表示用
     public Image[] _synopsisImages;//静止画の表示用
     public GameObject _startButton;
+    public GameObject _continueButton;
     public GameObject _nextButton;
     const int _SYNOPSIS_PAGE = 3;//あらすじのページ数
     int _currentPage;
@@ -89,6 +90,8 @@ public class TitleController : MonoBehaviour
     {
         _synopsisImages[_currentImage].enabled = true;
         _startButton.SetActive(false);
+        _continueButton.SetActive(false);
+        
         StartCoroutine(_TextChange());
 
         // セーブデータを空にする
@@ -98,12 +101,13 @@ public class TitleController : MonoBehaviour
             {
                 _saveDataList._saveData[i] = null;
             }
-        }
 
-        // 読み込みデータを初期化
-        _saveDataList._loadStory = Story.another;
+            // 読み込みデータを初期化
+            _saveDataList._loadStory = Story.another;
+        }
     }
-    void _LoadScene()
+
+    public void _LoadScene()
     {
         SceneManager.LoadScene("Main");
     }

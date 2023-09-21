@@ -46,12 +46,12 @@ public class SaveDataManager : MonoBehaviour
         SaveData loadData = _saveDataList[loadNum];
 
         // プレイヤーの位置を設定
-        _player.transform.position = loadData._playerPosition.position;
-        _player.transform.rotation = loadData._playerPosition.rotation;
+        _player.transform.position = loadData._playerPosition;
+        _player.transform.rotation = loadData._playerRotate;
 
         // ゾンビの位置を設定
-        _zombie.transform.position = loadData._zonbiePosition.position;
-        _zombie.transform.rotation = loadData._zonbiePosition.rotation;
+        _zombie.transform.position = loadData._zombiePosition;
+        _zombie.transform.rotation = loadData._zombieRotate;
 
         // 所持品リストを書き換えてUIを更新
         _belongingList = loadData._belongings;
@@ -62,21 +62,29 @@ public class SaveDataManager : MonoBehaviour
     /// <summary>
     /// セーブデータを書き込むメソッド(怪異解決時に呼び出し)
     /// </summary>
-    public void WriteSaveData(Story clearStory)
+    public void WriteSaveData(Story clearStory, bool isMusicRoomClear)
     {
         int writeNum = (int)clearStory - 1;
-        SaveData writeData = _saveDataList[writeNum];
+        SaveData writeData = new SaveData();
 
         // プレイヤーの位置を保存
-        writeData._playerPosition = _player.transform;
+        writeData._playerPosition = _player.transform.position;
+        writeData._playerRotate = _player.transform.rotation;
 
         // ゾンビの位置を保存
-        writeData._zonbiePosition = _zombie.transform;
+        writeData._zombiePosition = _zombie.transform.position;
+        writeData._zombieRotate = _zombie.transform.rotation;
 
         // 所持品リストを保存
         writeData._belongings = _belongingList;
 
+        // フラグ情報を保存
+        writeData._isMusicRoomClear = isMusicRoomClear;
+
         // 最終セーブ地点を保存
         _saveDataListO.GetComponent<SaveDataList>()._loadStory = clearStory;
+
+        // セーブデータリストに格納
+        _saveDataList[writeNum] = writeData;
     }
 }
