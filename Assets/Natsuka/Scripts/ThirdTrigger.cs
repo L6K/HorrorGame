@@ -23,8 +23,10 @@ public class ThirdTrigger : MonoBehaviour
         {
             if(_thirdT)
             {
-                _thirdT = false;
                 _messageManager.GetComponent<MessageManager>().MessageManage(4);
+                gameObject.SetActive(false);
+
+                
             }
         }
     }
