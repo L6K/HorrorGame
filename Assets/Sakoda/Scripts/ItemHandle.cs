@@ -10,8 +10,7 @@ public class ItemHandle : MonoBehaviour
     public GameObject _zombie;
     public GameObject _stair3fObject;
     public GameObject _stair2fObject;
-    public GameObject _stairAnother3fObject;
-    public GameObject _stairAnother2fObject;
+    public GameObject _messageManager;
 
     /// <summary>
     /// game上でアイテムを取得した際の処理メソッド
@@ -28,6 +27,7 @@ public class ItemHandle : MonoBehaviour
         if(hitObject.collider.name == "pianoKey")
         {
             _isKeyGet = true;
+            _messageManager.GetComponent<MessageManager>().MessageManage(1);
             _zombie.SetActive(true);
             _zombie.GetComponentInChildren<ChasingPlayer>().enabled = false;
             _zombie.GetComponent<ZombiePatrol>().enabled = false;
@@ -38,8 +38,6 @@ public class ItemHandle : MonoBehaviour
             _isPaintingGet = true;
             _stair3fObject.GetComponent<ChangeT1>().enabled = false;
             _stair2fObject.GetComponent<ChangeT>().enabled = false;
-            _stairAnother3fObject.GetComponent<ChangeT1>().enabled = false;
-            _stairAnother2fObject.GetComponent<ChangeT>().enabled = false;
         }
     }
 }

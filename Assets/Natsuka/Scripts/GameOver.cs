@@ -8,6 +8,7 @@ public class GameOver : MonoBehaviour
 {
     public int _clear = 0;
     public GameObject _player;
+    public GameObject _mm;
 
     private void Start()
     {
@@ -27,7 +28,7 @@ public class GameOver : MonoBehaviour
             {
                 
                 gameObject.SetActive(false);
-                _clear += 1;
+                _mm.GetComponent<MessageManager>().MessageManage(2);
             }
             else //ゲームオーバー時
             {
