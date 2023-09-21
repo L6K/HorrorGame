@@ -10,12 +10,10 @@ public class SetTransformInfo : MonoBehaviour
 
     private void Awake()
     {
-        _isMusicClear = PlayerPrefs.GetString("_isMusicClear");
-
-        if (_isMusicClear.Equals("Clear"))
-        {
-            zombie.transform.position = new Vector3(PlayerPrefs.GetFloat("zombiePositionX"), PlayerPrefs.GetFloat("zombiePositionY"), PlayerPrefs.GetFloat("zombiePositionZ"));
-            player.transform.position = zombie.transform.position + zombie.transform.forward * 1.5f;
-        }
+        //if (_isMusicClear.Equals("Clear"))
+        //{
+        //    zombie.transform.position = new Vector3(PlayerPrefs.GetFloat("zombiePositionX"), PlayerPrefs.GetFloat("zombiePositionY"), PlayerPrefs.GetFloat("zombiePositionZ"));
+        //    player.transform.position = zombie.transform.position + zombie.transform.forward * 1.5f;
+        //}
     }
 }
