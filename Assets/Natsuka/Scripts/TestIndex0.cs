@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenTrigger : MonoBehaviour
+public class TestIndex0 : MonoBehaviour
 {
-    public MessageManager _messageManager;
+    bool b = true;
+    public GameObject x;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,11 +15,10 @@ public class OpenTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        _messageManager._isEvent = true;
-        _messageManager._isPianoOpen = true;
+        if(b)
+        {
+            b = false;
+            x.GetComponent<MessageManager>().MessageManage(0);
+        }
     }
 }

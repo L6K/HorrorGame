@@ -7,23 +7,13 @@ public class MessageManager : MonoBehaviour
 {
     public Text _messageText;//メッセージのテキスト表示用
     public Text _nameLabel;//話者の名前表示用
-    public GameObject _nextButton;
-    public GameObject _mainUI;
-    public FirstPersonController _firstPersonController;
-    public GameObject _triggerKey;
-    public GameObject _triggerOpen;
-    public GameObject _zombie;
-    public bool _isEvent;
-    public bool _isKeyGet;
-    public bool _clear;
-    public bool _isPianoOpen;
-    ItemHandle _itemHandle;
-    public GameObject _grandPiano;
-    private Piano _piano;
+    public GameObject _nextButton;//次へボタン
+    public GameObject _mainUI;//UI関連
+    public GameObject fpc;//自分
+    public GameObject _zombie;//ゾンビ
     int _currentPage=0;//現在のページ
     int _messageIndex;//メッセージ管理用引数
     List<string> _messages;//メッセージのページ
-    List<bool> _isEvents;//イベント用の判定
     int _totalEvent = 4;
     // Start is called before the first frame update
     void Start()
@@ -33,17 +23,6 @@ public class MessageManager : MonoBehaviour
         _nameLabel.enabled = false;
         _messageText.enabled = false;
         _messages = new List<string>();
-        _isEvents = new List<bool>();
-        for(int i=0;i<_totalEvent;i++)
-        {
-            _isEvents.Add(false);
-        }
-        _isEvent = false;
-        
-        _messageIndex = 0;
-        _MessageStorage(_messageIndex);
-        _itemHandle = _firstPersonController.GetComponent<ItemHandle>();
-        _piano = _grandPiano.GetComponent<Piano>();
     }
 
     // Update is called once per frame
@@ -69,60 +48,26 @@ public class MessageManager : MonoBehaviour
 
         }
         else
-        {
-            
+        {  
             _nextButton.SetActive(false);
-        }
-        if(_isEvent)
-        {
-            _EventManager();
-            _isEvent = false;
-        }
-        if(_itemHandle._isKeyGet&&!(_isEvents[1]))
-        {
-            _isEvent = true;
-            _isKeyGet = true;
-            _isEvents[1] = true;
-        }
-
-        if (_zombie.GetComponent<GameOver>()._clear == 1 && !(_isEvents[2])) //ロッカーでゾンビから逃げれたとき
-        {
-            Debug.Log(_zombie.GetComponent<GameOver>()._clear);
-            _clear = true;
-            _zombie.GetComponent<GameOver>()._clear = 2;
-            _EventManager();
-            _isEvents[2] = true;
-        }
-        if(_piano._isPianoOpen && !(_isEvents[3]))
-        {
-            _isEvent = true;
-            _isPianoOpen = true;
-            _isEvents[3] = true;
-        }
-        
+        }        
     }
    
-    public void OnNextButtonClicked()
+    public void OnNextButtonClicked() //次へボタン押下時
     {
-        Debug.Log("A");
         if (_currentPage < _messages.Count - 1)//テキストが残っているとき
         {
-            Debug.Log("X");
             _currentPage++;
             _messageText.text = "";
-            Debug.Log(_currentPage+1+"/"+_messages.Count);
             StartCoroutine(_TextChange());
         }
         else//テキストが終わったとき
         {
-            Debug.Log("Y");
             _nextButton.SetActive(false);
             _nameLabel.text = "";
             _messageText.text = "";
             _mainUI.SetActive(true);
-            _firstPersonController.playerCanMove = true;
-            _firstPersonController.isCameraMove = true;
-            _firstPersonController.enableHeadBob = true;
+            fpc.GetComponent<FirstPersonController>().enabled=true;
             Debug.Log(_currentPage +1+ "/" + _messages.Count);
             Sprite _endSprite = Resources.Load<Sprite>("NextButton_L");
             Image _endImage = _nextButton.GetComponent<Image>();
@@ -130,7 +75,6 @@ public class MessageManager : MonoBehaviour
         }
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        Debug.Log("Z");
     }
     IEnumerator _TextChange()//テキスト送り用のコルーチン
     {
@@ -147,38 +91,13 @@ public class MessageManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
     }
-    void _EventManager()
-    {
-
-        if(_isKeyGet)
-        {
-            _messageIndex = 1;
-            _MessageStorage(_messageIndex);
-            _isKeyGet = false;
-            _zombie.SetActive(true);
-        }
-        else if (_clear)
-        {
-            _messageIndex = 2;
-            _MessageStorage(_messageIndex);
-            _clear = false;
-        }
-        else if (_isPianoOpen)
-        {
-            _messageIndex = 3;
-            _MessageStorage(_messageIndex);
-            _isPianoOpen=false;
-        }
-    }
-    void _MessageStorage(int index)//メッセージ管理用の関数
+    public void MessageManage(int index)//メッセージ管理用の関数
     {
         _nameLabel.enabled = true;
         _messageText.enabled = true;
         _mainUI.SetActive(false);
-        _firstPersonController.playerCanMove = false;
         _zombie.SetActive(false);
-        _firstPersonController.isCameraMove = false;
-        _firstPersonController.enableHeadBob = false;
+        fpc.GetComponent<FirstPersonController>().enabled = false;
         switch (index)//管理引数に対応したメッセージを格納
         {
             case 0://スタート時のメッセージ
@@ -194,15 +113,13 @@ public class MessageManager : MonoBehaviour
                 _currentPage++;
                 _nameLabel.text = "???";
                 _messages.Add("まずい、良くないものが来るわ。\nどこかに隠れないと...");
-                
-               
+                              
                 break;
             case 2://ゾンビを回避した時のメッセージ
 
                 _currentPage++;
                 _nameLabel.text = "???";
                 _messages.Add("…行ったみたいね。\nあれはこの場所をうろついているの。気を付けて");
-
 
                 break;
             case 3://ピアノが開いた時のメッセージ
@@ -217,5 +134,4 @@ public class MessageManager : MonoBehaviour
         }
         StartCoroutine(_TextChange());
     }
-
 }
