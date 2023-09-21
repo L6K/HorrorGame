@@ -10,6 +10,8 @@ public class ItemHandle : MonoBehaviour
     public GameObject _zombie;
     public GameObject _stair3fObject;
     public GameObject _stair2fObject;
+    public GameObject _stairAnother3fObject;
+    public GameObject _stairAnother2fObject;
     public GameObject _messageManager;
 
     /// <summary>
@@ -38,6 +40,8 @@ public class ItemHandle : MonoBehaviour
             _isPaintingGet = true;
             _stair3fObject.GetComponent<ChangeT1>().enabled = false;
             _stair2fObject.GetComponent<ChangeT>().enabled = false;
+            _stairAnother3fObject.GetComponent<ChangeT1>().enabled = false;
+            _stairAnother2fObject.GetComponent<ChangeT>().enabled = false;
         }
     }
 }
