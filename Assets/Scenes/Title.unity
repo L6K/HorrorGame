@@ -149,13 +149,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 83326419}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 931805641}
   m_Father: {fileID: 967554738}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -1017,9 +1017,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 878310669}
+  - {fileID: 1234500828}
   - {fileID: 83326420}
   - {fileID: 1637543389}
-  - {fileID: 1234500828}
   - {fileID: 213985589}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1157,7 +1157,7 @@ RectTransform:
   - {fileID: 1249879160}
   - {fileID: 1123190379}
   m_Father: {fileID: 967554738}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1190,7 +1190,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249879159}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1234500828}
@@ -1406,17 +1406,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637543388}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 769088933}
   m_Father: {fileID: 967554738}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 48}
+  m_AnchoredPosition: {x: 0, y: 47.999985}
   m_SizeDelta: {x: 256, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1637543390
@@ -1465,7 +1465,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1914851440}
         m_TargetAssemblyTypeName: TitleController, Assembly-CSharp
-        m_MethodName: OnStartButtonClicked
+        m_MethodName: _LoadScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1689,7 +1689,9 @@ MonoBehaviour:
   - {fileID: 641343420}
   - {fileID: 1249879162}
   _startButton: {fileID: 83326419}
+  _continueButton: {fileID: 1637543388}
   _nextButton: {fileID: 213985585}
+  _saveDataListO: {fileID: 0}
 --- !u!4 &1914851441
 Transform:
   m_ObjectHideFlags: 0

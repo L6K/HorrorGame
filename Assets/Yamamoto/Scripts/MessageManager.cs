@@ -25,6 +25,11 @@ public class MessageManager : MonoBehaviour
     List<string> _messages;//メッセージのページ
     List<bool> _isEvents;//イベント用の判定
     int _totalEvent = 4;
+
+    // セーブデータ用
+    private SaveDataManager _saveDataManager;
+    [SerializeField] private GameObject _saveDataManagerO;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +49,9 @@ public class MessageManager : MonoBehaviour
         _MessageStorage(_messageIndex);
         _itemHandle = _firstPersonController.GetComponent<ItemHandle>();
         _piano = _grandPiano.GetComponent<Piano>();
+
+        // セーブデータ用コンポーネント取得
+        _saveDataManager = _saveDataManagerO.GetComponent<SaveDataManager>();
     }
 
     // Update is called once per frame
@@ -66,6 +74,7 @@ public class MessageManager : MonoBehaviour
                 _endImage.sprite = _endSprite;
 
             }
+
         }
         else
         {
@@ -121,6 +130,7 @@ public class MessageManager : MonoBehaviour
             _mainUI.SetActive(true);
             _firstPersonController.playerCanMove = true;
             _firstPersonController.isCameraMove = true;
+            _firstPersonController.enableHeadBob = true;
             Debug.Log(_currentPage +1+ "/" + _messages.Count);
             Sprite _endSprite = Resources.Load<Sprite>("NextButton_L");
             Image _endImage = _nextButton.GetComponent<Image>();
@@ -210,7 +220,10 @@ public class MessageManager : MonoBehaviour
                 _messages.Add("やったわ！これであの時の曲が弾けるわ！");
                 _messages.Add("ねぇ次は美術室に行きたいんだけど、ついてきてくれない？");
                 PlayerPrefs.SetString("_isMusicClear", "Clear");
+                _saveDataManager.WriteSaveData(Story.musicRoom, true);
+                break;
 
+            default:
                 break;
         }
         StartCoroutine(_TextChange());

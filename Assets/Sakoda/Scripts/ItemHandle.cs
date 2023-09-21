@@ -8,6 +8,8 @@ public class ItemHandle : MonoBehaviour
     public bool _isKeyGet;
     public bool _isPaintingGet;
     public GameObject _zombie;
+    public GameObject _stair3fObject;
+    public GameObject _stair2fObject;
 
     /// <summary>
     /// game上でアイテムを取得した際の処理メソッド
@@ -32,6 +34,8 @@ public class ItemHandle : MonoBehaviour
         if(hitObject.collider.name == "Painting")
         {
             _isPaintingGet = true;
+            _stair3fObject.GetComponent<ChangeT1>().enabled = false;
+            _stair2fObject.GetComponent<ChangeT>().enabled = false;
         }
     }
 }
