@@ -6,28 +6,28 @@ using UnityEngine.SceneManagement;
 public class ChasingPlayer : MonoBehaviour
 {
 
-    float maxRayDistance = 5f; // Rayの最大距離
-    float fieldOfViewAngle = 45f; // 視界の角度（度数法）
-    LayerMask hitLayer; // Rayがヒットを検出する対象のレイヤーマスク
+    float _maxRayDistance = 5f; // Rayの最大距離
+    float _fieldOfViewAngle = 45f; // 視界の角度（度数法）
+    public LayerMask _hitPlayer; // Rayがヒットを検出する対象のレイヤーマスク
 
     void Update()
     {
         // 敵の位置を開始点とする
-        Vector3 startPos = transform.position;
+        Vector3 _startPos = transform.position + transform.up * 0.1f;
 
         // 視界の開始角度と終了角度を計算
-        float halfFOV = fieldOfViewAngle / 2f;
-        Quaternion leftRayRotation = Quaternion.AngleAxis(-halfFOV, transform.up);
-        Quaternion rightRayRotation = Quaternion.AngleAxis(halfFOV, transform.up);
+        float _halfFOV = _fieldOfViewAngle / 2f;
+        Quaternion _leftRayRotation = Quaternion.AngleAxis(-_halfFOV, transform.up);
+        Quaternion _rightRayRotation = Quaternion.AngleAxis(_halfFOV, transform.up);
 
         // 左端から右端までのRayを発射
-        for (float angle = -halfFOV; angle <= halfFOV; angle += 1f) // 1度ずつ増やす
+        for (float _angle = -_halfFOV; _angle <= _halfFOV; _angle += 1f) // 1度ずつ増やす
         {
-            Vector3 rayDirection = leftRayRotation * transform.forward;
+            Vector3 _rayDirection = _leftRayRotation * transform.forward;
 
             // SphereCastを使用してRayを飛ばす
             RaycastHit hit;
-            if (Physics.SphereCast(startPos, 0.5f, rayDirection, out hit, maxRayDistance))
+            if (Physics.SphereCast(_startPos, 0.5f, _rayDirection, out hit, _maxRayDistance, _hitPlayer))
             {
                 if (hit.collider.CompareTag("Player"))
                 {
@@ -40,10 +40,10 @@ public class ChasingPlayer : MonoBehaviour
             }
 
             // Rayの可視化（シーンビューで見るために追加）
-            Debug.DrawRay(startPos, rayDirection * maxRayDistance, Color.red);
+            Debug.DrawRay(_startPos, _rayDirection * _maxRayDistance, Color.red);
 
             // 次のRayの方向を計算
-            leftRayRotation = Quaternion.AngleAxis(1f, transform.up) * leftRayRotation;
+            _leftRayRotation = Quaternion.AngleAxis(1f, transform.up) * _leftRayRotation;
         }
     }
 }
