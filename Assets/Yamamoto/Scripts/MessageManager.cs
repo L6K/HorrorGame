@@ -12,9 +12,9 @@ public class MessageManager : MonoBehaviour
     public GameObject fpc;//自分
     public GameObject _zombie;//ゾンビ
     int _currentPage = 0;//現在のページ
-    int _messageIndex;//メッセージ管理用引数
     List<string> _messages;//メッセージのページ
     private bool _first = true;
+    private int _index;
 
     // セーブデータ用フィールド
     [SerializeField] private GameObject _saveDataManagerO;
@@ -39,8 +39,6 @@ public class MessageManager : MonoBehaviour
         {
             if (_messageText.text == _messages[_currentPage])//1ページ内のテキストの出力が終わったとき
             {
-                // Debug.Log("test");
-
                 // マウスカーソルを表示状態にする
                 Cursor.visible = true;
 
@@ -49,21 +47,16 @@ public class MessageManager : MonoBehaviour
                 _nextButton.SetActive(true);
                 if (_currentPage == (_messages.Count - 1))//そのページが最後の時
                 {
-
                     Sprite _endSprite = Resources.Load<Sprite>("EndButton_L");
                     Image _endImage = _nextButton.GetComponent<Image>();
                     _endImage.sprite = _endSprite;
-
                 }
-
             }
             else
             {
                 _nextButton.SetActive(false);
             }
         }
-        
-        // Debug.Log("log");
     }
 
     public void OnNextButtonClicked() //次へボタン押下時
@@ -73,6 +66,18 @@ public class MessageManager : MonoBehaviour
             _currentPage++;
             _messageText.text = "";
             StartCoroutine(_TextChange());
+        } 
+        else if (_index == 2)
+        {
+            _nextButton.SetActive(false);
+            _nameLabel.text = "";
+            _messageText.text = "";
+            _mainUI.SetActive(true);
+            fpc.GetComponent<FirstPersonController>().isCameraMove = true;
+            Debug.Log(_currentPage + 1 + "/" + _messages.Count);
+            Sprite _endSprite = Resources.Load<Sprite>("NextButton_L");
+            Image _endImage = _nextButton.GetComponent<Image>();
+            _endImage.sprite = _endSprite;
         }
         else//テキストが終わったとき
         {
@@ -80,7 +85,9 @@ public class MessageManager : MonoBehaviour
             _nameLabel.text = "";
             _messageText.text = "";
             _mainUI.SetActive(true);
-            fpc.GetComponent<FirstPersonController>().enabled = true;
+            fpc.GetComponent<FirstPersonController>().isCameraMove = true;
+            fpc.GetComponent<FirstPersonController>().enableHeadBob = true;
+            fpc.GetComponent<FirstPersonController>().playerCanMove = true;
             Debug.Log(_currentPage + 1 + "/" + _messages.Count);
             Sprite _endSprite = Resources.Load<Sprite>("NextButton_L");
             Image _endImage = _nextButton.GetComponent<Image>();
@@ -106,11 +113,15 @@ public class MessageManager : MonoBehaviour
     }
     public void MessageManage(int index)//メッセージ管理用の関数
     {
+        _index = index;
+
         _nameLabel.enabled = true;
         _messageText.enabled = true;
         _mainUI.SetActive(false);
         _zombie.SetActive(false);
-        fpc.GetComponent<FirstPersonController>().enabled = false;
+        fpc.GetComponent<FirstPersonController>().isCameraMove = false;
+        fpc.GetComponent<FirstPersonController>().enableHeadBob = false;
+        fpc.GetComponent<FirstPersonController>().playerCanMove = false;
         _currentPage++;
         if (_first)
         {
@@ -143,7 +154,6 @@ public class MessageManager : MonoBehaviour
                 _nameLabel.text = "???";
                 _messages.Add("やったわ！これであの時の曲が弾けるわ！");
                 _messages.Add("ねぇ次は1階にある美術室に行きたいんだけど、ついてきてくれない？");
-                PlayerPrefs.SetString("_isMusicClear", "Clear");
                 _saveDataManager.WriteSaveData(Story.musicRoom, true);
 
                 break;
@@ -152,7 +162,7 @@ public class MessageManager : MonoBehaviour
                 _nameLabel.text = "???";
                 _messages.Add("…ねえ、これ同じ場所を回っていない？");
                 _messages.Add("美術室に行きたいのに…。どうして？");
-                _messages.Add("ごめんなさい、なんだか忘れているものがある気がするの。\nそれが無いと行ってはいけない、のかしら");
+                _messages.Add("ごめんなさい、なんだか忘れているものがある気がするの。\nそれが無いと行ってはいけないのかしら");
                 _messages.Add("私2年生の頃に絵画で最優秀賞を取ったんだけど、それが必要なのかしら。");
 
                 break;

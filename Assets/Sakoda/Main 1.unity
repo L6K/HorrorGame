@@ -20664,6 +20664,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5447068339638965357, guid: 5de03e931cff5044a85faa46affbc1ac, type: 3}
+      propertyPath: _piano
+      value: 
+      objectReference: {fileID: 1216797016}
+    - target: {fileID: 5447068339638965357, guid: 5de03e931cff5044a85faa46affbc1ac, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 971570508}
+    - target: {fileID: 5447068339638965357, guid: 5de03e931cff5044a85faa46affbc1ac, type: 3}
+      propertyPath: _zombie
+      value: 
+      objectReference: {fileID: 629731577}
+    - target: {fileID: 5447068339638965357, guid: 5de03e931cff5044a85faa46affbc1ac, type: 3}
       propertyPath: _messageManager
       value: 
       objectReference: {fileID: 1441943392}
