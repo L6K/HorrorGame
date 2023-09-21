@@ -15,6 +15,7 @@ public class MessageManager : MonoBehaviour
     int _messageIndex;//メッセージ管理用引数
     List<string> _messages;//メッセージのページ
     int _totalEvent = 4;
+    private bool _first=true;
     // Start is called before the first frame update
     void Start()
     {
@@ -98,10 +99,15 @@ public class MessageManager : MonoBehaviour
         _mainUI.SetActive(false);
         _zombie.SetActive(false);
         fpc.GetComponent<FirstPersonController>().enabled = false;
+        _currentPage++;
+        if(_first)
+        {
+            _first = false;
+            _messages.Add("");
+        }
         switch (index)//管理引数に対応したメッセージを格納
         {
             case 0://スタート時のメッセージ
-                
                 _nameLabel.text = "???";
                 _messages.Add("あなたこの学校の教師？");
                 _messages.Add("ピアノを弾きたいんだけど、\n鍵が見つからないの...");
@@ -109,22 +115,16 @@ public class MessageManager : MonoBehaviour
                 
                 break;
             case 1://ピアノのカギ取得時のメッセージ
-                
-                _currentPage++;
                 _nameLabel.text = "???";
                 _messages.Add("まずい、良くないものが来るわ。\nどこかに隠れないと...");
                               
                 break;
             case 2://ゾンビを回避した時のメッセージ
-
-                _currentPage++;
                 _nameLabel.text = "???";
                 _messages.Add("…行ったみたいね。\nあれはこの場所をうろついているの。気を付けて");
 
                 break;
             case 3://ピアノが開いた時のメッセージ
-
-                _currentPage++;
                 _nameLabel.text = "???";
                 _messages.Add("やったわ！これであの時の曲が弾けるわ！");
                 _messages.Add("ねぇ次は美術室に行きたいんだけど、ついてきてくれない？");
