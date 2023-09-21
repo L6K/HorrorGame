@@ -522,6 +522,7 @@ MonoBehaviour:
   _zombie: {fileID: 629731577}
   _belongings: {fileID: 271724685}
   _itemPanel: {fileID: 2021360430}
+  _messageManagerO: {fileID: 1441943392}
   _saveDataListO: {fileID: 0}
 --- !u!1 &403261559
 GameObject:
