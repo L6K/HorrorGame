@@ -5,7 +5,7 @@ using UnityEngine;
 public class ThirdTrigger : MonoBehaviour
 {
     public bool _thirdT = true;
-    GameObject _messageManager;
+    public GameObject _messageManager;
     // Start is called before the first frame update
     void Start()
     {
