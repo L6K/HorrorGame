@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 119978326}
   - component: {fileID: 119978325}
   m_Layer: 0
-  m_Name: Libalary
+  m_Name: StuffRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c65a5b7d424695f4fb114df67f38ef2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _northEastRoom: "\u56F3\u66F8\u5BA4"
+  _northEastRoom: "\u8077\u54E1\u5BA4"
   _southWestRoom: "\u5ECA\u4E0B"
   _roomManagerO: {fileID: 6581423081470637798}
   _isEastWest: 0
@@ -404,6 +404,67 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &185902908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 185902909}
+  - component: {fileID: 185902911}
+  - component: {fileID: 185902910}
+  m_Layer: 0
+  m_Name: SW1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &185902909
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185902908}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -20.4, y: 2.338, z: -27.31}
+  m_LocalScale: {x: 2.6043, y: 2.0745702, z: 0.9864925}
+  m_Children: []
+  m_Father: {fileID: 6581423081328005876}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &185902910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185902908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d89ebc7157c1e64c80340862cbd0cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _roomManagerO: {fileID: 6581423081470637798}
+  _northEastFloor: 1F
+  _southWestFloor: 1F
+  _isEastWest: 1
+--- !u!65 &185902911
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185902908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &192007624
 GameObject:
@@ -1664,7 +1725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c65a5b7d424695f4fb114df67f38ef2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _northEastRoom: 2 - B
+  _northEastRoom: 2 - A
   _southWestRoom: "\u5ECA\u4E0B"
   _roomManagerO: {fileID: 6581423081470637798}
   _isEastWest: 1
@@ -1675,6 +1736,67 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 570891466}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &607658166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 607658167}
+  - component: {fileID: 607658169}
+  - component: {fileID: 607658168}
+  m_Layer: 0
+  m_Name: SE1_2 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &607658167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607658166}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.16, y: 2.104, z: -29.669}
+  m_LocalScale: {x: 0.35372818, y: 1.5854869, z: 2.180398}
+  m_Children: []
+  m_Father: {fileID: 6581423080864539110}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &607658168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607658166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d89ebc7157c1e64c80340862cbd0cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _roomManagerO: {fileID: 6581423081470637798}
+  _northEastFloor: 1F
+  _southWestFloor: 1F
+  _isEastWest: 1
+--- !u!65 &607658169
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607658166}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
@@ -1971,7 +2093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c65a5b7d424695f4fb114df67f38ef2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _northEastRoom: 2 - A
+  _northEastRoom: 2 - B
   _southWestRoom: "\u5ECA\u4E0B"
   _roomManagerO: {fileID: 6581423081470637798}
   _isEastWest: 1
@@ -23099,6 +23221,7 @@ Transform:
   - {fileID: 6581423080840107240}
   - {fileID: 6581423081193913019}
   - {fileID: 6581423081053859488}
+  - {fileID: 607658167}
   m_Father: {fileID: 6581423082462370339}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23447,6 +23570,7 @@ Transform:
   m_Children:
   - {fileID: 6581423081975880733}
   - {fileID: 6581423081444254021}
+  - {fileID: 185902909}
   m_Father: {fileID: 6581423082462370339}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
