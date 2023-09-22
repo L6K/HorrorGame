@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Piano : MonoBehaviour, ReceiveItem
+public class Easel : MonoBehaviour, ReceiveItem
 {
     ItemData _itemInfo;
     public ItemManager _nowSelectedItem;
-    public GameObject _pianoDoor;
-    public bool _isPianoOpen;
+    public bool _isPaintingInstallation;
     public GameObject _messageManager;
-    public GameObject _infinityLoop;
+    public GameObject _installingPainting;
     private bool _triggerMessage = true;
 
     // Start is called before the first frame update
@@ -26,18 +25,17 @@ public class Piano : MonoBehaviour, ReceiveItem
 
     public void ReceiveAciton()
     {
-       if(_itemInfo._whereUse == Story.musicRoom && _itemInfo._index == 0)
+       if(_itemInfo._whereUse == Story.artRoom && _itemInfo._index == 0)
         {
             _nowSelectedItem.UseItem();
-            _pianoDoor.GetComponent<Animator>().SetTrigger("pianoOpen");
+            _installingPainting.SetActive(true);
             Debug.Log("Good!");
-            _isPianoOpen = true;
+            _isPaintingInstallation = true;
 
             if(_triggerMessage)
             {
                 _triggerMessage = false;
-                _messageManager.GetComponent<MessageManager>().MessageManage(3);
-                _infinityLoop.SetActive(true);
+                _messageManager.GetComponent<MessageManager>().MessageManage(5);
             }
             
 

@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class Message5Point : MonoBehaviour
 {
-    public GameObject _zombie;
-    public GameObject _player;
     public GameObject _piano;
     public GameObject _messageManager;
+    public GameObject _zombie;
+    public bool _isStartMessage;
 
-    private float _distance;
-    public bool _isStartDistance;
+    private void Start()
+    {
+        
+    }
 
     private void Update()
     {
-        _distance = Vector3.Distance(_zombie.transform.position, _player.transform.position);
-        _isStartDistance = _distance <= 10f;
+        _isStartMessage = _piano.GetComponent<Piano>()._isPianoOpen && _zombie.activeSelf;
 
-        Debug.Log(_distance);
-
-        if (_isStartDistance && _piano.GetComponent<Piano>()._isPianoOpen)
+        if (_isStartMessage)
         {
-            Case5MessageStart();
+            StartCase5Message();
         }
     }
 
-    private void Case5MessageStart()
+    private void StartCase5Message()
     {
         _messageManager.GetComponent<MessageManager>().MessageManage(5);
+        gameObject.SetActive(false);
     }
 }
