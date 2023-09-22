@@ -107,6 +107,27 @@ public class HighlightController : MonoBehaviour
 
                     break;
 
+                case "Easel":
+
+                    //_canAct = _distance <= 3f;
+
+                    //if (_itemHandle._isPaintingGet)
+                    //{
+                    //    _outline = _hitObject.collider.GetComponentInChildren<Outline>();
+                    //    _outline.enabled = true;
+                    //    outlines.Add(_outline);
+
+                    //    if (Input.GetKeyDown(KeyCode.F))
+                    //    {
+                    //        if (_canAct)
+                    //        {
+                    //            _hitObject.collider.GetComponent<Easel>().ReceiveAciton();
+                    //        }
+                    //    }
+                    //}
+
+                    break;
+
                 default:
 
                     foreach (var t in textMeshPros)

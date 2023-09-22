@@ -35,7 +35,7 @@ public class Easel : MonoBehaviour, ReceiveItem
             if(_triggerMessage)
             {
                 _triggerMessage = false;
-                _messageManager.GetComponent<MessageManager>().MessageManage(5);
+                _messageManager.GetComponent<MessageManager>().MessageManage(7);
             }
             
 
@@ -50,5 +50,22 @@ public class Easel : MonoBehaviour, ReceiveItem
     public void GetIndex()
     {
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player") && _itemInfo._whereUse == Story.artRoom && _itemInfo._index == 0)
+        {
+            _nowSelectedItem.UseItem();
+            _installingPainting.SetActive(true);
+            Debug.Log("Good!");
+            _isPaintingInstallation = true;
+
+            if (_triggerMessage)
+            {
+                _triggerMessage = false;
+                _messageManager.GetComponent<MessageManager>().MessageManage(7);
+            }
+        }
     }
 }
