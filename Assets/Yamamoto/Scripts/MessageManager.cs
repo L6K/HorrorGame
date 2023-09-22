@@ -118,7 +118,7 @@ public class MessageManager : MonoBehaviour
         _nameLabel.enabled = true;
         _messageText.enabled = true;
         _mainUI.SetActive(false);
-        _zombie.SetActive(false);
+        //_zombie.SetActive(false);
         fpc.GetComponent<FirstPersonController>().isCameraMove = false;
         fpc.GetComponent<FirstPersonController>().enableHeadBob = false;
         fpc.GetComponent<FirstPersonController>().playerCanMove = false;
