@@ -118,7 +118,7 @@ public class MessageManager : MonoBehaviour
         _nameLabel.enabled = true;
         _messageText.enabled = true;
         _mainUI.SetActive(false);
-        _zombie.SetActive(false);
+        //_zombie.SetActive(false);
         fpc.GetComponent<FirstPersonController>().isCameraMove = false;
         fpc.GetComponent<FirstPersonController>().enableHeadBob = false;
         fpc.GetComponent<FirstPersonController>().playerCanMove = false;
@@ -132,9 +132,9 @@ public class MessageManager : MonoBehaviour
         {
             case 0://スタート時のメッセージ
                 _nameLabel.text = "???";
-                _messages.Add("あなたこの学校の教師？");
+                _messages.Add("あなた、この学校の教師よね？");
                 _messages.Add("ピアノを弾きたいんだけど、\n鍵が見つからないの...");
-                _messages.Add("あなた教師なら鍵の場所わかるよね？\nお願い、探して！！");
+                _messages.Add("教師なら鍵の場所わかるでしょ？\nお願い、探して！！");
 
                 break;
 
@@ -146,24 +146,24 @@ public class MessageManager : MonoBehaviour
 
             case 2://ゾンビを回避した時のメッセージ
                 _nameLabel.text = "???";
-                _messages.Add("…行ったみたいね。\nあれはこの場所をうろついているの。気を付けて");
+                _messages.Add("...行ったみたいね。あれはこの場所をうろついているの。気を付けて");
 
                 break;
 
             case 3://ピアノが開いた時のメッセージ
                 _nameLabel.text = "???";
-                _messages.Add("やったわ！これであの時の曲が弾けるわ！");
-                _messages.Add("ねぇ次は1階にある美術室に行きたいんだけど、ついてきてくれない？");
-                _saveDataManager.WriteSaveData(Story.musicRoom, true);
+                _messages.Add("やった、これであの時の曲が弾けるわ！...多分、あなたも知っている曲よ");
+                _messages.Add("次は1階にある美術室に行きたいんだけど、ついてきてくれない？");
+                _saveDataManager.WriteSaveData(Story.musicRoom, true, true);
 
                 break;
 
             case 4://無限ループ発覚時のメッセージ
                 _nameLabel.text = "???";
-                _messages.Add("…ねえ、これ同じ場所を回っていない？");
-                _messages.Add("美術室に行きたいのに…。どうして？");
-                _messages.Add("ごめんなさい、なんだか忘れているものがある気がするの。\nそれが無いと行ってはいけないのかしら");
-                _messages.Add("私2年生の頃に絵画で最優秀賞を取ったんだけど、それが必要なのかしら。");
+                _messages.Add("...ねえ、なんだか同じ場所を回っている気がするのだけど。");
+                _messages.Add("美術室に行きたいのに...。どうして？");
+                _messages.Add("なんだか忘れているものがある気がするの。進めないのはそのせい？");
+                _messages.Add("2年生の頃に絵画で最優秀賞を取ったのだけど、それが必要なのかしら");
 
                 break;
 
@@ -172,6 +172,19 @@ public class MessageManager : MonoBehaviour
                 _messages.Add("気を付けて。またさっきの良くないものがいるわ");
                 _messages.Add("ぐるぐる回っているのかしら。見つからないように隠れて行きましょう");
 
+                break;
+
+            case 6://絵画取得時
+                _nameLabel.text = "???";
+                _messages.Add("これよこれ。私が描いた絵画なの。なかなか上手だと思わない？");
+                _messages.Add("でもまだ修正したい箇所があったのよね...");
+                _messages.Add("せっかくだから修正するのを手伝ってほしいの。");
+                _messages.Add("私にはもうできないから...。いえ、とにかく美術室に行きましょう");
+                break;
+
+            case 7://クリア時
+                _nameLabel.text = "理音";
+                _messages.Add("センキュー!お疲れぃばいばいー");
                 break;
         }
         StartCoroutine(_TextChange());

@@ -40,10 +40,11 @@ public class ItemHandle : MonoBehaviour
         if(hitObject.collider.name == "Painting")
         {
             _isPaintingGet = true;
-            _stair3fObject.GetComponent<ChangeT1>().enabled = false;
-            _stair2fObject.GetComponent<ChangeT>().enabled = false;
-            _stairAnother3fObject.GetComponent<ChangeT1>().enabled = false;
-            _stairAnother2fObject.GetComponent<ChangeT>().enabled = false;
+            _stair3fObject.SetActive(false);
+            _stair2fObject.SetActive(false);
+            _stairAnother3fObject.SetActive(false);
+            _stairAnother2fObject.SetActive(false);
+            _messageManager.GetComponent<MessageManager>().MessageManage(6);
         }
     }
 }

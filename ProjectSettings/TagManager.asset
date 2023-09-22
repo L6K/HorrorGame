@@ -13,6 +13,7 @@ TagManager:
   - Piano
   - SaveDataManager
   - SaveDataList
+  - ' Easel'
   layers:
   - Default
   - TransparentFX
