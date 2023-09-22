@@ -17,4 +17,5 @@ public class SaveData
 
     // ƒtƒ‰ƒOî•ñ
     public bool _isMusicRoomClear;
+    public bool _isInfinitedStair;
 }
