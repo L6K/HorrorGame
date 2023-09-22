@@ -6,10 +6,11 @@ public class ThirdTrigger : MonoBehaviour
 {
     public bool _thirdT = true;
     public GameObject _messageManager;
+    public GameObject _zombie;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -24,6 +25,7 @@ public class ThirdTrigger : MonoBehaviour
             if(_thirdT)
             {
                 _messageManager.GetComponent<MessageManager>().MessageManage(4);
+                _zombie.SetActive(true);
                 gameObject.SetActive(false);
 
                 
