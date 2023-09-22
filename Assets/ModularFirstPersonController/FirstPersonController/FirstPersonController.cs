@@ -25,7 +25,7 @@ public class FirstPersonController : MonoBehaviour
 
     public float fov = 60f;
     public bool invertCamera = false;
-    public bool cameraCanMove = false;
+    private bool cameraCanMove = false;
     public float mouseSensitivity = 2f;
     public float maxLookAngle = 50f;
     public bool isCameraMove=true;
@@ -129,7 +129,7 @@ public class FirstPersonController : MonoBehaviour
             if (cameraCanMove)
             {
 
-
+                Debug.Log("cameraCanMove");
 
                 yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
 
