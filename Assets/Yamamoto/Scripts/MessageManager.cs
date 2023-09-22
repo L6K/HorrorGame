@@ -146,7 +146,7 @@ public class MessageManager : MonoBehaviour
 
             case 2://ゾンビを回避した時のメッセージ
                 _nameLabel.text = "???";
-                _messages.Add("...行ったみたいね。\nあれはこの場所をうろついているの。気を付けて");
+                _messages.Add("...行ったみたいね。あれはこの場所をうろついているの。気を付けて");
 
                 break;
 
@@ -160,10 +160,10 @@ public class MessageManager : MonoBehaviour
 
             case 4://無限ループ発覚時のメッセージ
                 _nameLabel.text = "???";
-                _messages.Add("...ねえ、なんだか同じ場所を回っている気がするのだけど");
+                _messages.Add("...ねえ、なんだか同じ場所を回っている気がするのだけど。");
                 _messages.Add("美術室に行きたいのに...。どうして？");
-                _messages.Add("ごめんなさい、なんだか忘れているものがある気がするの。\n進めないのはそのせい？");
-                _messages.Add("2年生の頃に絵画で最優秀賞を取ったんだけど、もしかしてそれが必要なのかしら");
+                _messages.Add("なんだか忘れているものがある気がするの。進めないのはそのせい？");
+                _messages.Add("2年生の頃に絵画で最優秀賞を取ったのだけど、それが必要なのかしら");
 
                 break;
 
@@ -178,7 +178,8 @@ public class MessageManager : MonoBehaviour
                 _nameLabel.text = "???";
                 _messages.Add("これよこれ。私が描いた絵画なの。なかなか上手だと思わない？");
                 _messages.Add("でもまだ修正したい箇所があったのよね...");
-                _messages.Add("せっかくだから美術室で修正するのを手伝ってほしいの。\n私にはもうできないから...。");
+                _messages.Add("せっかくだから修正するのを手伝ってほしいの。");
+                _messages.Add("私にはもうできないから...。いえ、とにかく美術室に行きましょう");
                 break;
 
             case 7://クリア時
