@@ -15,6 +15,7 @@ public class SaveDataManager : MonoBehaviour
     [SerializeField] private GameObject _belongings;
     [SerializeField] private GameObject _itemPanel;
     [SerializeField] private GameObject _messageManagerO;
+    [SerializeField] private GameObject _infinitedStear;
 
     [SerializeField] private GameObject _saveDataListO;
 
@@ -31,7 +32,7 @@ public class SaveDataManager : MonoBehaviour
         _saveDataList = _saveDataListO.GetComponent<SaveDataList>()._saveData;
         _clearStory = _saveDataListO.GetComponent<SaveDataList>()._loadStory;
 
-        // メッセージマネージャーを取得
+        // コンポーネントを取得
         _messageManager = _messageManagerO.GetComponent<MessageManager>();
 
         // 読み込むデータがあるか判定して、あればセーブデータを読み込む
@@ -70,12 +71,18 @@ public class SaveDataManager : MonoBehaviour
         _belongingList = loadData._belongings;
         _itemUIManager.UpdateDisplayItemList();
         _itemUIManager.LoadItemPanel();
+
+        // 無限階段フラグが立っていれば無限階段を起動
+        if (loadData._isInfinitedStair)
+        {
+            _infinitedStear.SetActive(true);
+        }
     }
 
     /// <summary>
     /// セーブデータを書き込むメソッド(怪異解決時に呼び出し)
     /// </summary>
-    public void WriteSaveData(Story clearStory, bool isMusicRoomClear)
+    public void WriteSaveData(Story clearStory, bool isMusicRoomClear, bool isInfinitedStear)
     {
         int writeNum = (int)clearStory - 1;
         SaveData writeData = new SaveData();
@@ -93,6 +100,7 @@ public class SaveDataManager : MonoBehaviour
 
         // フラグ情報を保存
         writeData._isMusicRoomClear = isMusicRoomClear;
+        writeData._isInfinitedStair = isInfinitedStear;
 
         // 最終セーブ地点を保存
         _saveDataListO.GetComponent<SaveDataList>()._loadStory = clearStory;
